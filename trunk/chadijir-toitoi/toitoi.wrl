@@ -1,0 +1,127 @@
+#VRML V2.0 utf8
+
+
+### drzak na toaletak, prkynko, dvere, klika, fake shithole
+###
+###
+DEF ToiToi Group {
+	children [
+
+		DEF Stena Shape {
+
+			appearance DEF plastik Appearance {
+				material Material {
+					specularColor .32 .4 .4
+					emissiveColor .07 .13 .22
+					ambientIntensity .0333
+					diffuseColor .13 .26 .42
+					shininess .54
+				}
+				
+			}
+		
+		}
+
+		DEF LevaStena Shape {
+			appearance USE plastik
+			geometry Box {
+				size	0.05 2.20 1.2
+			
+			}
+		
+		}
+
+		DEF PravaStena Transform {
+			children [
+				USE	LevaStena
+			]
+			translation	1.5 0 0
+		}
+
+		DEF	ZadniStena Transform {
+			children [
+				USE	LevaStena
+			]
+			scale 1 1 1.25
+			translation	0.75 0 -0.575
+			rotation  0 1 0 1.57 
+		}
+
+		DEF	Podlaha Transform {
+			children [
+				Shape {
+					appearance DEF bilyPlastik Appearance {
+						material Material {
+							diffuseColor .6 .6 .6
+							specularColor .5 .5 .5
+							emissiveColor .15 .15 .15
+							ambientIntensity 0
+						}
+						
+					
+					}
+					geometry Box {
+						size	0.05 1.45 1.15
+					}
+				}
+			]
+			translation 0.75 -1.075 0.025
+			rotation 0 0 1 1.57
+		
+		}
+
+		DEF	Strop Transform	{
+			children [
+				Shape {
+					appearance USE bilyPlastik
+					geometry IndexedFaceSet	{
+						coordIndex [#3 2 1 0 -1, #1 5 4 0 -1, 6 7 2 3 -1, 4 5 7 6 -1, 
+							1 8 10 -1, 11 9 2 -1, 8 9 11 10 -1,
+							13 12 14 15 -1, 14 12 5 -1,	7 13 15 -1,
+							15 14 16 17 -1,	18 19 17 16 -1, 10 11 19 18 -1,
+							2 20 11 -1, 20 19 11 -1, 21 7 15 -1, 21 15 17 -1, 20 21 17 19 -1,
+							10 18 22 -1, 1 10 22 -1, 22 18 16 23 -1, 23 16 14 -1, 23 14 5 -1,
+							1 5 7 2 -1,
+
+
+						]
+						coord Coordinate { point [-0.025 0 0, -0.025 0.05 0, 1.525 0.05 0, 1.525 0 0, #0-3predni stena
+							-0.025 0 -1.2, -0.025 0.05 -1.2,										#4-5levy bok, zadni body
+							1.525 0 -1.2, 1.525 0.05 -1.2,									#6-7pravy bok, zadni body
+							0.65 0.05 0, 0.85 0.05 0,									#8-9prostredel vepredu
+							0.65 0.12 -0.2, 0.85 0.12 -0.2,								#10-11prostredek vepredu nahore
+							0.65 0.05 -1.2, 0.85 0.05 -1.2,								#12-13prostredel vzadu
+							0.65 0.12 -1, 0.85 0.12 -1,									#14-15prostredek vzadu nahore
+							0.65 0.17 -0.7, 0.85 0.17 -0.7,								#16-17prostredek zadni
+							0.65 0.17 -0.5, 0.85 0.17 -0.5,								#18-19prostredek predni
+							1.525 0.05 -0.3, 1.525 0.05 -0.9,								#20-21pravy bok, middle pointy
+							-0.025 0.05 -0.3, -0.025 0.05 -0.9,									#22-23levy bok, middle pointy
+							]
+						}
+					}
+				}
+			]
+			translation	0 1.05 0.6
+			#translation	0 2.075 0.6
+		}
+
+		DEF	Sedatko Transform {
+			children [
+				Shape {
+					appearance USE bilyPlastik
+					geometry IndexedFaceSet	{
+						coordIndex [0 1 2 3 -1, 2 5 4 3 -1]
+						coord Coordinate {
+							point [ 0.025 0.05 0, 1.475 0.05 0, 1.475 0.8 0, 0.025 0.8 0, 0.025 0.8 -0.75, 1.475 0.8 -0.75
+							
+							]
+						}
+					}
+				}
+			]
+			translation	0 -1.1 0.2
+		}
+	
+	
+	]
+}
