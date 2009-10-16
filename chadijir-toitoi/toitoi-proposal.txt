@@ -11,10 +11,15 @@ toitoi model
  * Inteligentní vlastnosti modelu jsou naprogramovány v uzlu Script. Funkènost modelu by se mìla co nejvíce blížit chování reálného objektu.
 
 - interakce
-	- posouvani dveri (zvuk)
-	- tlacitko se svetlem (cvak zvuk)
+	- posouvani dveri (tahani jen za madlo, zvuk)
+	- tlacitko se svetlem vevnitr (cvak zvuk, svetlo se rozsviti)
 
 - animace na tlacitko
-	- prkynko
+	- prkynko (primo prkynko je tlacitko, idealne se zvukem)
 	- zavora
-		defaultne na svislo, na klik se spusti do vodorovna, cudlik zmeni barvu
+		defaultne na svislo, na klik se spusti do vodorovna, cudlik zmeni barvu, dvere nepujdou otevrit
+
+
+- textury
+	- dvere - logo
+	- steny - imitace prolisu
