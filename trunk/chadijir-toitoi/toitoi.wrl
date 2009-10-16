@@ -1,10 +1,11 @@
 #VRML V2.0 utf8
 
 
-### drzak na toaletak, dvere, klika, fake shithole
+### TODO
+### zabalit do transformu a posunout na nulu 1.25 nahoru cely model
+### worldinfo
 ###
-###
-DEF ToiToi Group {
+DEF ToiToi Transform {
 	children [
 
 		DEF LevaStena Shape {
@@ -261,7 +262,7 @@ DEF ToiToi Group {
 							}
 							]
 							rotation 1 0 0 1.57
-							translation	0.65 -0.25 0.015
+							translation	0.55 -0.25 0.015
 						}
 
 						DEF Prkno Transform {
@@ -327,32 +328,37 @@ DEF ToiToi Group {
 						}
 
    					]
+					translation	0.06 0 0
 				}
 
 				DEF	Madlo Transform	{
 					children [
 						Shape {
-							appearance USE bilyPlastik
+							appearance USE cerna
 							geometry IndexedFaceSet	{
 								coord Coordinate { 
-									point [0 0 0, 0.08 0 0, 0 0 -0.08, 0.08 0 -0.08, #spodek
-										  0 0.03 -0.08, 0.08 0.03 -0.08, #zadni vrchni spodek
-										  0 0.03 -0.03, 0.08 0.03 -0.03, # spodni spojky
-										  0 0.2 0, 0.08 0.2 0, 0.08 0.2 -0.08, 0 0.2 -0.08, #vrsek
-										  0 0.17 -0.08, 0.08 0.17 -0.08, # zadni spodni vrsek
-										  0 0.17 -0.03, 0.08 0.17 -0.03 #horni spojky
+									point [0 0 0,       0.06 0 0, 0 0 -0.08, 0.06 0 -0.08, #spodek
+										  0 0.03 -0.08, 0.06 0.03 -0.08, #zadni vrchni spodek
+										  0 0.03 -0.03, 0.06 0.03 -0.03, # spodni spojky
+										  0 0.2 0,      0.06 0.2 0, 0.06 0.2 -0.08, 0 0.2 -0.08, #vrsek
+										  0 0.17 -0.08, 0.06 0.17 -0.08, # zadni spodni vrsek
+										  0 0.17 -0.03, 0.06 0.17 -0.03 #horni spojky
 									]
 								}
-								coordIndex [0 2 3 1 -1, 4 5 3 2 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1,
-											12 11 10 13 -1, 14 12 13 15 -1, 2 0 6 4 -1, 0 8 14 6 -1,
-											## delam madlo, bile, posunute nahoru
+								coordIndex [0 2 3 1 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1, #4 5 3 2 -1, 
+											14 12 13 15 -1, #12 11 10 13 -1, 
+											2 0 6 4 -1, 0 8 14 6 -1, 11 12 14 8 -1,
+											1 3 5 7 -1, 9 15 13 10 -1, 9 1 7 15 -1,
+										    14 15 7 6 -1,
+
+											
 								]
-								#creaseAngle	0.5
+								creaseAngle	0.5
 								#solid FALSE
 							}
 						}
 					]
-					translation	1 1 1
+					translation	-0.65 -0.05 0.08
 				}
 
 			]
@@ -360,4 +366,5 @@ DEF ToiToi Group {
 		}
 
 	]
+	translation	0 1.25 0
 }
