@@ -247,25 +247,112 @@ DEF ToiToi Group {
 						DEF	Spoustec Transform {
 							children [
 								Shape {
-									appearance DEF cernyPlastik Appearance {
+									appearance DEF zelenyPlastik Appearance {
 									material Material {
-										diffuseColor 0 0 0
-										specularColor .216 .216 .278
+										#specularColor .141 .298 .208
+										diffuseColor .11 .294 .0863
 										}
 									}
 									geometry Cylinder {
-										height 0.05
-										radius 0.1
+										height 0.03
+										radius 0.03
 										bottom FALSE
 									}
-							
 							}
 							]
 							rotation 1 0 0 1.57
-							translation	0 0 0.05
+							translation	0.65 -0.25 0.015
 						}
 
+						DEF Prkno Transform {
+							children [
+								Shape {
+									appearance DEF drevo Appearance	{
+										material Material {
+											diffuseColor .31 .141 .00784
+											specularColor .208 .11 0
+										}
+									}
+									geometry Box {
+										size 1.2 0.1 0.02
+									}
+								}
+							]
+							translation	0 -0.137 0.035
+						}
+
+						DEF	Poutko Transform {
+							children [
+								Shape {
+									appearance DEF cerna Appearance {
+										material Material {
+											diffuseColor 0 0 0
+											ambientIntensity 0
+											shininess 0
+										}
+									}
+									geometry IndexedFaceSet	{
+										coord Coordinate {
+											point [
+												0 0 0, 0.03 0 0, 0.03 0.12 0, 0.03 0.12 -0.03, 0 0.12 -0.03,
+												0 0.12 0, 0 0 -0.03, 0.03 0 -0.03
+											]
+										}
+										coordIndex [0 1 2 5 -1, 0 1 7 6 -1,  #5 2 3 4 -1,
+										]
+										solid FALSE
+									}
+								}
+							]
+							translation	0.1 -0.19 0.05
+						}
+
+						Transform {
+							children [
+								USE	Poutko
+							]
+							translation -0.23 0 0
+						}
+						Transform {
+							children [
+								USE	Poutko
+							]
+							translation -0.66 0 0
+						}
+						Transform {
+							children [
+								USE	Poutko
+							]
+							translation 0.43 0 0
+						}
+
+   					]
+				}
+
+				DEF	Madlo Transform	{
+					children [
+						Shape {
+							appearance USE bilyPlastik
+							geometry IndexedFaceSet	{
+								coord Coordinate { 
+									point [0 0 0, 0.08 0 0, 0 0 -0.08, 0.08 0 -0.08, #spodek
+										  0 0.03 -0.08, 0.08 0.03 -0.08, #zadni vrchni spodek
+										  0 0.03 -0.03, 0.08 0.03 -0.03, # spodni spojky
+										  0 0.2 0, 0.08 0.2 0, 0.08 0.2 -0.08, 0 0.2 -0.08, #vrsek
+										  0 0.17 -0.08, 0.08 0.17 -0.08, # zadni spodni vrsek
+										  0 0.17 -0.03, 0.08 0.17 -0.03 #horni spojky
+									]
+								}
+								coordIndex [0 2 3 1 -1, 4 5 3 2 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1,
+											12 11 10 13 -1, 14 12 13 15 -1, 2 0 6 4 -1, 0 8 14 6 -1,
+											## delam madlo, bile, posunute nahoru
+								]
+								#creaseAngle	0.5
+								#solid FALSE
+							}
+						}
 					]
+					translation	1 1 1
 				}
 
 			]
