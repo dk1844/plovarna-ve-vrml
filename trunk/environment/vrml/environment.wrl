@@ -117,10 +117,10 @@ DEF TOBOGAN Group {
 		}
 
 		Transform {
-			translation	10 0 0
+			translation	5.15 0 0
 
-			children Shape {
-				appearance DEF border Appearance {
+			children DEF border Shape {
+				appearance DEF borderApp Appearance {
 					material Material {}
 				}
 
@@ -128,6 +128,12 @@ DEF TOBOGAN Group {
 					size .3 .25 10
 				}					   
 			}
+		}
+
+		Transform {
+			translation	-5.15 0 0
+
+			children USE border
 		}
 		
 	]
