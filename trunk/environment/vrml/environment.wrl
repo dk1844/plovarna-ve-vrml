@@ -61,36 +61,121 @@ Background {
 }
 
 # FLOOR
-Shape {
-	appearance DEF grass Appearance {
-		material Material {}
+DEF floor Group {
+	children [
+		DEF grass01 Shape {
+			appearance DEF grassApp Appearance {
+				material Material {}
 
-		texture ImageTexture {
-			url "../img/textures/03Water0010.jpg"
-			url "../img/textures/GrassSample.jpg"
-			repeatS TRUE
-			repeatT TRUE
+				texture ImageTexture {
+					url "../img/textures/03Water0010.jpg"
+					url "../img/textures/GrassSample.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0
+					# scale it in X 10 times, in Y 10 times
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 50 0 -50, 7.75 0 -14, 7.75 0 14, 50 0 50 ]
+				}
+
+				coordIndex [ 0 1 2 3]
+			}
 		}
 
-		textureTransform TextureTransform {
-			scale 10.0 10.0
-			# scale it in X 10 times, in Y 10 times
+		DEF grass02 Shape {
+			appearance USE grassApp
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -50 0 -50, -7.75 0 -14, 7.75 0 -14, 50 0 -50 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
 		}
 
-	}
+		Transform {
+			rotation 0 1 0 3.14
 
-	geometry IndexedFaceSet {
-		coord Coordinate {
-			point [ -50 0 -50, -50 0 50, 50 0 50, 50 0 -50 ]
+			children  [	   
+				USE grass01
+				USE grass02
+			]
 		}
-
-		coordIndex [ 0 1 2 3 ]
-	}
+	]
 }
 
+# TILE
+DEF tile Group {
+	children [
+		DEF tile01 Shape {
+			appearance DEF tileApp Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "../img/textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 17.5 17.5						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -7.75 0 -14, -7.75 0 14, -6.55 0 12.8, -6.55 0 -12.8 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		DEF tile02 Shape {		  
+			appearance Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "../img/textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 6.55 0 12.8, -6.55 0 12.8, -7.75 0 14, 7.75 0 14 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		Transform {
+			rotation 0 1 0 3.14
+
+			children  [	   
+				USE tile01
+				USE tile02
+			]
+		}
+	]
+}
 
 # POOL
-DEF TOBOGAN Group {
+DEF pool Group {
 	children [	  
 		Transform {
 			translation	0 0 0
@@ -110,47 +195,80 @@ DEF TOBOGAN Group {
 					}
 				}
 
-				geometry Box {
-					size 10 .1 10
+				geometry IndexedFaceSet {
+					coord Coordinate {
+						point [ -6.25 0 -12.5, -6.25 0 12.5, 6.25 0 12.5, 6.25 0 -12.5 ]
+					}
+
+					coordIndex [ 0 1 2 3 ]
 				}					   
 			}
 		}
 
 		Transform {
-			translation	5.15 0 0
+			translation	6.4 0 0
+			scale 1 1 25
 
-			children DEF border Shape {
-				appearance DEF borderApp Appearance {
+			children DEF border Shape {	    
+				appearance Appearance {
 					material Material {}
+
+					texture ImageTexture {
+						url "../img/textures/RedTile.jpg"
+						repeatS FALSE
+						repeatT TRUE
+					}
+
+					textureTransform TextureTransform {
+						scale 1.0 80
+					}
 				}
 
 				geometry Box {
-					size .3 .25 10
+					size .3 .01 1
 				}					   
 			}
 		}
 
 		Transform {
-			translation	-5.15 0 0
+			translation	-6.4 0 0
+			scale 1 1 25
 
 			children USE border
 		}
-		
+
+		Transform {
+			translation	0 0 -12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
+
+		Transform {
+			translation	0 0 12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
 	]
 }	 
 
 # TOBOGAN
 Transform {
-	translation 10 0 10
-	rotation 0 1 0 1.57
+	translation 3.25 0 8.5
+
+	rotation 0 1 0 -1.57
+
 	children DEF EXT_TOBOGAN Inline	{
 		url "../../kavanda1-tobogan/tobogan2.wrl"
 	}
 }
 
 Transform {
-	translation -10 0 5
-	rotation 0 1 0 -2.5
+	translation -3.25 0 -8.5
+	rotation 0 1 0 1.57
 	children USE EXT_TOBOGAN
 }
 
