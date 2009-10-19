@@ -7,8 +7,8 @@ WorldInfo {
 	] 
 }
 
-# VIEW pointy
 
+# VIEWPOINTs
 
 Viewpoint {
 	position -20 5 -20
@@ -16,14 +16,11 @@ Viewpoint {
 	description	"scene"
 }
 
-
 Viewpoint {
 	position 6 2 -4
     orientation 0 1 0 -0.8              #-45st  
 	description	"toitoi"
 }
-
-
 
 Viewpoint {
 	position 2 4 12
@@ -37,30 +34,36 @@ Viewpoint {
 	orientation	0 1 0 -2.15 # podle osy x o .5
 }
 
+Viewpoint { position 0 1.8 15 }
+
+
+# LIGHTs
+
 DirectionalLight { direction -0.707 -.707 0  intensity 1 }
 
-Viewpoint { position 0 1.8 15 }
 
 # BACKGROUND
 
 Background {									   
 	# 
-	#backUrl "..\img\textures\h_skyboxpack_reef\reef_north.bmp"
-	#bottomUrl "..\img\textures\h_skyboxpack_reef\reef_down.bmp"
-	#frontUrl "..\img\textures\h_skyboxpack_reef\reef_south.bmp"
-	#leftUrl "..\img\textures\h_skyboxpack_reef\reef_east.bmp"
-	#rightUrl "..\img\textures\h_skyboxpack_reef\reef_west.bmp"
-	#topUrl "..\img\textures\h_skyboxpack_reef\reef_up.bmp"
+	#backUrl "../img/textures/h_skyboxpack_reef/reef_north.bmp"
+	#bottomUrl "../img/textures/h_skyboxpack_reef/reef_down.bmp"
+	#frontUrl "../img/textures/h_skyboxpack_reef/reef_south.bmp"
+	#leftUrl "../img/textures/h_skyboxpack_reef/reef_east.bmp"
+	#rightUrl "../img/textures/h_skyboxpack_reef/reef_west.bmp"
+	#topUrl "../img/textures/h_skyboxpack_reef/reef_up.bmp"
 	#
-	backUrl "..\img\textures\h_skyboxpack2_rays\rays_north.bmp"
-	bottomUrl "..\img\textures\h_skyboxpack2_rays\rays_down.bmp"
-	frontUrl "..\img\textures\h_skyboxpack2_rays\rays_south.bmp"
-	leftUrl "..\img\textures\h_skyboxpack2_rays\rays_east.bmp"
-	rightUrl "..\img\textures\h_skyboxpack2_rays\rays_west.bmp"
-	topUrl "..\img\textures\h_skyboxpack2_rays\rays_up.bmp"
+	backUrl "../img/textures/h_skyboxpack2_rays/rays_north.bmp"
+	bottomUrl "../img/textures/h_skyboxpack2_rays/rays_down.bmp"
+	frontUrl "../img/textures/h_skyboxpack2_rays/rays_south.bmp"
+	leftUrl "../img/textures/h_skyboxpack2_rays/rays_east.bmp"
+	rightUrl "../img/textures/h_skyboxpack2_rays/rays_west.bmp"
+	topUrl "../img/textures/h_skyboxpack2_rays/rays_up.bmp"
 }
 
+
 # FLOOR
+
 DEF floor Group {
 	children [
 		DEF grass01 Shape {
@@ -112,7 +115,9 @@ DEF floor Group {
 	]
 }
 
+
 # TILE
+
 DEF tile Group {
 	children [
 		DEF tile01 Shape {
@@ -174,7 +179,9 @@ DEF tile Group {
 	]
 }
 
+
 # POOL
+
 DEF pool Group {
 	children [	  
 		Transform {
@@ -255,7 +262,9 @@ DEF pool Group {
 	]
 }	 
 
+
 # TOBOGAN
+
 Transform {
 	translation 3.25 0 8.5
 
@@ -272,7 +281,9 @@ Transform {
 	children USE EXT_TOBOGAN
 }
 
+
 # TOI TOI
+
 Transform {
 	translation 10 0 -10
 	rotation 0 1 0 .3										 
@@ -284,5 +295,25 @@ Transform {
 Transform {
 	translation 13 0 -9
 	rotation 0 1 0 -1.2
+
 	children USE EXT_TOITOI 
 }
+
+# TABLE WITH PARASOL
+
+Transform {
+	translation -10 0 -8
+	rotation 0 1 0 -0.785
+
+	children DEF EXT_TABLE Inline	{
+		url "../../masekji4-stul-se-slunecnikem/stul-se-slunecnikem.wrl"
+	}
+}
+
+Transform {
+	translation -10.5 0 -5
+	rotation 0 1 0 0.785
+
+	children USE EXT_TABLE
+}
+
