@@ -1,4 +1,4 @@
-#VRML V2.0 utf8
+#VRML V2.0 utf8					
 WorldInfo { 
   title "Toi Toi kadibudka - soucast projektu Y36MVR Plovarna, team #3 " 
   info  ["Autor: Jiri Chadima", 
@@ -6,8 +6,6 @@ WorldInfo {
   ] 
 } 
 
-### TODO
-###
 DEF ToiToi Transform {
 	children [
 
@@ -41,14 +39,31 @@ DEF ToiToi Transform {
 				Shape {
 
 					appearance USE modryPlastik
+					### pokus s prolisem, ale vypada to divne
+					#appearance Appearance {
+					#			texture	ImageTexture {
+					#				url	["textures/zada.png"]
+					#				repeatS	FALSE
+					#				repeatT	FALSE
+					#			}
+					#			textureTransform TextureTransform {
+					#				center -0.5 -0.5
+					#				rotation 1.57
+					#				translation	-0.0 0.15
+					#				scale 1.5 1.1
+					#			}
+					#		}
 					geometry IndexedFaceSet	{
-						coord Coordinate {
+						coord DEF ZadaCoord Coordinate {
 							point [0 0 0, 1.45 0 0, 1.45 2.1 0, 0 2.1 0]
 						}
 						coordIndex [0 1 2 3 -1]
-					solid FALSE
+						solid FALSE
 					}
 				}
+
+				
+
 			]
 			translation	0.025 -1.05 -0.6
 		}
@@ -223,6 +238,36 @@ DEF ToiToi Transform {
 						size 1.5 2.0 0.05
 					}
 				}
+
+				Transform {
+					children[
+						Shape {
+							appearance Appearance {
+								texture	ImageTexture {
+									url	[ "textures/logo.png" ]
+									repeatS	FALSE
+									repeatT	FALSE
+								}
+								textureTransform TextureTransform {
+									center -0.5 -0.5
+									rotation 1.57
+									translation	-0.24 0.13
+									scale 2.3 2
+								}
+							}
+							geometry IndexedFaceSet	{
+								coordIndex [0 1 2 3 -1]
+								coord Coordinate {
+									point [1.5 2 0, 0 2 0, 0 0 0, 1.5 0 0]
+								}
+								
+							}
+						}
+					]
+					translation	-0.75 -1 0.0252
+					#rotation 1 0 0 1.57
+				}
+
 				DEF ZmensenyPant Transform {
 					children [
 						USE	Pant
@@ -283,7 +328,32 @@ DEF ToiToi Transform {
 								}
 							]
 							translation	0 -0.137 0.035
+							center 0.58 -0.02 0
+							rotation 0 0 1 -1.57
 						}
+
+						##### nedari se ho dat tak, aby byl osou rotace prkna, doresi pri tvoreni animace
+						#DEF	Hrebik Transform {
+						#	children [
+						#		Shape {
+						#			appearance Appearance {
+						#				material Material {
+						#					diffuseColor .149 .149 .149
+						#					specularColor .714 .714 .725
+						#					ambientIntensity 0
+						#					shininess .06
+						#				}
+						#			}
+						#			geometry Cylinder {
+						#				bottom FALSE
+						#				radius 0.01
+						#				height 0.005
+						#			}
+						#		}
+						#	]
+						#	translation	0.58 -0.13 0.05
+						#	rotation 1 0 0 1.57
+						#}
 
 						DEF	Poutko Transform {
 							children [
@@ -330,6 +400,14 @@ DEF ToiToi Transform {
 							translation 0.33 0 0
 						}
 
+						Transform {
+							children [
+								USE Poutko
+							]
+							translation	0.47 0.6 0
+							rotation 0 0 1 1.57
+						}
+
    					]
 					translation	0.06 0 0
 				}
@@ -366,6 +444,7 @@ DEF ToiToi Transform {
 
 			]
 			translation	0.75 0 0.625
+			#translation 2 2 2
 			#scale 0 0 0
 		}
 
