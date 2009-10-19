@@ -3,6 +3,8 @@
 .smaller {font-size: smaller;}
 
 html, body {font-family: sans-serif; font-size: small; padding: 0; margin: auto;}
+table {font-size: small; border-collapse: collapse; width: 80%; margin: auto;}
+th, td {border: 1px solid rgb(51,102,255); padding: 0.3em;}
 
 
 #content {width: 960px; border: 1px solid rgb(51,102,255); border-top: none; margin: auto;}
