@@ -192,13 +192,13 @@ DEF pool Group {
 					material Material {}
 
 					texture ImageTexture {
-						url "../img/textures/03Water0010.jpg"
+						url "../img/textures/723.jpg"
 						repeatS TRUE
 						repeatT TRUE
 					}
 
 					textureTransform TextureTransform {
-						scale 10.0 10.0						   
+						scale 40.0 40.0						   
 					}
 				}
 

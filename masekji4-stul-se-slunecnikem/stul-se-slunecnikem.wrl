@@ -85,6 +85,17 @@ DEF parasol Group {
 			translation	0 0.945 0
 
 			children Shape {
+				appearance DEF whiteMetal Appearance {
+					material Material {
+						diffuseColor 0.966681 0.980872 0.980874
+						ambientIntensity 0.234375
+						specularColor 0.673937 0.457340 0.436528
+						emissiveColor 0.000000 0.000000 0.000000
+						shininess 0.168182
+						transparency 0.000000
+					}
+				}
+
 				geometry Cylinder {
 					radius 0.01
 					height 1.89
@@ -98,7 +109,16 @@ DEF parasol Group {
 			translation	0 1.6 0
 
 			children Shape {
-				appearance Appearance { material Material { } }
+				appearance Appearance {
+					material Material {
+						diffuseColor 0.286882 0.274000 0.000000
+						ambientIntensity 0.248982
+						specularColor 0.631735 0.600752 0.241071
+						emissiveColor 0.000000 0.000000 0.000000
+						shininess 0.040816
+						transparency 0.000000
+					}
+				}
 					
 				geometry Extrusion {
 					crossSection [ -1 -.29, -.11 0, -.1 0, -1 -.3, -1 -.29 ]
@@ -120,6 +140,17 @@ DEF	holder Group {
 			translation	0 .01 0
 
 			children Shape {
+				appearance DEF silverMetal Appearance {
+					material Material {
+						diffuseColor 0.372322 0.371574 0.373173
+						ambientIntensity 0.256000
+						specularColor 0.890909 0.887832 0.890909
+						emissiveColor 0.000000 0.000000 0.000000
+						shininess 0.127551
+						transparency 0.000000
+					}
+				}
+
 				geometry Cylinder {
 					radius .15
 					height .02
@@ -132,6 +163,8 @@ DEF	holder Group {
 			translation	0 .08 0
 
 			children Shape {
+				appearance USE silverMetal
+
 				geometry Cylinder {
 					radius .025
 					height .16
@@ -151,6 +184,17 @@ DEF table Group {
 			translation 0 .69 0
 
 			children Shape {
+				appearance DEF whitePlastic Appearance {
+					material Material {
+						diffuseColor 1 1 1
+						ambientIntensity 0.000000
+						specularColor 0.70 0.70 0.70
+						emissiveColor 0.000000 0.000000 0.000000
+						shininess 0.25
+						transparency 0.000000	   
+					}
+				}
+
 				geometry Cylinder {
 					height .06
 					radius .45
@@ -164,6 +208,7 @@ DEF table Group {
 					translation	.35 .345 0
 
 					children Shape {
+						appearance USE whitePlastic
 
 						geometry Cylinder {
 							radius .04
@@ -199,7 +244,8 @@ DEF table Group {
 
 # CHAIR
 Transform {
-	translation	2 0 0
+	rotation 0 1 0 -1.5
+	translation	1.25 0 0
 
 	children DEF chair Group	{
 		children [
@@ -211,9 +257,19 @@ Transform {
 						children [
 								Transform {	  
 								children DEF seatBig Shape {
+									appearance DEF wood Appearance {
+										material Material {}
+
+										texture ImageTexture {
+											url "textures/284-v2.jpg"
+											repeatS TRUE
+											repeatT TRUE
+										}
+									}
+
 									geometry Box {
 										size .42 .02 .06
-										}
+									}
 								}
 							}
 
@@ -221,6 +277,8 @@ Transform {
 								translation	0 0 .06
 					
 								children DEF seatSmall Shape {
+									appearance USE wood
+
 									geometry Box {
 										size .42 .02 .04
 									}
@@ -290,26 +348,36 @@ Transform {
 						translation	.19 0 0
 
 						children [
-							DEF	oneSideLeg Group {
+							Group {
 								children [ 
-									Transform {
+									DEF backLeg Transform {
 										translation	-.02 0 -.03
 
 										children Shape {
-											appearance Appearance { material Material { } }
+											appearance DEF blackMetal Appearance {
+												material Material {
+													diffuseColor 0.000000 0.000000 0.000000
+													ambientIntensity 0.000000
+													specularColor 0.448980 0.445189 0.432723
+													emissiveColor 0.000000 0.000000 0.000000
+													shininess 0.056122
+													transparency 0.000000
+												}
+											}
 					
 											geometry Extrusion {
 												crossSection [ -.01 -.01, -.01 .01, .01 .01, .01 -.01, -.01 -.01 ]
-												spine [  0 0 0, 0 .43 .33]
+												spine [  0 0 0, 0 .40 .30, 0 .41 .30]
+
 											}
 										}
 									}
 
-									Transform {
+									DEF leg Transform {
 										translation	0 0 .27
 
 										children Shape {
-											appearance Appearance { material Material { } }
+											appearance USE blackMetal
 					
 											geometry Extrusion {
 												crossSection [ -.01 -.01, -.01 .01, .01 .01, .01 -.01, -.01 -.01 ]
@@ -320,10 +388,20 @@ Transform {
 								]
 							}
 
-							Transform {
-								translation	-.38 0 0									  
+							Group {
+								children [
+									Transform {
+										translation	-.34 0 0
 
-								children USE oneSideLeg
+										children USE backLeg
+									}
+
+									Transform {
+										translation	-.38 0 0
+
+										children USE leg
+									}
+								]
 							}
 						]
 					}
@@ -333,9 +411,13 @@ Transform {
 						translation	0 .08 .21
 
 						children Shape	{
+							appearance USE blackMetal
+
 							geometry Cylinder {
 								radius 0.005
-								height .5#.36
+								height .36
+								top	FALSE
+								bottom FALSE
 							}
 						}
 					}
@@ -351,6 +433,30 @@ Transform {
 
 						children USE join
 					}
+
+					Transform {
+						translation	0 .4 -.288
+
+						children USE join
+					}
+
+					DEF	buttres Transform {
+						translation	.19 .4 .135
+
+						children Shape { 
+							appearance USE blackMetal
+
+							geometry Box {
+								size .02 .02 .3
+							}
+						}
+					}
+
+					Transform {
+						translation	-.38 0 0
+
+						children USE buttres
+					}
 				]
 			}
 		]
@@ -358,8 +464,22 @@ Transform {
 }
 
 Transform {
-	translation	1 0 -2
+	translation	-1 0 0
 	rotation 0 1 0 1
+
+	children USE chair
+}
+
+Transform {
+	translation	-.25 0 -1
+	rotation 0 1 0 .1
+
+	children USE chair
+}
+
+Transform {
+	translation	0 0 1.25
+	rotation 0 1 0 3
 
 	children USE chair
 }
