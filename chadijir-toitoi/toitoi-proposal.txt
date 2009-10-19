@@ -22,4 +22,4 @@ toitoi model
 
 - textury
 	- dvere - logo
-	- steny - imitace prolisu
+	- steny - imitace prolisu - vypada to divne
