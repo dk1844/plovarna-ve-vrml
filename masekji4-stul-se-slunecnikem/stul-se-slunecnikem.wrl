@@ -5,4 +5,249 @@ WorldInfo {
   info  ["Autor: Jiří Mašek (masekji4)", 
          "Datum: 23.10.2009"
   ] 
-} 
+}
+
+
+# BACKGROUND
+
+Background {									   
+	
+	backUrl "../environment/img/textures/h_skyboxpack2_rays/rays_north.bmp"
+	bottomUrl "../environment/img/textures/h_skyboxpack2_rays/rays_down.bmp"
+	frontUrl "../environment/img/textures/h_skyboxpack2_rays/rays_south.bmp"
+	leftUrl "../environment/img/textures/h_skyboxpack2_rays/rays_east.bmp"
+	rightUrl "../environment/img/textures/h_skyboxpack2_rays/rays_west.bmp"
+	topUrl "../environment/img/textures/h_skyboxpack2_rays/rays_up.bmp"
+}
+
+
+# CROSS
+
+#DEF cross Group {
+#	children [
+#		# X direction  
+#		Transform {
+#			translation	.5 0 0
+
+#			children Shape {
+#				appearance Appearance {
+#					material Material {
+#						diffuseColor 1 0 0
+#					}
+#				}
+
+#				geometry Box {
+#					size 1 .02 .02
+#				}
+#			}
+#		}
+#		# Y direction	  
+#		Transform {
+#			translation	0 .5 0
+
+#			children Shape {
+#				appearance Appearance {
+#					material Material {
+#						diffuseColor 0 1 0
+#					}
+#				}
+
+#				geometry Box {
+#					size .02 1 .02
+#				}
+#			}
+#		}
+#		# Z direction
+#		Transform {
+#			translation	0 0 .5
+
+#			children Shape {
+#				appearance Appearance {
+#					material Material {
+#						diffuseColor 0 0 1
+#					}
+#				}
+
+#				geometry Box {
+#					size .02 .02 1
+#				}
+#			}
+#		}
+#	]
+#}
+
+
+# PARSOL
+
+DEF parasol Group {
+	children [
+		Transform {
+			translation	0 0.945 0
+
+			children Shape {
+				geometry Cylinder {
+					radius 0.01
+					height 1.89
+					top	FALSE
+					bottom FALSE
+				}
+			}
+		}
+
+		Transform {
+			translation	0 1.6 0
+
+			children Shape {
+				appearance Appearance { material Material { } }
+					
+				geometry Extrusion {
+					crossSection [ -1 -.29, -.11 0, -.1 0, -1 -.3, -1 -.29 ]
+					spine [1 0 0 , 0.707 0 0.707 , 0 0 1 ,-0.707 0 0.707 ,
+							-1 0 0 ,-0.707 0 -0.707 , 0 0 -1 ,0.707 0 -0.707 ,1 0 0] 
+				} 
+			} 
+
+		} 
+	]
+}
+
+
+# HOLDER
+
+DEF	holder Group {
+	children [
+		Transform {
+			translation	0 .01 0
+
+			children Shape {
+				geometry Cylinder {
+					radius .15
+					height .02
+					bottom FALSE
+				}
+			}
+		}
+
+		Transform {
+			translation	0 .08 0
+
+			children Shape {
+				geometry Cylinder {
+					radius .025
+					height .16
+					bottom FALSE
+				}
+			}
+		}
+	]
+}
+
+
+# TABLE
+
+DEF table Group {
+	children [
+		Transform {
+			translation 0 .69 0
+
+			children Shape {
+				geometry Cylinder {
+					height .06
+					radius .45
+				}
+			}
+		}
+
+		Group {
+			children [
+				DEF blockfoot Transform {
+					translation	.35 .345 0
+
+					children Shape {
+
+						geometry Cylinder {
+							radius .04
+							height .69
+							top	FALSE
+							bottom FALSE
+						}
+					}
+				}
+
+				Transform {
+					rotation 0 1 0 1.57
+
+					children USE blockfoot
+				}
+
+				Transform {
+					rotation 0 1 0 -1.57
+
+					children USE blockfoot
+				}
+
+				Transform {
+					rotation 0 1 0 3.14
+
+					children USE blockfoot
+				}
+			]
+		}
+	]
+}
+
+
+# CHAIR
+Transform {
+	translation	2 0 0
+
+	children DEF chair Group	{
+		children [
+			 DEF seat Group {
+				children [
+					Transform {	  
+						children DEF seatBig Shape {
+							geometry Box {
+								size .42 .02 .06
+							}
+						}
+					}
+
+					Transform {
+						translation	0 0 .06
+
+						children DEF seatSmall Shape {
+							geometry Box {
+								size .42 .02 .04
+							}
+						}	 
+					}
+
+					Transform {
+						translation	0 0 .11
+	
+						children USE seatSmall
+					}
+
+					Transform {
+						translation	0 0 .16
+
+						children USE seatSmall
+					}
+
+					Transform {
+						translation	0 0 .21
+
+						children USE seatSmall
+					}
+
+					Transform {
+						translation	0 0 .27
+
+						children USE seatBig
+					}
+				]
+			}
+		]
+	}
+}
