@@ -9,30 +9,60 @@ WorldInfo {
 
 
 # VIEWPOINTs
+Viewpoint {
+	position -16 3 20
+    orientation 0 1 0 -.7	                
+	description	"Celkový pohled 1"
+}
 
 Viewpoint {
 	position -20 5 -20
-    orientation 0 1 0 -2.4              #-45st  
-	description	"scene"
+    orientation 0 1 0 -2.4                
+	description	"Celkový pohled 1"
 }
 
 Viewpoint {
-	position 6 2 -4
-    orientation 0 1 0 -0.8              #-45st  
-	description	"toitoi"
+	position -8.9 2 -5.4
+    orientation -0.72 0.68 0.146 0.58
+	description	"Stůl se slunečníkem 2 (zhora)"
+}
+
+
+Viewpoint {
+	position -7.7 .9 -6.8
+    orientation 0 1 0 2.2 #1.57             
+	description	"Stůl se slunečníkem 1 (od poolu)"
 }
 
 Viewpoint {
-	position 2 4 12
-    orientation 0 1 0 1.2              #nic - proste ze predu  
-	description	"tobogan na sikmo"
+	position -15 5.2 -3.5
+    orientation -0.0542 -1 -0.034 1.12
+	description	"Tobogán u stolků"
 }
 
 Viewpoint {
-	description	"od stredu na tobogan1"
-	position -4 4 3
-	orientation	0 1 0 -2.15 # podle osy x o .5
+	position 16 4.4 3.2
+    orientation 0 1 0 2.07                
+	description	"Tobogán 2"
 }
+
+
+Viewpoint {
+	position 10 2.5 -8
+    orientation .2 1 .2 -1.6              
+	description	"Pravá Toitoi (mírně zhora)"
+}
+
+
+Viewpoint {
+	position 10 1.4 -6.5
+    orientation 0.1 1 0.1 -0.15                
+	description	"Levá Toitoi (zepředu)"
+}
+
+
+
+
 
 Viewpoint { position 0 1.8 15 }
 

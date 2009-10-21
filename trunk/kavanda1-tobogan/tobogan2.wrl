@@ -131,64 +131,99 @@ DEF TOBOGAN Transform {
 }
 
 
-DEF SACHTA Shape {
-	geometry IndexedFaceSet	{
-		coord Coordinate {
-			point [ 3.5 0 -3, 3.5 8.5 -3, 3.5 8.5 -4, 3.5 0 -4 #prava stena 0-3
+DEF SACHTA Group {
+	
+	children [	
+		Shape {
+			geometry IndexedFaceSet	{
+				coord Coordinate {
+					point [ 3.5 0 -3, 3.5 8.5 -3, 3.5 8.5 -4, 3.5 0 -4 #prava stena 0-3
 				
-				2.5 0 -3, 2.5 8.5 -3, #zadni strana 4-11
-				2.55 8.5 -3 2.55 6.5 -3, 3.45 6.5 -3, 3.45 8.5 -3,
-				3.5 8.5 -3, 3.5 0 -3,
+						2.5 0 -3, 2.5 8.5 -3, #zadni strana 4-11
+						2.55 8.5 -3 2.55 6.5 -3, 3.45 6.5 -3, 3.45 8.5 -3,
+						3.5 8.5 -3, 3.5 0 -3,
 
-				2.5 0 -3, 2.5 8.5 -3, 2.5 8.5 -4, 2.5 0 -4, #leva stena 12 - 15
+						2.5 0 -3, 2.5 8.5 -3, 2.5 8.5 -4, 2.5 0 -4, #leva stena 12 - 15
 
-				3.5 0 -4, 3.5 8.5 -4, #predni strana	16-23
-				2.5 8.5 -4, 2.5 0 -4,
-				2.55 0 -4 2.55 2 -4, 3.45 2 -4, 3.45 0 -4,
+						3.5 0 -4, 3.5 8.5 -4, #predni strana	16-23
+						2.5 8.5 -4, 2.5 0 -4,
+						2.55 0 -4 2.55 2 -4, 3.45 2 -4, 3.45 0 -4,
 				
-				2.55 0 -4, 2.55 2 -4,	 #24-31	 # prava vnitrek
-				2.55 2 -3.95, 2.55 8.5 -3.95,
-				2.55 8.5 -3, 2.55 6.5 -3,
-				2.55 6.5 -3.05, 2.55 0 -3.05,
+						2.55 0 -4, 2.55 2 -4,	 #24-31	 # prava vnitrek
+						2.55 2 -3.95, 2.55 8.5 -3.95,
+						2.55 8.5 -3, 2.55 6.5 -3,
+						2.55 6.5 -3.05, 2.55 0 -3.05,
 				
 
-				3.45 0 -4, 3.45 2 -4,	 #32-39	# leva vnitrek
-				3.45 2 -3.95, 3.45 8.5 -3.95,
-				3.45 8.5 -3, 3.45 6.5 -3,
-				3.45 6.5 -3.05, 3.45 0 -3.05,
+						3.45 0 -4, 3.45 2 -4,	 #32-39	# leva vnitrek
+						3.45 2 -3.95, 3.45 8.5 -3.95,
+						3.45 8.5 -3, 3.45 6.5 -3,
+						3.45 6.5 -3.05, 3.45 0 -3.05,
 
-				2.55 2 -3.95,2.55 8.5 -3.95, 3.45 8.5 -3.95, 3.45 2 -3.95, # predni vnitrni # 40-43
-				2.55 0 -3.05,2.55 6.5 -3.05, 3.45 6.5 -3.05, 3.45 0 -3.05, # zadni vnitrni # 44-47
+						2.55 2 -3.95,2.55 8.5 -3.95, 3.45 8.5 -3.95, 3.45 2 -3.95, # predni vnitrni # 40-43
+						2.55 0 -3.05,2.55 6.5 -3.05, 3.45 6.5 -3.05, 3.45 0 -3.05, # zadni vnitrni # 44-47
 				
-				#a jeste futra dole
-				3.45 2 -4, 3.45 2 -3.95, 2.55 2 -3.95, 2.55 2 -4,  # 48 - 51
-				#a prah	prah nahore
-				2.55 6.5 -3.05, 2.55 6.5 -3, 3.45 6.5 -3, 3.45 6.5 -3.05,  # 52 - 55
-			]
-		}
-		coordIndex [ 3 2 1 0 -1, 11 10 9 8 7 6 5 4 -1, 12 13 14 15 -1,	  23 22 21 20 19 18 17 16 -1,
-			24 25 26 27 28 29 30 31 -1, 39 38 37 36 35 34 33 32 -1, 43 42 41 40 -1, 44 45 46 47 -1,
-			48 49 50 51 -1,
+						#a jeste futra dole
+						3.45 2 -4, 3.45 2 -3.95, 2.55 2 -3.95, 2.55 2 -4,  # 48 - 51
+						#a prah	prah nahore
+						2.55 6.5 -3.05, 2.55 6.5 -3, 3.45 6.5 -3, 3.45 6.5 -3.05,  # 52 - 55
+					]
+				}
+				coordIndex [ 3 2 1 0 -1, 11 10 9 8 7 6 5 4 -1, 12 13 14 15 -1, #	  23 22 21 20 19 18 17 16 -1,
+					24 25 26 27 28 29 30 31 -1, 39 38 37 36 35 34 33 32 -1, 43 42 41 40 -1, 44 45 46 47 -1,
+					48 49 50 51 -1,
 			
-		]
+				]
 
-						    
-		colorIndex [1,0,1,0    1,1, 0,0 ,0,0] #10sten
-		colorPerVertex FALSE
-		color Color {color [.8 0 .1, 1 .8 0, .2 .5 1]}
+								  #predni odebrana
+				colorIndex [1,0,1,    1,1, 0,0 ,0,0] #10sten
+				colorPerVertex FALSE
+				color Color {color [.8 0 .1, 1 .8 0, .2 .5 1]}
 		
-		texCoord TextureCoordinate {
-			point	[23 22 21 20 19 18 17 16 ]						
-		}
-		
+					
 
 
-	}
-	appearance Appearance {
-		texture	ImageTexture {
-			url	["sipka.png"]
+			}
 		}
-	}
+		#front se sipkou
+
+		Shape {
+			geometry IndexedFaceSet	{
+				coord Coordinate {
+					point [ 
+
+						3.5 0 -4, 3.5 8.5 -4, #predni strana	16-23
+						2.5 8.5 -4, 2.5 0 -4,
+						2.55 0 -4 2.55 2 -4, 3.45 2 -4, 3.45 0 -4,
+				
+					
+					]
+				}
+				coordIndex [ 7 6 5 4 3 2 1 0 -1]
+
+				solid	FALSE
+			#	colorIndex [0] #10sten
+			#	colorPerVertex FALSE
+			#	color Color {color [.2 .5 1]}
+			  }
+			  appearance Appearance	{
+				  texture ImageTexture {
+					  url ["sipka.png"]
+					  repeatS FALSE
+					  repeatT FALSE
+					  
+				  }
+				  textureTransform TextureTransform	{
+					  scale	 1.25 8
+					  center -1 0
+					  
+				  }
+			  }
+			  
+		}
+
+
+	]
 }
 
 
