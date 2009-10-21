@@ -1,9 +1,9 @@
 #VRML V2.0 utf8
 WorldInfo { 
-  title "Tobogan - soucast projektu Y36MVR Plovarna, team #3 " 
-  info  ["Autor: Daniel Kavan", 
-         "Datum: 10.10.2009"
-  ] 
+	title "Tobogan - soucast projektu Y36MVR Plovarna, team #3 " 
+	info  ["Autor: Daniel Kavan", 
+        "Datum: 10.10.2009"
+	] 
 } 
 
 
@@ -40,37 +40,37 @@ DEF TOBOGAN Transform {
 			}
 			geometry Extrusion {
 				crossSection  [ -.5 -.5, -.5 0,  #jako x y
-								-.35 .35, 0 .5,
-								.35 .35, .5 0,
-								.5 -.5
-							  ]
+					-.35 .35, 0 .5,
+					.35 .35, .5 0,
+					.5 -.5
+				]
 
 				spine  [  3 6.5 -3, 			   #zacatek trubice
 					
-						3 6 0,  2.1 5.75 2.1,	#tady je zacatek rotace
-					    0 5.5 3, -2.1 5.25 2.1,	# na stupnici do 1 by byly hodnoty +-1 a +-.7
-					   -3 5 0, -2.1 4.75 -2.1,
-					    0 4.5 -3, 2.1 4.25 -2.1, # cheme, aby klesal 2 m za otacku, takze 
+					3 6 0,  2.1 5.75 2.1,	#tady je zacatek rotace
+					0 5.5 3, -2.1 5.25 2.1,	# na stupnici do 1 by byly hodnoty +-1 a +-.7
+					-3 5 0, -2.1 4.75 -2.1,
+					0 4.5 -3, 2.1 4.25 -2.1, # cheme, aby klesal 2 m za otacku, takze 
 
-						3 4 0,  2.1 3.75 2.1,	
-					    0 3.5 3, -2.1 3.25 2.1,
-					   -3 3 0, -2.1 2.75 -2.1,
-					    0 2.5 -3, 2.1 2.25 -2.1,
-						
-						3 2 0,  2.1 1.75 2.1,	
-					    0 1.5 3, -2.1 1.25 2.1,
-					   -3 1 0, -2.1 0.75 -2.1,
-					    0 0.5 -3, 2.1 0.25 -2.1,
-						3 -.5 0				  
-					   ]
-					   #orientation	[0 0 1 0]
+					3 4 0,  2.1 3.75 2.1,	
+					0 3.5 3, -2.1 3.25 2.1,
+					-3 3 0, -2.1 2.75 -2.1,
+					0 2.5 -3, 2.1 2.25 -2.1,
+					
+					3 2 0,  2.1 1.75 2.1,	
+					0 1.5 3, -2.1 1.25 2.1,
+					-3 1 0, -2.1 0.75 -2.1,
+					0 0.5 -3, 2.1 0.25 -2.1,
+					3 -.5 0				  
+				]
+				#orientation	[0 0 1 0]
 			
 			
 
 				solid FALSE
 				endCap FALSE
 				beginCap FALSE
-				 creaseAngle	0.9
+				creaseAngle	0.9
 			}
 		} #tady konci tuba
 		
@@ -83,8 +83,9 @@ DEF TOBOGAN Transform {
 					}
 				}
 				geometry Box {size .2 7.5 .2}
-
+			   
 			}
+			
 		} #konec kulu
 
 		DEF HORNI_LANA Shape {
@@ -93,23 +94,23 @@ DEF TOBOGAN Transform {
 				
 				coord Coordinate {
 					point [	 2.5   6.5   0,      0.1 7  0,		  #hornich 8
-						     1.76  6.25  1.76,   0.1 7  0.1,
-							 0     6     2.5,    0   7  0.1,
-							-1.76  5.75  1.76,  -0.1 7  0.1,
-							
-							-2.5   5.5   0,     -0.1 7  0,
-							-1.76  5.25 -1.76,  -0.1 7 -0.1,
-							 0     5.0  -2.5,    0   7 -0.1,
-							 1.76  4.75 -1.76,   0.1 7 -0.1,	  #hornich 8 -end
-						  ]
+						1.76  6.25  1.76,   0.1 7  0.1,
+						0     6     2.5,    0   7  0.1,
+						-1.76  5.75  1.76,  -0.1 7  0.1,
+						
+						-2.5   5.5   0,     -0.1 7  0,
+						-1.76  5.25 -1.76,  -0.1 7 -0.1,
+						0     5.0  -2.5,    0   7 -0.1,
+						1.76  4.75 -1.76,   0.1 7 -0.1,	  #hornich 8 -end
+					]
 				}
 				coordIndex [0   1 -1,  2  3 -1, 
-							4   5 -1,  6  7 -1, 
-							
-							8   9 -1, 10 11 -1,
-							12 13 -1, 14 15 -1
+					4   5 -1,  6  7 -1, 
+					
+					8   9 -1, 10 11 -1,
+					12 13 -1, 14 15 -1
 
-							]
+				]
 				colorPerVertex FALSE
 				colorIndex [0,0,0,0,  0,0,0,0 ] #tohle tam musi byt pro vsechny cary, jinak se bud nevykresli vubec a nebo jsou cely spojeny (bez -1)!!!
 			}
@@ -130,166 +131,187 @@ DEF TOBOGAN Transform {
 }
 
 
-		DEF SACHTA Shape {
-			geometry IndexedFaceSet	{
-				coord Coordinate {
-				    point [ 3.5 0 -3, 3.5 8.5 -3, 3.5 8.5 -4, 3.5 0 -4 #prava stena 0-3
-							
-							2.5 0 -3, 2.5 8.5 -3, #zadni strana 4-11
-							2.55 8.5 -3 2.55 6.5 -3, 3.45 6.5 -3, 3.45 8.5 -3,
-							3.5 8.5 -3, 3.5 0 -3,
+DEF SACHTA Shape {
+	geometry IndexedFaceSet	{
+		coord Coordinate {
+			point [ 3.5 0 -3, 3.5 8.5 -3, 3.5 8.5 -4, 3.5 0 -4 #prava stena 0-3
+				
+				2.5 0 -3, 2.5 8.5 -3, #zadni strana 4-11
+				2.55 8.5 -3 2.55 6.5 -3, 3.45 6.5 -3, 3.45 8.5 -3,
+				3.5 8.5 -3, 3.5 0 -3,
 
-							2.5 0 -3, 2.5 8.5 -3, 2.5 8.5 -4, 2.5 0 -4, #leva stena 12 - 15
+				2.5 0 -3, 2.5 8.5 -3, 2.5 8.5 -4, 2.5 0 -4, #leva stena 12 - 15
 
-							3.5 0 -4, 3.5 8.5 -4, #predni strana	16.5-23
-							2.5 8.5 -4, 2.5 0 -4,
-							2.55 0 -4 2.55 2 -4, 3.45 2 -4, 3.45 0 -4,
-							
-							2.55 0 -4, 2.55 2 -4,	 #24-31	 # prava vnitrek
-						    2.55 2 -3.95, 2.55 8.5 -3.95,
-						    2.55 8.5 -3, 2.55 6.5 -3,
-							2.55 6.5 -3.05, 2.55 0 -3.05,
-							 
+				3.5 0 -4, 3.5 8.5 -4, #predni strana	16-23
+				2.5 8.5 -4, 2.5 0 -4,
+				2.55 0 -4 2.55 2 -4, 3.45 2 -4, 3.45 0 -4,
+				
+				2.55 0 -4, 2.55 2 -4,	 #24-31	 # prava vnitrek
+				2.55 2 -3.95, 2.55 8.5 -3.95,
+				2.55 8.5 -3, 2.55 6.5 -3,
+				2.55 6.5 -3.05, 2.55 0 -3.05,
+				
 
-							3.45 0 -4, 3.45 2 -4,	 #32-39	# leva vnitrek
-						    3.45 2 -3.95, 3.45 8.5 -3.95,
-						    3.45 8.5 -3, 3.45 6.5 -3,
-							3.45 6.5 -3.05, 3.45 0 -3.05,
+				3.45 0 -4, 3.45 2 -4,	 #32-39	# leva vnitrek
+				3.45 2 -3.95, 3.45 8.5 -3.95,
+				3.45 8.5 -3, 3.45 6.5 -3,
+				3.45 6.5 -3.05, 3.45 0 -3.05,
 
-							2.55 2 -3.95,2.55 8.5 -3.95, 3.45 8.5 -3.95, 3.45 2 -3.95, # predni vnitrni # 40-43
-							2.55 0 -3.05,2.55 6.5 -3.05, 3.45 6.5 -3.05, 3.45 0 -3.05, # zadni vnitrni # 44-47
-							 
-							#a jeste futra dole
-							3.45 2 -4, 3.45 2 -3.95, 2.55 2 -3.95, 2.55 2 -4,  # 48 - 51
-						   	#a prah	prah nahore
-							2.55 6.5 -3.05, 2.55 6.5 -3, 3.45 6.5 -3, 3.45 6.5 -3.05,  # 52 - 55
-					]
-				}
-				coordIndex [ 3 2 1 0 -1, 11 10 9 8 7 6 5 4 -1, 12 13 14 15 -1, 23 22 21 20 19 18 17 16 -1,
-							24 25 26 27 28 29 30 31 -1, 39 38 37 36 35 34 33 32 -1, 43 42 41 40 -1, 44 45 46 47 -1,
-							48 49 50 51 -1,
-							
-				]
-			 colorIndex [1,0,1,0,  1,1, 0,0 ,0,0] #10sten
-			colorPerVertex FALSE
-			color Color {color [.8 0 .1, 1 .8 0, .2 .5 1]}
-			}
-		}
-
-		Transform {
-			translation	3 0 1.5
-			children [
-				DEF UNDERPOOL_WATER Shape {
-				geometry Box {size 3 .2 8}
-				appearance Appearance {
-					material Material {
-						diffuseColor 0 .1 .8
-						specularColor .31 .77 .8
-						shininess .03
-						transparency .3
-						}
-					}
-				}
-
-				DEF UNDERPOOL_OKRAJ Group {
-					children [
-						Transform {
-							translation	-1.7 0 0
-						 	children DEF OKRAJ_DLOUHEJ Shape {
-								geometry Box {
-									size .4 .4 8
-								}
-								appearance DEF OKRAJ_MATERIAL Appearance {
-									material Material {
-										diffuseColor 1 .85 0
-										specularColor .87 .25 .25
-									}
-								}
-							}
-						}
-						Transform {
-							translation	1.7 0 0
-							children  USE OKRAJ_DLOUHEJ
-						}
-
-						Transform {
-							translation	0 0 4.2
-						 	children DEF OKRAJ_KRATKEJ Shape {
-								geometry Box {
-									size 3.8 .4 .4
-								}
-								appearance USE OKRAJ_MATERIAL
-							}
-						}
-
-						Transform {
-							translation	0 0 -4.2
-							children  USE OKRAJ_KRATKEJ
-						}
-					]
-				}	
-					
+				2.55 2 -3.95,2.55 8.5 -3.95, 3.45 8.5 -3.95, 3.45 2 -3.95, # predni vnitrni # 40-43
+				2.55 0 -3.05,2.55 6.5 -3.05, 3.45 6.5 -3.05, 3.45 0 -3.05, # zadni vnitrni # 44-47
+				
+				#a jeste futra dole
+				3.45 2 -4, 3.45 2 -3.95, 2.55 2 -3.95, 2.55 2 -4,  # 48 - 51
+				#a prah	prah nahore
+				2.55 6.5 -3.05, 2.55 6.5 -3, 3.45 6.5 -3, 3.45 6.5 -3.05,  # 52 - 55
 			]
 		}
+		coordIndex [ 3 2 1 0 -1, 11 10 9 8 7 6 5 4 -1, 12 13 14 15 -1,	  23 22 21 20 19 18 17 16 -1,
+			24 25 26 27 28 29 30 31 -1, 39 38 37 36 35 34 33 32 -1, 43 42 41 40 -1, 44 45 46 47 -1,
+			48 49 50 51 -1,
+			
+		]
 
-		Transform {
-			translation	2.57 1 -3.975
-			children DEF VYPINAC Shape {
-				geometry Box {size .04 .08 .04}
-				appearance Appearance {
-					material Material {
-						diffuseColor 0 0 0
-					
-					}
-				}
+						    
+		colorIndex [1,0,1,0    1,1, 0,0 ,0,0] #10sten
+		colorPerVertex FALSE
+		color Color {color [.8 0 .1, 1 .8 0, .2 .5 1]}
+		
+		texCoord TextureCoordinate {
+			point	[23 22 21 20 19 18 17 16 ]						
+		}
+		
+
+
+	}
+	appearance Appearance {
+		texture	ImageTexture {
+			url	["sipka.png"]
+		}
+	}
+}
+
+
+# And the pool is out..	
+#			Transform {
+#			translation	3 0 1.5
+#			children [
+#				DEF UNDERPOOL_WATER Shape {
+#				geometry Box {size 3 .2 8}
+#				appearance Appearance {
+#					material Material {
+#						diffuseColor 0 .1 .8
+#						specularColor .31 .77 .8
+#						shininess .03
+#						transparency .3
+#						}
+#					}
+#				}
+
+#				DEF UNDERPOOL_OKRAJ Group {
+#					children [
+#						Transform {
+#							translation	-1.7 0 0
+#						 	children DEF OKRAJ_DLOUHEJ Shape {
+#								geometry Box {
+#									size .4 .4 8
+#								}
+#								appearance DEF OKRAJ_MATERIAL Appearance {
+#									material Material {
+#										diffuseColor 1 .85 0
+#										specularColor .87 .25 .25
+#									}
+#								}
+#							}
+#						}
+#						Transform {
+#							translation	1.7 0 0
+#							children  USE OKRAJ_DLOUHEJ
+#						}
+
+#						Transform {
+#							translation	0 0 4.2
+#						 	children DEF OKRAJ_KRATKEJ Shape {
+#								geometry Box {
+#									size 3.8 .4 .4
+#								}
+#								appearance USE OKRAJ_MATERIAL
+#							}
+#						}
+
+#						Transform {
+#							translation	0 0 -4.2
+#							children  USE OKRAJ_KRATKEJ
+#						}
+#					]
+#				}	
+
+#			]
+#		}
+
+Transform {
+	translation	2.57 1 -3.975
+	children DEF VYPINAC Shape {
+		geometry Box {size .04 .08 .04}
+		appearance Appearance {
+			material Material {
+				diffuseColor 0 0 0
+				
 			}
 		}
+	}
+}
 
-		Transform {
-			translation	2.57 7 -3.025
-			children USE VYPINAC
-		}
+Transform {
+	translation	2.57 7 -3.025
+	children USE VYPINAC
+}
 
-		Transform {
-			translation	3 0.05 -3.5 
-			children DEF POST Shape {
-				geometry Box {size .9 .1 .9}
-				appearance Appearance {
-					material Material {
-						diffuseColor 0 0 0
-						specularColor .29 .3 .29
-						ambientIntensity 0
-						shininess .08
-					}
-				}
+Transform {
+	translation	3 0.05 -3.5 
+	children DEF POST Shape {
+		geometry Box {size .9 .1 .9}
+		appearance Appearance {
+			material Material {
+				diffuseColor 0 0 0
+				specularColor .29 .3 .29
+				ambientIntensity 0
+				shininess .08
 			}
 		}
-		Transform {
-		translation 3 8.5 -3.5 
-			children DEF STRECHA Shape {
-				geometry IndexedFaceSet	{
-					coord Coordinate {
-						point [-.6 0 -.6, .6 0 -.6, .6 0 .6, -.6 0 .6, 0 .5 0 ]
-					}
-
-					coordIndex [0 1 2 3 0 -1, 1 0 4 -1, 1 4 2 -1, 2 4 3 -1, 3 4 0 -1 ]
-					
-					colorPerVertex FALSE
-					# color Color { color [.8 0 .1, 1 .8 0, .2 .5 1] }
-					# colorIndex [2,2,2,2, 2] #5sten
-					
-
-				}
-				appearance Appearance {
-					material Material {
-						diffuseColor .882 .149 .00784
-						specularColor .188 .0235 .0235
-						ambientIntensity .0833
-						shininess .08
-					}
-				}
+	}
+}
+Transform {
+	translation 3 8.5 -3.5 
+	children DEF STRECHA Shape {
+		geometry IndexedFaceSet	{
+			coord Coordinate {
+				point [-.6 0 -.6, .6 0 -.6, .6 0 .6, -.6 0 .6, 0 .5 0 ]
 			}
+
+			coordIndex [0 1 2 3 0 -1, 1 0 4 -1, 1 4 2 -1, 2 4 3 -1, 3 4 0 -1 ]
+			
+			#colorPerVertex FALSE
+			# color Color { color [.8 0 .1, 1 .8 0, .2 .5 1] }
+			# colorIndex [2,2,2,2, 2] #5sten
+			
+
 		}
+		appearance Appearance {
+			texture	ImageTexture {
+				url	["roof2.png"]
+				repeatS	TRUE
+				repeatT	TRUE
+
+			}
+			textureTransform TextureTransform {
+				scale 10 10
+			}
+			
+
+		}
+	}
+}
 
 #Transform { #neco jako zebrik?
 #	translation	3 3.5 -3.05
