@@ -1,0 +1,1 @@
+obsahuje modely z verze 1, pri zpracovani dalsich verzi tyto jiz nebudou updatovany, aby byla zachovana "historie"..
