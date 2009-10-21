@@ -18,20 +18,20 @@ Viewpoint {
 Viewpoint {
 	position -20 5 -20
     orientation 0 1 0 -2.3                
-	description	"Celkový pohled 1"
+	description	"Celkový pohled 2"
 }
 
 Viewpoint {
 	position -8.9 2 -5.4
     orientation -0.72 0.68 0.146 0.58
-	description	"Stůl se slunečníkem 2 (zhora)"
+	description	"Stůl se slunečníkem 1 (zhora)"
 }
 
 
 Viewpoint {
 	position -7.7 .9 -6.8
     orientation 0 1 0 2.2 #1.57             
-	description	"Stůl se slunečníkem 1 (od poolu)"
+	description	"Stůl se slunečníkem 2 (od poolu)"
 }
 
 Viewpoint {
@@ -43,21 +43,21 @@ Viewpoint {
 Viewpoint {
 	position 16 4.4 3.2
     orientation 0 1 0 2.07                
-	description	"Tobogán 2"
+	description	"Druhý tobogán"
 }
 
 
 Viewpoint {
 	position 10 2.5 -8
     orientation .2 1 .2 -1.6              
-	description	"Pravá Toitoi (mírně zhora)"
+	description	"První Toitoi (mírně zhora)"
 }
 
 
 Viewpoint {
 	position 10 1.4 -6.5
     orientation 0.1 1 0.1 -0.15                
-	description	"Levá Toitoi (zepředu)"
+	description	"Druhá Toitoi (zepředu)"
 }
 
 
