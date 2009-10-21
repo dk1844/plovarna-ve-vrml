@@ -17,7 +17,7 @@ Viewpoint {
 
 Viewpoint {
 	position -20 5 -20
-    orientation 0 1 0 -2.4                
+    orientation 0 1 0 -2.3                
 	description	"Celkový pohled 1"
 }
 
