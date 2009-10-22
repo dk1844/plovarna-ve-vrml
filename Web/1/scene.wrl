@@ -1,0 +1,349 @@
+#VRML V2.0 utf8
+
+WorldInfo {
+	title "Semestrální práce z Y36MVR - Plovárna, team #3 " 
+	info  ["Autors: Jiří Chadima (chadijir), Jiří Mašek (masekji4), Daniel Kavan (kavanda1)", 
+			"Datum: 10.10.2009"
+	] 
+}
+
+
+# VIEWPOINTs
+Viewpoint {
+	position -16 3 20
+    orientation 0 1 0 -.7	                
+	description	"Celkový pohled 1"
+}
+
+Viewpoint {
+	position -20 5 -20
+    orientation 0 1 0 -2.3                
+	description	"Celkový pohled 2"
+}
+
+Viewpoint {
+	position -8.9 2 -5.4
+    orientation -0.72 0.68 0.146 0.58
+	description	"Stůl se slunečníkem 1 (zhora)"
+}
+
+
+Viewpoint {
+	position -7.7 .9 -6.8
+    orientation 0 1 0 2.2 #1.57             
+	description	"Stůl se slunečníkem 2 (od poolu)"
+}
+
+Viewpoint {
+	position -15 5.2 -3.5
+    orientation -0.0542 -1 -0.034 1.12
+	description	"Tobogán u stolků"
+}
+
+Viewpoint {
+	position 16 4.4 3.2
+    orientation 0 1 0 2.07                
+	description	"Druhý tobogán"
+}
+
+
+Viewpoint {
+	position 10 2.5 -8
+    orientation .2 1 .2 -1.6              
+	description	"První Toitoi (mírně zhora)"
+}
+
+
+Viewpoint {
+	position 10 1.4 -6.5
+    orientation 0.1 1 0.1 -0.15                
+	description	"Druhá Toitoi (zepředu)"
+}
+
+
+
+
+
+Viewpoint { position 0 1.8 15 }
+
+
+# LIGHTs
+
+DirectionalLight { direction -0.707 -.707 0  intensity 1 }
+
+
+# BACKGROUND
+
+Background {									   
+	# 
+	#backUrl "scene-textures/h_skyboxpack_reef/reef_north.bmp"
+	#bottomUrl "../img/textures/h_skyboxpack_reef/reef_down.bmp"
+	#frontUrl "../img/textures/h_skyboxpack_reef/reef_south.bmp"
+	#leftUrl "../img/textures/h_skyboxpack_reef/reef_east.bmp"
+	#rightUrl "../img/textures/h_skyboxpack_reef/reef_west.bmp"
+	#topUrl "../img/textures/h_skyboxpack_reef/reef_up.bmp"
+	#
+	backUrl "scene-textures/h_skyboxpack2_rays/rays_north.bmp"
+	bottomUrl "scene-textures/h_skyboxpack2_rays/rays_down.bmp"
+	frontUrl "scene-textures/h_skyboxpack2_rays/rays_south.bmp"
+	leftUrl "scene-textures/h_skyboxpack2_rays/rays_east.bmp"
+	rightUrl "scene-textures/h_skyboxpack2_rays/rays_west.bmp"
+	topUrl "scene-textures/h_skyboxpack2_rays/rays_up.bmp"
+}
+
+
+# FLOOR
+
+DEF floor Group {
+	children [
+		DEF grass01 Shape {
+			appearance DEF grassApp Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "scene-textures/03Water0010.jpg"
+					url "scene-textures/GrassSample.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0
+					# scale it in X 10 times, in Y 10 times
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 50 0 -50, 7.75 0 -14, 7.75 0 14, 50 0 50 ]
+				}
+
+				coordIndex [ 0 1 2 3]
+			}
+		}
+
+		DEF grass02 Shape {
+			appearance USE grassApp
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -50 0 -50, -7.75 0 -14, 7.75 0 -14, 50 0 -50 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		Transform {
+			rotation 0 1 0 3.14
+
+			children  [	   
+				USE grass01
+				USE grass02
+			]
+		}
+	]
+}
+
+
+# TILE
+
+DEF tile Group {
+	children [
+		DEF tile01 Shape {
+			appearance DEF tileApp Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "scene-textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 17.5 17.5						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -7.75 0 -14, -7.75 0 14, -6.55 0 12.8, -6.55 0 -12.8 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		DEF tile02 Shape {		  
+			appearance Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "scene-textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 6.55 0 12.8, -6.55 0 12.8, -7.75 0 14, 7.75 0 14 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		Transform {
+			rotation 0 1 0 3.14
+
+			children  [	   
+				USE tile01
+				USE tile02
+			]
+		}
+	]
+}
+
+
+# POOL
+
+DEF pool Group {
+	children [	  
+		Transform {
+			translation	0 0 0
+
+			children Shape {
+				appearance DEF watter Appearance {
+					material Material {}
+
+					texture ImageTexture {
+						url "scene-textures/723.jpg"
+						repeatS TRUE
+						repeatT TRUE
+					}
+
+					textureTransform TextureTransform {
+						scale 40.0 40.0						   
+					}
+				}
+
+				geometry IndexedFaceSet {
+					coord Coordinate {
+						point [ -6.25 0 -12.5, -6.25 0 12.5, 6.25 0 12.5, 6.25 0 -12.5 ]
+					}
+
+					coordIndex [ 0 1 2 3 ]
+				}					   
+			}
+		}
+
+		Transform {
+			translation	6.4 0 0
+			scale 1 1 25
+
+			children DEF border Shape {	    
+				appearance Appearance {
+					material Material {}
+
+					texture ImageTexture {
+						url "scene-textures/RedTile.jpg"
+						repeatS FALSE
+						repeatT TRUE
+					}
+
+					textureTransform TextureTransform {
+						scale 1.0 80
+					}
+				}
+
+				geometry Box {
+					size .3 .01 1
+				}					   
+			}
+		}
+
+		Transform {
+			translation	-6.4 0 0
+			scale 1 1 25
+
+			children USE border
+		}
+
+		Transform {
+			translation	0 0 -12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
+
+		Transform {
+			translation	0 0 12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
+	]
+}	 
+
+
+# TOBOGAN
+
+Transform {
+	translation 3.25 0 8.5
+
+	rotation 0 1 0 -1.57
+
+	children DEF EXT_TOBOGAN Inline	{
+		url "models/tobogan/tobogan2.wrl"
+	}
+}
+
+Transform {
+	translation -3.25 0 -8.5
+	rotation 0 1 0 1.57
+	children USE EXT_TOBOGAN
+}
+
+
+# TOI TOI
+
+Transform {
+	translation 10 0 -10
+	rotation 0 1 0 .3										 
+	children DEF EXT_TOITOI Inline {
+		url "models/toitoi.wrl"
+	}
+}
+
+Transform {
+	translation 13 0 -9
+	rotation 0 1 0 -1.2
+
+	children USE EXT_TOITOI 
+}
+
+# TABLE WITH PARASOL
+
+Transform {
+	translation -10 0 -8
+	rotation 0 1 0 -0.785
+
+	children DEF EXT_TABLE Inline	{
+		url "models/stul-se-slunecnikem.wrl"
+	}
+}
+
+Transform {
+	translation -10.5 0 -5
+	rotation 0 1 0 0.785
+
+	children USE EXT_TABLE
+}
+
