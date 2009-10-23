@@ -10,15 +10,16 @@ WorldInfo {
 
 # BACKGROUND
 
-Background {									   
+
+#Background {									   
 	
-	backUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_north.bmp"
-	bottomUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_down.bmp"
-	frontUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_south.bmp"
-	leftUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_east.bmp"
-	rightUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_west.bmp"
-	topUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_up.bmp"
-}
+#	backUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_north.bmp"
+#	bottomUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_down.bmp"
+#	frontUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_south.bmp"
+#	leftUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_east.bmp"
+#	rightUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_west.bmp"
+#	topUrl "../environment/img/stul-se-slunecnikem-textures/h_skyboxpack2_rays/rays_up.bmp"
+#}
 
 
 # CROSS
