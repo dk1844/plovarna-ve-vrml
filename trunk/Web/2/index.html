@@ -16,7 +16,53 @@
     </div>    
     
     <div id="information">
-      <h2>Bude doplněno</h2>
+      <h2>2. etapa úlohy - Svět s LOD</h2>
+	  <h3>Zadání</h3>
+		<p>Přetvořte model z etapy č. 1:</p>
+		<ol>
+		   <li>Model bude definován jako prototyp (v samostatném souboru), obsahující různé stupně detailu pro různé součásti. Zaveďte nejméně 3 různé stupně detailu. Parametrem prototypu bude vliba, zda vlastnost LOD má být zapnuta či vypnuta (viz následující tabulka), vliba barvy nějaké části modelu a vliba textury použité na nějakou část modelu.</li>
+		   <li>Každá instance prototypu ve scéně nechť využívá odlišné textury a barvy (alespoň pro některé své části).</li>
+		   <li>V modelu použijte nejméně jeden geometrický prvek odlišný od základních těles. Jeho tvar můžete vymodelovat v externím modeláři (např. Blender) a šikovně exportovat do VRML. Vylepšete tak tvar modelu.</li>
+		   <li>Textury aplikujte pouze pro nejlepší kvalitu LOD. Velikost textur nechť splňuje omezení popsaná ve specifikaci úloh.</li>
+		   <li>K úloze vytvořte v adresáři /2 příslušné stránky s informacemi o vlastnostech virtuální scény (okomentovaná záhlaví prototypů). Testovací scéna bude totožná se scénou z minulé etapy, bude však existovat ve dvou verzích - se zapnutým a s vypnutým LOD pro všechny modely ve scéně.</li>
+		   <li>Proveďte měření snímkové rychlosti pro různé stupně detailu, které zveřejníte na webové stránce této etapy.</li>
+		   <li>Všechny WRL soubory ukládejte na disk v komprimované podobě.</li>
+		</ol>
+		<p>Jak měřit Snímkovou rychlost:</p>
+		<ol>
+		   <li>Do scény přidejte ještě další nová stanoviště pro měření fps, umístěná v různých vzdálenostech příslušných danému stupni detailu (pro každou vzdálenost dvojice stanovišť umístěná vedle sebe s rozdílem pliohy cca 1 m v levopravém směru). Kliik stupňů LOD, tliik dvojic měřicích stanovišť. Zorný úhel a umístění stanovišť vlite tak, aby z nich bylo vidět co nejvíce objektů současně, nejlépe všechny.</li>
+		   <li>Samotná měření provádějte při přepínání (PgUp, PgDn) mezi danými dvojicemi stanovišť v pevně daném "EMBED" okénku o velikosti 800x600 pixelů. Příklad použití značky EMBED:<br />
+			  &lt;embed src="scena.wrl" border=0 width="800" height="600"&gt;.</li>
+		   <li>Měření pochopitelně proveďte pro obě (obsahově totožné) scény: s LOD i bez LOD. Na tyto scény umístěte odkazy z HTML stránky.</li>
+		   <li>Výsledky měření (včetně poměru fps pro verzi s/bez LOD) uspořádejte do přehledné tabulky doplněné vysvětlujícím textem. Tabulku doplňte grafem.</li>
+		</ol>	  
+	  
+	  <!--<h3>Řešení</h3>-->
+	  
+	  
+	  <h3>Technické specifikace</h3>
+	  <ul>
+		<li>Jiří Chadima: <a href="techspec1.html">Toi Toi kadibudka</a></li>
+		<li>Daniel Kavan: <a href="techspec2.html">Tobogán</a></li>
+		<li>Jiří Mašek: <a href="techspec3.html">Stůl se slunečníkem</a></li>
+	  </ul>
+	  
+	  <h3>Virtuální scéna v okně bez zapnutého LOD</h3>
+	  <embed src="scene.wrl" height="600" width="800" />
+	  
+	  <h3>Virtuální scéna v okně se zapnutým LOD</h3>
+	  <embed src="scene-lod.wrl" height="600" width="800" />
+
+	  
+	  <h3>Výsledky měření FPS</h3>
+	  <ul>
+	  	<li> Měření mezi průlety jednotlivými viewpointy dosahovalo hodnot 50 - 60 FPS.</li>
+	  </ul>	
+	  
+	  
+	  <h3><a href="scene.wrl">Scéna bez LOD na plnou obrazovku</a></h3>
+	  <h3><a href="scene-lod.wrl">Scéna s LOD na plnou obrazovku</a></h3>
+	 
     </div>                          
   </div>
   </body>
