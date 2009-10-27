@@ -1,170 +1,168 @@
 #VRML V2.0 utf8					
 WorldInfo { 
-  title "Toi Toi kadibudka - soucast projektu Y36MVR Plovarna, team #3 " 
-  info  ["Autor: Jiri Chadima", 
-         "Datum: 23.10.2009"
-  ] 
+	title "Toi Toi kadibudka - soucast projektu Y36MVR Plovarna, team #3 " 
+	info  ["Autor: Jiri Chadima", 
+        "Datum: 23.10.2009"
+	] 
 } 
 
-DEF ToiToi Transform {
-	children [
-
-		DEF LevaStena Shape {
-			appearance DEF modryPlastik Appearance {
-				material Material {
-					diffuseColor 0 .6 .82
-					emissiveColor 0 .0353 .0275
-					ambientIntensity .055
-					shininess 0
-				}
-		
-			}			
-			geometry Box {
-				size	0.05 2.1 1.2
-			
-			}
-		
-		}
-
-		DEF PravaStena Transform {
-			children [
-				USE	LevaStena
-			]
-			translation	1.5 0 0
-		}
-
-
-		DEF	ZadniStena Transform {
-			children [
-				Shape {
-
-					appearance USE modryPlastik
-					### pokus s prolisem, ale vypada to divne
-					#appearance Appearance {
-					#			texture	ImageTexture {
-					#				url	["toitoi-textures/zada.png"]
-					#				repeatS	FALSE
-					#				repeatT	FALSE
-					#			}
-					#			textureTransform TextureTransform {
-					#				center -0.5 -0.5
-					#				rotation 1.57
-					#				translation	-0.0 0.15
-					#				scale 1.5 1.1
-					#			}
-					#		}
-					geometry IndexedFaceSet	{
-						coord DEF ZadaCoord Coordinate {
-							point [0 0 0, 1.45 0 0, 1.45 2.1 0, 0 2.1 0]
-						}
-						coordIndex [0 1 2 3 -1]
-						solid FALSE
+# TODO lod
+PROTO ToiToi [
+	#lod TRUE - on, FALSE - off
+	exposedField SFBool	lod TRUE
+	#barvy
+	exposedField SFNode barevnyMaterial Material {
+						diffuseColor 0 .6 .82
+						emissiveColor 0 .0353 .0275
+						ambientIntensity .055
+						shininess 0
 					}
+    exposedField SFVec3f allTranslation 0 1.25 0
+	exposedField SFRotation allRotation 0 0 0 0
+	exposedField SFVec3f allScale 1 1 1
+	#textura
+	exposedField MFString doorTexture "toitoi-textures/logo.png"
+]
+{
+	DEF ToiToi Transform {
+		children [
+
+			DEF LevaStena Shape {
+				appearance DEF barevnyPlastik Appearance {
+					material IS	barevnyMaterial
+				}			
+				geometry Box {
+					size	0.05 2.1 1.2
+			
 				}
+		
+			}
+
+			DEF PravaStena Transform {
+				children [
+					USE	LevaStena
+				]
+				translation	1.5 0 0
+			}
+
+
+			DEF	ZadniStena Transform {
+				children [
+					Shape {
+
+						appearance USE barevnyPlastik
+						geometry IndexedFaceSet	{
+							coord DEF ZadaCoord Coordinate {
+								point [0 0 0, 1.45 0 0, 1.45 2.1 0, 0 2.1 0]
+							}
+							coordIndex [0 1 2 3 -1]
+							solid FALSE
+						}
+					}
 
 				
 
-			]
-			translation	0.025 -1.05 -0.6
-		}
+				]
+				translation	0.025 -1.05 -0.6
+			}
 
-		DEF	Podlaha Transform {
-			children [
-				Shape {
-					appearance DEF bilyPlastik Appearance {
-						material Material {
-							diffuseColor .87 .87 .87
-							#specularColor .5 .5 .5
+			DEF	Podlaha Transform {
+				children [
+					Shape {
+						appearance DEF bilyPlastik Appearance {
+							material Material {
+								diffuseColor .87 .87 .87
+								#specularColor .5 .5 .5
 
-						}
+							}
 						
 					
+						}
+						geometry Box {
+							size	0.05 1.55 1.2
+						}
 					}
-					geometry Box {
-						size	0.05 1.55 1.2
-					}
-				}
-			]
-			translation 0.75 -1.075 0.
-			rotation 0 0 1 1.57
+				]
+				translation 0.75 -1.075 0.
+				rotation 0 0 1 1.57
 		
-		}
+			}
 
-		DEF	Strop Transform	{
-			children [
-				Shape {
-					appearance USE bilyPlastik
-					geometry IndexedFaceSet	{
-						coordIndex [3 2 1 0 -1, 1 5 4 0 -1, 6 7 2 3 -1, 4 5 7 6 -1, 
-							1 8 10 -1, 11 9 2 -1, 8 9 11 10 -1,
-							13 12 14 15 -1, 14 12 5 -1,	7 13 15 -1,
-							15 14 16 17 -1,	18 19 17 16 -1, 10 11 19 18 -1,
-							2 20 11 -1, 20 19 11 -1, 21 7 15 -1, 21 15 17 -1, 20 21 17 19 -1,
-							10 18 22 -1, 1 10 22 -1, 22 18 16 23 -1, 23 16 14 -1, 23 14 5 -1,
-							#1 5 7 2 -1,
+			DEF	Strop Transform	{
+				children [
+					Shape {
+						appearance USE bilyPlastik
+						geometry IndexedFaceSet	{
+							coordIndex [3 2 1 0 -1, 1 5 4 0 -1, 6 7 2 3 -1, 4 5 7 6 -1, 
+								1 8 10 -1, 11 9 2 -1, 8 9 11 10 -1,
+								13 12 14 15 -1, 14 12 5 -1,	7 13 15 -1,
+								15 14 16 17 -1,	18 19 17 16 -1, 10 11 19 18 -1,
+								2 20 11 -1, 20 19 11 -1, 21 7 15 -1, 21 15 17 -1, 20 21 17 19 -1,
+								10 18 22 -1, 1 10 22 -1, 22 18 16 23 -1, 23 16 14 -1, 23 14 5 -1,
+								#1 5 7 2 -1,
 
-						]
-						coord Coordinate { point [-0.025 0 0, -0.025 0.05 0, 1.525 0.05 0, 1.525 0 0, #0-3predni stena
-							-0.025 0 -1.2, -0.025 0.05 -1.2,										#4-5levy bok, zadni body
-							1.525 0 -1.2, 1.525 0.05 -1.2,									#6-7pravy bok, zadni body
-							0.65 0.05 0, 0.85 0.05 0,									#8-9prostredel vepredu
-							0.65 0.12 -0.2, 0.85 0.12 -0.2,								#10-11prostredek vepredu nahore
-							0.65 0.05 -1.2, 0.85 0.05 -1.2,								#12-13prostredel vzadu
-							0.65 0.12 -1, 0.85 0.12 -1,									#14-15prostredek vzadu nahore
-							0.65 0.17 -0.7, 0.85 0.17 -0.7,								#16-17prostredek zadni
-							0.65 0.17 -0.5, 0.85 0.17 -0.5,								#18-19prostredek predni
-							1.525 0.05 -0.3, 1.525 0.05 -0.9,								#20-21pravy bok, middle pointy
-							-0.025 0.05 -0.3, -0.025 0.05 -0.9,									#22-23levy bok, middle pointy
 							]
+							coord Coordinate { point [-0.025 0 0, -0.025 0.05 0, 1.525 0.05 0, 1.525 0 0, #0-3predni stena
+									-0.025 0 -1.2, -0.025 0.05 -1.2,										#4-5levy bok, zadni body
+									1.525 0 -1.2, 1.525 0.05 -1.2,									#6-7pravy bok, zadni body
+									0.65 0.05 0, 0.85 0.05 0,									#8-9prostredel vepredu
+									0.65 0.12 -0.2, 0.85 0.12 -0.2,								#10-11prostredek vepredu nahore
+									0.65 0.05 -1.2, 0.85 0.05 -1.2,								#12-13prostredel vzadu
+									0.65 0.12 -1, 0.85 0.12 -1,									#14-15prostredek vzadu nahore
+									0.65 0.17 -0.7, 0.85 0.17 -0.7,								#16-17prostredek zadni
+									0.65 0.17 -0.5, 0.85 0.17 -0.5,								#18-19prostredek predni
+									1.525 0.05 -0.3, 1.525 0.05 -0.9,								#20-21pravy bok, middle pointy
+									-0.025 0.05 -0.3, -0.025 0.05 -0.9,									#22-23levy bok, middle pointy
+								]
+							}
+							solid TRUE
+							creaseAngle	0.6
 						}
-					solid TRUE
-					creaseAngle	0.6
 					}
-				}
 				
-				Shape {
-					appearance USE bilyPlastik
-					geometry IndexedFaceSet	{
-						solid FALSE
-						coordIndex [3 2 1 0 -1]
+					Shape {
+						appearance USE bilyPlastik
+						geometry IndexedFaceSet	{
+							solid FALSE
+							coordIndex [3 2 1 0 -1]
 				
-						coord Coordinate {
-							point [
-								0.025 0 -1.2, 1.475 0 -1.2,
-								1.475 0 0, 0.025 0 0
-							]
+							coord Coordinate {
+								point [
+									0.025 0 -1.2, 1.475 0 -1.2,
+									1.475 0 0, 0.025 0 0
+								]
+							}
+				
 						}
-				
 					}
-				}
-			]
-			translation	0 1.05 0.6
-		}
+				]
+				translation	0 1.05 0.6
+			}
 
 
-		DEF	Lavice Transform {
-			children [
-				Shape {
-					appearance USE bilyPlastik
-					geometry IndexedFaceSet	{
-						coordIndex [0 1 2 3 -1, 2 5 4 3 -1]
-						coord Coordinate {
-							point [ 0.025 0.05 0, 1.475 0.05 0, 1.475 0.8 0, 0.025 0.8 0, 0.025 0.8 -0.8, 1.475 0.8 -0.8
+			DEF	Lavice Transform {
+				children [
+					Shape {
+						appearance USE bilyPlastik
+						geometry IndexedFaceSet	{
+							coordIndex [0 1 2 3 -1, 2 5 4 3 -1]
+							coord Coordinate {
+								point [ 0.025 0.05 0, 1.475 0.05 0, 1.475 0.8 0, 0.025 0.8 0, 0.025 0.8 -0.8, 1.475 0.8 -0.8
 							
-							]
+								]
+							}
 						}
 					}
-				}
-			]
-			translation	0 -1.1 0.2
-		}
+				]
+				translation	0 -1.1 0.2
+			}
 
-		DEF	Prkynko Transform {
-			children [
-				DEF	Pant Group {
-					children [
-						Shape	{
-								appearance USE modryPlastik
+			DEF	Prkynko Transform {
+				children [
+					DEF	Pant Group {
+						children [
+							Shape	{
+								appearance USE barevnyPlastik
 								geometry Cylinder {
 									bottom FALSE
 									top	FALSE
@@ -172,311 +170,314 @@ DEF ToiToi Transform {
 									radius 0.02
 
 								}
-						}
-
-						Transform {
-							children [
-								DEF hrot Shape {
-									appearance USE modryPlastik
-									geometry Cone {
-										bottom FALSE
-										height 0.03
-										bottomRadius 0.02
-									}
-								}
-							]
-							translation	0 0.215 0
-						}
-
-						Transform  {
-							children [
-								USE	hrot
-							]
-							translation	0 -0.215 0
-							rotation 0 0 1 3.14
-						}
-			
-					]
-				}
-
-				Transform {
-					children [
-						Shape {
-							appearance USE modryPlastik
-							geometry Extrusion {
-								crossSection [0.07 0.05, 0.28 0.05,
-											0.35 0.32, 0.35 0.35, 0.33 0.40, 0.30 0.46, 0.23 0.52, 0.20 0.545,
-											0.175 0.55,
-											0.15 0.545, 0.12 0.52, 0.05 0.46, 0.02 0.40, 0 0.35, 0 0.32
-											0.07 0.05
-										]
-								spine [0 0 0, 0 0.03 0]
-								scale [1 1, 1 0.98]
-								creaseAngle	0.4
-								solid FALSE
 							}
 
-						}
-					
-					]
-					rotation 0 0 -1 1.57
-					translation 0 0.24 -0.048
-					scale 1.4 1.3 1.2
-				}
-
-			]
-
-			translation	0.75 -0.31 -0.5
-			rotation 0 0 1 1.57
-		}
-
-		DEF	Dvere Transform	{
-			children [
-				Shape {
-					appearance USE bilyPlastik
-					geometry Box {
-						size 1.5 2.0 0.05
-					}
-				}
-
-				Transform {
-					children[
-						Shape {
-							appearance Appearance {
-								texture	ImageTexture {
-									url	[ "toitoi-textures/logo.png" ]
-									repeatS	FALSE
-									repeatT	FALSE
-								}
-								textureTransform TextureTransform {
-									center -0.5 -0.5
-									rotation 1.57
-									translation	-0.24 0.13
-									scale 2.3 2
-								}
-							}
-							geometry IndexedFaceSet	{
-								coordIndex [0 1 2 3 -1]
-								coord Coordinate {
-									point [1.5 2 0, 0 2 0, 0 0 0, 1.5 0 0]
-								}
-								
-							}
-						}
-					]
-					translation	-0.75 -1 0.0252
-					#rotation 1 0 0 1.57
-				}
-
-				DEF ZmensenyPant Transform {
-					children [
-						USE	Pant
-					]
-					translation	0.75 0.7 -0.02
-					scale 1 0.5 1
-				}
-				
-				Transform {
-					children [
-						USE	ZmensenyPant
-					]
-					translation	0 -0.7 0
-				}
-				
-				Transform {
-					children [
-						USE	ZmensenyPant
-					]
-					translation	0 -1.4 0
-
-				}
-
-				DEF	Zavora Transform {
-					children [
-						DEF	Spoustec Transform {
-							children [
-								Shape {
-									appearance DEF zelenyPlastik Appearance {
-									material Material {
-										#specularColor .141 .298 .208
-										diffuseColor .11 .294 .0863
+							Transform {
+								children [
+									DEF hrot Shape {
+										appearance USE barevnyPlastik
+										geometry Cone {
+											bottom FALSE
+											height 0.03
+											bottomRadius 0.02
 										}
 									}
-									geometry Cylinder {
-										height 0.03
-										radius 0.03
-										bottom FALSE
-									}
-							}
-							]
-							rotation 1 0 0 1.57
-							translation	0.55 -0.25 0.015
-						}
-
-						DEF Prkno Transform {
-							children [
-								Shape {
-									appearance DEF drevo Appearance	{
-										material Material {
-											diffuseColor .31 .141 .00784
-											specularColor .208 .11 0
-										}
-									}
-									geometry Box {
-										size 1.2 0.1 0.02
-									}
-								}
-							]
-							translation	0 -0.137 0.035
-							center 0.58 -0.02 0
-							rotation 0 0 1 -1.57
-						}
-
-						##### nedari se ho dat tak, aby byl osou rotace prkna, doresi pri tvoreni animace
-						#DEF	Hrebik Transform {
-						#	children [
-						#		Shape {
-						#			appearance Appearance {
-						#				material Material {
-						#					diffuseColor .149 .149 .149
-						#					specularColor .714 .714 .725
-						#					ambientIntensity 0
-						#					shininess .06
-						#				}
-						#			}
-						#			geometry Cylinder {
-						#				bottom FALSE
-						#				radius 0.01
-						#				height 0.005
-						#			}
-						#		}
-						#	]
-						#	translation	0.58 -0.13 0.05
-						#	rotation 1 0 0 1.57
-						#}
-
-						DEF	Poutko Transform {
-							children [
-								Shape {
-									appearance DEF cerna Appearance {
-										material Material {
-											diffuseColor 0 0 0
-											ambientIntensity 0
-											shininess 0
-										}
-									}
-									geometry IndexedFaceSet	{
-										coord Coordinate {
-											point [
-												0 0 0, 0.03 0 0, 0.03 0.12 0, 0.03 0.12 -0.03, 0 0.12 -0.03,
-												0 0.12 0, 0 0 -0.03, 0.03 0 -0.03
-											]
-										}
-										coordIndex [0 1 2 5 -1, 0 1 7 6 -1,  #5 2 3 4 -1,
-										]
-										solid FALSE
-									}
-								}
-							]
-							translation	0.1 -0.19 0.05
-						}
-
-						Transform {
-							children [
-								USE	Poutko
-							]
-							translation -0.23 0 0
-						}
-						Transform {
-							children [
-								USE	Poutko
-							]
-							translation -0.56 0 0
-						}
-						Transform {
-							children [
-								USE	Poutko
-							]
-							translation 0.33 0 0
-						}
-
-						Transform {
-							children [
-								USE Poutko
-							]
-							translation	0.47 0.6 0
-							rotation 0 0 1 1.57
-						}
-
-   					]
-					translation	0.06 0 0
-				}
-
-				DEF	Madlo Transform	{
-					children [
-						Shape {
-							appearance USE cerna
-							geometry IndexedFaceSet	{
-								coord DEF madloCoords Coordinate { 
-									point [0 0 0,       0.06 0 0, 0 0 -0.08, 0.06 0 -0.08, #spodek
-										  0 0.03 -0.08, 0.06 0.03 -0.08, #zadni vrchni spodek
-										  0 0.03 -0.03, 0.06 0.03 -0.03, # spodni spojky
-										  0 0.2 0,      0.06 0.2 0, 0.06 0.2 -0.08, 0 0.2 -0.08, #vrsek
-										  0 0.17 -0.08, 0.06 0.17 -0.08, # zadni spodni vrsek
-										  0 0.17 -0.03, 0.06 0.17 -0.03 #horni spojky
-									]
-								}
-								coordIndex [0 2 3 1 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1, #4 5 3 2 -1, 
-											14 12 13 15 -1, #12 11 10 13 -1, 
-											2 0 6 4 -1, 0 8 14 6 -1, 11 12 14 8 -1,
-											1 3 5 7 -1, 9 15 13 10 -1, 9 1 7 15 -1,
-										    14 15 7 6 -1,
-
-											
 								]
-								creaseAngle	0.5
-								#solid FALSE
+								translation	0 0.215 0
 							}
+
+							Transform  {
+								children [
+									USE	hrot
+								]
+								translation	0 -0.215 0
+								rotation 0 0 1 3.14
+							}
+			
+						]
+					}
+
+					Transform {
+						children [
+							Shape {
+								appearance USE barevnyPlastik
+								geometry Extrusion {
+									crossSection [0.07 0.05, 0.28 0.05,
+										0.35 0.32, 0.35 0.35, 0.33 0.40, 0.30 0.46, 0.23 0.52, 0.20 0.545,
+										0.175 0.55,
+										0.15 0.545, 0.12 0.52, 0.05 0.46, 0.02 0.40, 0 0.35, 0 0.32
+										0.07 0.05
+									]
+									spine [0 0 0, 0 0.03 0]
+									scale [1 1, 1 0.98]
+									creaseAngle	0.4
+									solid FALSE
+								}
+
+							}
+					
+						]
+						rotation 0 0 -1 1.57
+						translation 0 0.24 -0.048
+						scale 1.4 1.3 1.2
+					}
+
+				]
+
+				translation	0.75 -0.31 -0.5
+				rotation 0 0 1 1.57
+			}
+
+			DEF	Dvere Transform	{
+				children [
+					Shape {
+						appearance USE bilyPlastik
+						geometry Box {
+							size 1.5 2.0 0.05
 						}
-					]
-					translation	-0.65 -0.05 0.08
-				}
+					}
 
-			]
-			translation	0.75 0 0.625
-			#translation 2 2 2
-			#scale 0 0 0
-		}
+					Transform {
+						children[
+							Shape {
+								appearance Appearance {
+									texture	ImageTexture {
+										url	IS doorTexture
+										repeatS	FALSE
+										repeatT	FALSE
+									}
+									textureTransform TextureTransform {
+										center -0.5 -0.5
+										rotation 1.57
+										translation	-0.24 0.13
+										scale 2.3 2
+									}
+								}
+								geometry IndexedFaceSet	{
+									coordIndex [0 1 2 3 -1]
+									coord Coordinate {
+										point [1.5 2 0, 0 2 0, 0 0 0, 1.5 0 0]
+									}
+								
+								}
+							}
+						]
+						translation	-0.75 -1 0.0252
+						#rotation 1 0 0 1.57
+					}
 
-		DEF	DrzakNaToaletak Transform	{
-			children [
-				Transform {
-					children [
-						Shape {
-							appearance USE bilyPlastik
-							geometry IndexedFaceSet	{
-								coord USE madloCoords
-								coordIndex [0 2 3 1 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1, #4 5 3 2 -1, 
-											14 12 13 15 -1, #12 11 10 13 -1, 
-											2 0 6 4 -1, 0 8 14 6 -1, 11 12 14 8 -1,
-											1 3 5 7 -1, 9 15 13 10 -1, 9 1 7 15 -1,
-											14 15 7 6 -1,
+					DEF ZmensenyPant Transform {
+						children [
+							USE	Pant
+						]
+						translation	0.75 0.7 -0.02
+						scale 1 0.5 1
+					}
+				
+					Transform {
+						children [
+							USE	ZmensenyPant
+						]
+						translation	0 -0.7 0
+					}
+				
+					Transform {
+						children [
+							USE	ZmensenyPant
+						]
+						translation	0 -1.4 0
+
+					}
+
+					DEF	Zavora Transform {
+						children [
+							DEF	Spoustec Transform {
+								children [
+									Shape {
+										appearance DEF zelenyPlastik Appearance {
+											material Material {
+												#specularColor .141 .298 .208
+												diffuseColor .11 .294 .0863
+											}
+										}
+										geometry Cylinder {
+											height 0.03
+											radius 0.03
+											bottom FALSE
+										}
+									}
+								]
+								rotation 1 0 0 1.57
+								translation	0.55 -0.25 0.015
+							}
+
+							DEF Prkno Transform {
+								children [
+									Shape {
+										appearance DEF drevo Appearance	{
+											material Material {
+												diffuseColor .31 .141 .00784
+												specularColor .208 .11 0
+											}
+										}
+										geometry Box {
+											size 1.2 0.1 0.02
+										}
+									}
+								]
+								translation	0 -0.137 0.035
+								center 0.58 -0.02 0
+								rotation 0 0 1 -1.57
+							}
+
+							##### nedari se ho dat tak, aby byl osou rotace prkna, doresi pri tvoreni animace
+							#DEF	Hrebik Transform {
+							#	children [
+							#		Shape {
+							#			appearance Appearance {
+							#				material Material {
+							#					diffuseColor .149 .149 .149
+							#					specularColor .714 .714 .725
+							#					ambientIntensity 0
+							#					shininess .06
+							#				}
+							#			}
+							#			geometry Cylinder {
+							#				bottom FALSE
+							#				radius 0.01
+							#				height 0.005
+							#			}
+							#		}
+							#	]
+							#	translation	0.58 -0.13 0.05
+							#	rotation 1 0 0 1.57
+							#}
+
+							DEF	Poutko Transform {
+								children [
+									Shape {
+										appearance DEF cerna Appearance {
+											material Material {
+												diffuseColor 0 0 0
+												ambientIntensity 0
+												shininess 0
+											}
+										}
+										geometry IndexedFaceSet	{
+											coord Coordinate {
+												point [
+													0 0 0, 0.03 0 0, 0.03 0.12 0, 0.03 0.12 -0.03, 0 0.12 -0.03,
+													0 0.12 0, 0 0 -0.03, 0.03 0 -0.03
+												]
+											}
+											coordIndex [0 1 2 5 -1, 0 1 7 6 -1,  #5 2 3 4 -1,
+											]
+											solid FALSE
+										}
+									}
+								]
+								translation	0.1 -0.19 0.05
+							}
+
+							Transform {
+								children [
+									USE	Poutko
+								]
+								translation -0.23 0 0
+							}
+							Transform {
+								children [
+									USE	Poutko
+								]
+								translation -0.56 0 0
+							}
+							Transform {
+								children [
+									USE	Poutko
+								]
+								translation 0.33 0 0
+							}
+
+							Transform {
+								children [
+									USE Poutko
+								]
+								translation	0.47 0.6 0
+								rotation 0 0 1 1.57
+							}
+
+   						]
+						translation	0.06 0 0
+					}
+
+					DEF	Madlo Transform	{
+						children [
+							Shape {
+								appearance USE cerna
+								geometry IndexedFaceSet	{
+									coord DEF madloCoords Coordinate { 
+										point [0 0 0,       0.06 0 0, 0 0 -0.08, 0.06 0 -0.08, #spodek
+											0 0.03 -0.08, 0.06 0.03 -0.08, #zadni vrchni spodek
+											0 0.03 -0.03, 0.06 0.03 -0.03, # spodni spojky
+											0 0.2 0,      0.06 0.2 0, 0.06 0.2 -0.08, 0 0.2 -0.08, #vrsek
+											0 0.17 -0.08, 0.06 0.17 -0.08, # zadni spodni vrsek
+											0 0.17 -0.03, 0.06 0.17 -0.03 #horni spojky
+										]
+									}
+									coordIndex [0 2 3 1 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1, #4 5 3 2 -1, 
+										14 12 13 15 -1, #12 11 10 13 -1, 
+										2 0 6 4 -1, 0 8 14 6 -1, 11 12 14 8 -1,
+										1 3 5 7 -1, 9 15 13 10 -1, 9 1 7 15 -1,
+										14 15 7 6 -1,
+
+										
+									]
+									creaseAngle	0.5
+									#solid FALSE
+								}
+							}
+						]
+						translation	-0.65 -0.05 0.08
+					}
+
+				]
+				translation	0.75 0 0.625
+				#translation 2 2 2
+				#scale 0 0 0
+			}
+
+			DEF	DrzakNaToaletak Transform	{
+				children [
+					Transform {
+						children [
+							Shape {
+								appearance USE bilyPlastik
+								geometry IndexedFaceSet	{
+									coord USE madloCoords
+									coordIndex [0 2 3 1 -1, 6 7 5 4 -1, 0 1 9 8 -1, 8 9 10 11 -1, #4 5 3 2 -1, 
+										14 12 13 15 -1, #12 11 10 13 -1, 
+										2 0 6 4 -1, 0 8 14 6 -1, 11 12 14 8 -1,
+										1 3 5 7 -1, 9 15 13 10 -1, 9 1 7 15 -1,
+										14 15 7 6 -1,
 
 									
-								]
-								creaseAngle	5
+									]
+									creaseAngle	5
+								}
 							}
-						}
-					]
-					rotation 0 1 0 1.57
-				}
-			]
-			translation	0.08 0 0
-			scale 0.7 1.5 1
-			rotation 1 0 0 1.57
-		}
+						]
+						rotation 0 1 0 1.57
+					}
+				]
+				translation	0.08 0 0
+				scale 0.7 1.5 1
+				rotation 1 0 0 1.57
+			}
 
 
-	]
-	translation	0 1.25 0
+		]
+		translation	IS allTranslation
+		rotation IS	allRotation
+		scale IS allScale
+	}
 }

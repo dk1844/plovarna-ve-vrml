@@ -1,0 +1,38 @@
+#VRML V2.0 utf8
+
+## test scena, zatim nefunguje lod
+EXTERNPROTO TTbudka
+[ 	exposedField SFBool	lod
+	#barvy
+	exposedField SFNode barevnyMaterial
+	exposedField SFVec3f allTranslation
+	exposedField SFVec3f allScale
+	exposedField SFRotation allRotation
+	exposedField MFString doorTexture
+]
+"toitoi.wrl#ToiToi"
+
+Group {
+	children [ TTbudka { }
+		TTbudka { barevnyMaterial  Material {
+				diffuseColor .21 .21 0
+				emissiveColor .07 .05 0
+				ambientIntensity .00667
+				shininess .06
+				specularColor .93 .58 0
+			}
+			allTranslation	1.65 1.25 0
+			doorTexture	"toitoi-textures/nahradni-logo.png"
+			#allRotation 0 -1 0 1.4
+		}
+		TTbudka {allTranslation	3.3 1.25 0 }
+		TTbudka {allTranslation	4.95 1.25 0 }
+		TTbudka {allTranslation	6.6 1.25 0 }
+		TTbudka {allTranslation	8.25 1.25 0 }
+		TTbudka {allTranslation	9.9 1.25 0 }
+		TTbudka {allTranslation	11.55 1.25 0 }
+
+
+		
+	]
+}
