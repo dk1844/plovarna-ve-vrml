@@ -1,10 +1,10 @@
 toitoi model
 ============
- * Je tvoøen geometrií, její celkovı rozsah nepøesáhne 10.000 trojúhelníkù.
- * Textury nesmìjí v dekomprimovaném tvaru celkovì zabrat více ne 16 MB pamìti.
+ 1* Je tvoøen geometrií, její celkovı rozsah nepøesáhne 10.000 trojúhelníkù.
+ 1* Textury nesmìjí v dekomprimovaném tvaru celkovì zabrat více ne 16 MB pamìti.
  * Zvuky doprovázející interakce a animace nesmìjí celkovì pøesáhnout rozsah 1 MB.
- * Model je definován jako prototyp (PROTO).
- * Model má nejménì 3 stupnì detailu (LOD), posledním stupnìm mùe bıt práznı uzel (Group).
+ 2* Model je definován jako prototyp (PROTO).
+ 2* Model má nejménì 3 stupnì detailu (LOD), posledním stupnìm mùe bıt práznı uzel (Group).
  * Souèástí modelu je právì jedno (barevné) svìtlo ovládané vhodnım senzorem.
  * Model obsahuje nejménì 2 èásti, s nimi lze interaktivnì manipulovat (posouvat, otáèet, ...)
  * Model obsahuje nejménì 3 animace rùznıch druhù (poloha, rotace, mìøítko, barva, apod.) ovládané vhodnımi spínaèi.
@@ -22,4 +22,28 @@ toitoi model
 
 - textury
 	- dvere - logo
-	- steny - imitace prolisu - vypada to divne
+
+
+
+Pøetvoøte model z etapy è. 1:
+
+   1. Model bude definován jako prototyp (v samostatném souboru), obsahující rùzné stupnì detailu pro rùzné souèásti.
+Zaveïte nejménì 3 rùzné stupnì detailu.
+Parametrem prototypu bude volba, zda vlastnost LOD má bıt zapnuta èi vypnuta (viz následující tabulka), volba barvy nìjaké èásti modelu a volba textury pouité na nìjakou èást modelu.
+   4. Textury aplikujte pouze pro nejlepší kvalitu LOD. Velikost textur nech splòuje omezení popsaná ve specifikaci úloh.
+   7. Všechny WRL soubory ukládejte na disk v komprimované podobì.
+
+
+#VRML V2.0 utf8
+PROTO Model [ exposedField SFInt32 lod 1
+              exposedField SFColor barva 0 .6 .8
+                # ... a další parametry
+             ]
+# lod: 0 - pøepínání LOD zakázáno
+#      1 - pøepínání LOD povoleno
+{ Switch { whichChoice IS lod
+    choice [Group {}       # varianta bez LOD
+            LOD   {}       # varianta s LOD
+    ]
+  }
+}
