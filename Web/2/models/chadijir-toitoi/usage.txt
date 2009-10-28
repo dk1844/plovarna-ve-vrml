@@ -1,0 +1,28 @@
+toitoi EXTERNPROTO usage
+
+Defaults:
+PROTO ToiToi [
+	exposedField SFInt32 lod 1
+	exposedField SFNode barevnyMaterial Material {
+		diffuseColor 0 .6 .82
+		emissiveColor 0 .0353 .0275
+		ambientIntensity .055
+		shininess 0
+	}
+	exposedField MFString doorTexture "toitoi-textures/logo.png"
+
+	exposedField SFVec3f allTranslation 0 1.25 0
+	exposedField SFRotation allRotation 0 0 0 0
+	exposedField SFVec3f allScale 1 1 1
+]
+
+
+EXTERNPROTO ToiToika
+[ 	exposedField SFInt32 lod
+	exposedField SFNode barevnyMaterial
+	exposedField MFString doorTexture
+	exposedField SFVec3f allTranslation
+	exposedField SFVec3f allScale
+	exposedField SFRotation allRotation
+]
+"models/chadijir-toitoi/toitoi.wrl#ToiToi"
