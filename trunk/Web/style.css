@@ -6,9 +6,21 @@ html, body {font-family: sans-serif; font-size: small; padding: 0; margin: auto;
 table {font-size: small; border-collapse: collapse; width: 80%; margin: auto;}
 th, td {border: 1px solid rgb(51,102,255); padding: 0.3em;}
 
+pre {margin-left: 3em; padding-left: 1em; border-left: 1px solid grey; font-size: 1.2em;}
+
+pre .comment {color: grey;}
+pre .keyword {color: red;}
+pre .type {color: blue;}
+pre .id {color: green;}
+pre .value {color: navy;}
+pre .node {color: rgb(51,102,255);}
+
 
 #content {width: 960px; border: 1px solid rgb(51,102,255); border-top: none; margin: auto;}
 #information {padding: 0 1em 2em 2em;}
+
+#information .figure {text-align: center;margin-top: 1em;}
+#information .figure .caption {font-size: smaller; margin: 0.2em;}
 
 h2, h3, h4, h5, h6 {color: rgb(51,102,255);}
 

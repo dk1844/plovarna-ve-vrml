@@ -18,8 +18,52 @@
     <div id="information">
       <h2>Technická specifikace - Toi Toi kadibudka</h2>
 	  <h3>Autor: Jiří Chadima</h3>
+	  <h3>Popis řešení</h3>
+	  <p>Hranice LOD jsem nastavil na 20, 40, 60 a 120 metrů. Při největším přiblížení se generuje kompletní model,
+	  na druhé úrovni je vynechána textura na dveřích a celý vnitřek budky a místo složitější střechy je nasazen pouze kvádr,
+	  na třetí úrovni jsou vynechány detaily dveří,
+	  na čtvrté úrovni je model nahrazen kvádrem a posledním stupněm je prázdný uzel typu Group.</p>
+	  
+	  <h3>Parametry prototypu</h3>
+	  <!--
+    regularni vyrazy na obarvovani kodu: (+ jsem neco dodelal rucne, treba node Material)
+    komentar: #^  \#(.*)# -> "  <span class="comment">#$1</span>"
+    atribut prototypu: #^  ([^ ]*) ([^ ]*) ([^ ]*) (.*)# -> "  <span class="keyword">$1</span> <span class="type">$2</span> <span class="identifikator">$3</span> <span class="value">$4</span>"
+    vnitrek uzlu: #^    (\w*) (.*)# -> "    <span class="id">$1</span> <span class="value">$2</span>"
+    -->  
+	  <pre>
+<span class="keyword">PROTO</span> <span class="id">ToiToi</span> [
+  <span class="comment"># lod - 1 = zapnout LOD, 0 = varianta modelu bez LOD</span>
+  <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">lod</span> <span class="value">1</span>
+  	
+  <span class="comment"># barevny material - tento material je pouzit na oplasteni budky, ve</span>
+  <span class="comment"># vychozim stavu je aplikovana svetle modra</span>
+  <span class="keyword">exposedField</span> <span class="type">SFNode</span> <span class="id">barevnyMaterial</span> <span class="node">Material</span> {
+    <span class="id">diffuseColor</span> <span class="value">0 .6 .82</span>
+    <span class="id">emissiveColor</span> <span class="value">0 .0353 .0275</span>
+    <span class="id">ambientIntensity</span> <span class="value">.055</span>
+    <span class="id">shininess</span> <span class="value">0</span>
+  }
+	
+  <span class="comment"># textura - tato textura je pouzita na dverich, doporucena sirka je 150px</span>
+  <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">doorTexture</span> <span class="value">"toitoi-textures/logo.png"</span>
+	
+  <span class="comment"># transformace - pro zrychleni prace se da model posouvat parametrem a neni</span>
+  <span class="comment"># potreba ho uzavirat do uzlu typu Transform</span>
+  <span class="keyword">exposedField</span> <span class="type">SFVec3f</span> <span class="id">allTranslation</span> <span class="value">0 1.25 0</span>
+  <span class="keyword">exposedField</span> <span class="type">SFRotation</span> <span class="id">allRotation</span> <span class="value">0 0 0 0</span>
+  <span class="keyword">exposedField</span> <span class="type">SFVec3f</span> <span class="id">allScale</span> <span class="value">1 1 1</span>
+]
+	  </pre>
+	  
 	  <h3>Geometrie</h3>
-	  <p>Model počítá <strong>792</strong> trojúhelníků.</p>
+	  <ul>
+		<li>První úroveň - <strong>792</strong> trojúhelníků</li>
+		<li>Druhá úroveň - <strong>240</strong> trojúhelníků</li>
+		<li>Třetí úroveň - <strong>133</strong> trojúhelníků</li>
+		<li>Čtvrtá úroveň - <strong>81</strong> trojúhelníků</li>
+		<li>Pátá úroveň - <strong>0</strong> trojúhelníků</li>
+	  </ul>
 	  
 	  <h3>Textury</h3>
 	  <table cellspacing="0" cellpadding="0">
@@ -31,10 +75,17 @@
 		<tbody>
 		<tr>
 			<td>Toi Toi logo</td>
-			<td><img src="models/toitoi-textures/webthumbs/logo.jpg" width="150" height="180" /></td>
+			<td><img src="models/chadijir-toitoi/toitoi-textures/webthumbs/logo.png" width="150" height="180" /></td>
 			<td>6 kB</td>
 			<td>Logo je převrácené, protože se mi nepovedlo ho do modelu zasadit ve správné orientaci.</td>
 		</tr>
+		<tr>
+			<td>Náhradní logo</td>
+			<td><img src="models/chadijir-toitoi/toitoi-textures/webthumbs/nahradni-logo.png" width="150" height="150" /></td>
+			<td>4 kB</td>
+			<td>Logo by mělo být převrácené, ale u symetrického obrázku to nevadí.</td>
+		</tr>
+
 		</tbody>
 	  </table>
 	  
