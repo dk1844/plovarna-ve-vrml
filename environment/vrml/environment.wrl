@@ -3,15 +3,17 @@
 WorldInfo {
 	title "Semestrální práce z Y36MVR - Plovárna, team #3 " 
 	info  ["Autors: Jiří Chadima (chadijir), Jiří Mašek (masekji4), Daniel Kavan (kavanda1)", 
-			"Datum: 10.10.2009"
+		"Datum: 10.10.2009"
 	] 
 }
 
 
-EXTERNPROTO Tobogan [ exposedField SFColor barvatela ,
-				exposedField SFInt32 useLOD 
-			 ]
-"../../kavanda1-tobogan/proto_tobogan_LODorNot.wrl"
+EXTERNPROTO Tobogan [ 
+	exposedField SFColor barvatela 
+	exposedField SFInt32 useLOD
+	exposedField MFString frontTexture
+]
+"../../kavanda1-tobogan/proto_tobogan_LODorNot.wrl#TOBOGAN"
 
 
 
@@ -27,7 +29,7 @@ EXTERNPROTO ToiToi [
 	exposedField SFRotation allRotation 
 	exposedField SFVec3f allScale 
 ]
- "../../chadijir-toitoi/toitoi.wrl#ToiToi"
+"../../chadijir-toitoi/toitoi.wrl#ToiToi"
 
 
 
@@ -323,13 +325,13 @@ Transform {
 
 	rotation 0 1 0 -1.57
 
-	children DEF EXT_TOBOGAN Tobogan {}
+	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 0}
 }
 
 Transform {
 	translation -3.25 0 -8.5
 	rotation 0 1 0 1.57
-	children USE EXT_TOBOGAN
+	children DEF EXT_TOBOGAN1 Tobogan {barvatela .2 .2 .5}
 }
 
 
