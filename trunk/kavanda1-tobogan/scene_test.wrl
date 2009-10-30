@@ -1,0 +1,103 @@
+#VRML V2.0 utf8
+
+#VRML V2.0 utf8
+WorldInfo { 
+  title "Projekt Y36MVR - Plovarna, team #3 " 
+  info  ["Autors: Jiri Masek, Jiri Chadima, Daniel Kavan", 
+         "Datum: 10.10.2009"
+  ] 
+}
+
+# -- VIEWpointy a bg jsou zakomentovany, protoze se tobogan bude vkladat pomoci inline a VP a BG bude definovane az tom hlavnim wrl
+
+
+Viewpoint {
+	position -20 5 -20
+    orientation 0 1 0 -2.4              #-45st  
+	description	"scene"
+}
+
+
+Viewpoint {
+	position 6 2 -4
+    orientation 0 1 0 -0.8              #-45st  
+	description	"toitoi"
+}
+
+
+
+Viewpoint {
+	position 2 4 12
+    orientation 0 1 0 1.2              #nic - proste ze predu  
+	description	"tobogan na sikmo"
+}
+
+Viewpoint {
+	description	"od stredu na tobogan1"
+	position -4 4 3
+	orientation	0 1 0 -2.15 # podle osy x o .5
+}
+
+
+
+
+Background {  #jen tak pro radost, pujde pryc
+	skyColor .58 .89 1 
+	groundColor	0 .77 .34
+} 
+
+
+
+EXTERNPROTO	Tobogan_high [exposedField SFColor barvatela]
+			"proto_tobogan2_roofArrow.wrl#TOBOGAN_HIGH"
+
+EXTERNPROTO	Tobogan_low [exposedField SFColor barvatela]
+			"proto_tobogan2_lowDetail1.wrl#TOBOGAN_LOW"
+
+EXTERNPROTO	Tobogan [exposedField SFColor barvatela, exposedField SFInt32 useLOD ]
+			"proto_tobogan_LODorNot.wrl#TOBOGAN"
+
+
+
+#Group {
+#	children Tobogan_high {}
+#}
+
+#Transform {
+#	translation	6 0 6
+#	children Tobogan_high {barvatela .1 .8 .1}
+#}
+
+#Transform {
+#	translation	-6 0 -6
+#	children Tobogan_low {barvatela .3 .2 .1}
+#}
+
+
+ Transform {
+	translation	7 0 -6
+	children Tobogan {useLOD 1, barvatela 1 .2 .2}
+}
+
+ Transform {
+	translation	-7 0 6
+	children Tobogan {useLOD 0, barvatela 1 .8 .2}
+}
+
+
+
+Transform {
+	translation	0 -.1 0
+	children Shape {
+		geometry Box { size 50 .2 40}
+		appearance Appearance {
+			material Material {
+				diffuseColor .7 .7 .8
+			#	transparency 1
+			}
+		}
+
+	}
+
+}
+
