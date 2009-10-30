@@ -8,6 +8,29 @@ WorldInfo {
 }
 
 
+EXTERNPROTO Tobogan [ exposedField SFColor barvatela ,
+				exposedField SFInt32 useLOD 
+			 ]
+"../../kavanda1-tobogan/proto_tobogan_LODorNot.wrl"
+
+
+
+EXTERNPROTO ToiToi [
+	#lod
+	exposedField SFInt32 lod 
+	#barvy
+	exposedField SFNode barevnyMaterial 
+	#textura
+	exposedField MFString doorTexture 
+    #transformace
+	exposedField SFVec3f allTranslation 
+	exposedField SFRotation allRotation 
+	exposedField SFVec3f allScale 
+]
+ "../../chadijir-toitoi/toitoi.wrl#ToiToi"
+
+
+
 # VIEWPOINTs
 Viewpoint {
 	position -16 3 20
@@ -300,9 +323,7 @@ Transform {
 
 	rotation 0 1 0 -1.57
 
-	children DEF EXT_TOBOGAN Inline	{
-		url "../../kavanda1-tobogan/tobogan2.wrl"
-	}
+	children DEF EXT_TOBOGAN Tobogan {}
 }
 
 Transform {
@@ -317,9 +338,7 @@ Transform {
 Transform {
 	translation 10 0 -10
 	rotation 0 1 0 .3										 
-	children DEF EXT_TOITOI Inline {
-		url "../../chadijir-toitoi/toitoi.wrl"
-	}
+	children DEF EXT_TOITOI ToiToi {}
 }
 
 Transform {
