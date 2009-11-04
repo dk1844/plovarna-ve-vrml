@@ -97,15 +97,15 @@ Viewpoint {
 
 Viewpoint 
 {
-    position     -12.195 5.001 -15.407
+    position     -14.908 6.321 -18.305
     orientation  -0.080 -0.985 -0.153 2.394
-    fieldOfView  0.785
+    fieldOfView  0.785 
 	description	"FPS: High1"
 }
 
 Viewpoint 
 {
-    position     -13.034 5.194 -14.707
+    position     -14.789 6.098 -16.264
     orientation  -0.078 -0.980 -0.184 2.313
     fieldOfView  0.785
 	description	"FPS: High2"
