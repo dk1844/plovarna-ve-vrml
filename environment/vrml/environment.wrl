@@ -41,63 +41,120 @@ EXTERNPROTO TableWithParsol [
 
 
 
-# VIEWPOINTs
+# VIEWPOINTs - WT = WalkThrough, FPS - FPS measuring
 Viewpoint {
 	position -16 3 20
     orientation 0 1 0 -.7	                
-	description	"Celkový pohled 1"
+	description	"WT: Celkový pohled 1"
 }
 
 Viewpoint {
 	position -20 5 -20
     orientation 0 1 0 -2.3                
-	description	"Celkový pohled 2"
+	description	"WT: Celkový pohled 2"
 }
 
 Viewpoint {
 	position -8.9 2 -5.4
     orientation -0.72 0.68 0.146 0.58
-	description	"Stůl se slunečníkem 1 (zhora)"
+	description	"WT: Stůl se slunečníkem 1 (zhora)"
 }
 
 
 Viewpoint {
 	position -7.7 .9 -6.8
     orientation 0 1 0 2.2 #1.57             
-	description	"Stůl se slunečníkem 2 (od poolu)"
+	description	"WT: Stůl se slunečníkem 2 (od poolu)"
 }
 
 Viewpoint {
 	position -15 5.2 -3.5
     orientation -0.0542 -1 -0.034 1.12
-	description	"Tobogán u stolků"
+	description	"WT: Tobogán u stolků"
 }
 
 Viewpoint {
 	position 16 4.4 3.2
     orientation 0 1 0 2.07                
-	description	"Druhý tobogán"
+	description	"WT: Druhý tobogán"
 }
 
 
 Viewpoint {
 	position 10 2.5 -8
     orientation .2 1 .2 -1.6              
-	description	"První Toitoi (mírně zhora)"
+	description	"WT: První Toitoi (mírně zhora)"
 }
 
 
 Viewpoint {
 	position 10 1.4 -6.5
     orientation 0.1 1 0.1 -0.15                
-	description	"Druhá Toitoi (zepředu)"
+	description	"WT: Druhá Toitoi (zepředu)"
+}
+
+#-----------
+
+Viewpoint 
+{
+    position     -12.195 5.001 -15.407
+    orientation  -0.080 -0.985 -0.153 2.394
+    fieldOfView  0.785
+	description	"FPS: High1"
+}
+
+Viewpoint 
+{
+    position     -13.034 5.194 -14.707
+    orientation  -0.078 -0.980 -0.184 2.313
+    fieldOfView  0.785
+	description	"FPS: High2"
+}
+
+Viewpoint 
+{
+    position     -31.917 4.907 28.839
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Medium1"
+}
+
+Viewpoint 
+{
+    position     -32.643 5.516 27.734
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Medium2"
 }
 
 
+Viewpoint 
+{
+    position     -54.071 5.516 52.487
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Low1"
+}
+
+
+Viewpoint 
+{
+    position     -52.909 5.516 53.550
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Low2"
+}
+ 
 
 
 
-Viewpoint { position 0 1.8 15 }
+
+
+
+
+
+
+#try Viewpoint { position 0 1.8 15 }
 
 
 # LIGHTs
@@ -332,7 +389,7 @@ Transform {
 
 	rotation 0 1 0 -1.57
 
-	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 0}
+	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 1}
 }
 
 Transform {

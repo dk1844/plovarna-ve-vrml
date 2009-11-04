@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 .invisible {display: none;}
 .smaller {font-size: smaller;}
@@ -27,7 +28,9 @@ h2, h3, h4, h5, h6 {color: rgb(51,102,255);}
 #header {color: white; background: rgb(51,102,255); margin: 0; width: 100%; padding: 1em 0 0.5em 0; text-align: right;}
 h1 {color: white; padding-right: 1em;}
 #header p { margin: 0; padding: 0; margin-right: 1em;}
-#header a {color: white;}
+#header a {color: white;}		
+dt {font-style: oblique;}
+dd {padding-left: 4em;}
 
 
 

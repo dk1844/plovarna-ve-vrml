@@ -15,9 +15,57 @@
     <div id="information">
         <h2>Technická specifikace - Tobogán</h2>
         <h3>Autor: Daniel Kavan</h3>
-        
+		<h3>Popis řešení</h3>
+	  <p> Model obsahuje 4 úrovně detailů. 	
+	  
+	  <dl>
+   		<dt>&lt; 40 m </dt><dd>Při vzdálenosti do 40m se zobrazuje model nejvyšší kvality s texturami.</dd>
+		<dt>40 - 70 m </dt><dd>Model zjednodušen:
+								<ul>
+									<li>Textury jsou nahrazeny barvami.</li>
+									<li>Uzel Extrusion, ktery tvori skluzavku je vymodelovan jen 4 bodovou základnou provedenou po původní trajektorii a bez zahlazení.</li>
+									<li>Věž místo IndexFaceSetu tvoří jen kvádr</li>
+								</ul>
+								
+						   </dd>
+		<dt>70 - 120 m </dt><dd>Nejniží kvalita modelu, kde je ještě model viditelný
+								  <ul>
+									<li>Extrusion ze skluzavky je nahrazen 2 rozměrným tvarem na Billboardu.</li>
+									<li>Věž jen kvádr</li>
+								</ul>
+		
+							</dd>						     
+		<dt>&gt; 120 m </dt><dd>Model je nahrazen prázdným uzlem Group {}.</dd>
+   	  </dl>
+	  	
+			  
+			
+			
+		
+	  </p>
+           
+		<h3>Parametry prototypu</h3>
+		
+		<pre> 
+<span class="keyword">PROTO</span> <span class="id">TOBOGAN</span> 
+[ 
+  <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvatela</span> <span class="value">.5 .5 .5</span>                                <span class="comment"># barva tela skluzavky (RGB)</span>
+  <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">useLOD</span> <span class="value">1</span>                                          <span class="comment"># 1 = zapnout LOD, 0 = bez LODu</span>
+  <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">frontTexture</span> <span class="value">"models/kavanda1-tobogan/sipka.png"</span> <span class="comment"># textura na predni stranu</span>
+]
+		
+		</pre>
+		
         <h3>Geometrie</h3>
-        <p>Pro nejvyšší úroveň detailů model počítá <strong>758</strong> trojúhelníků.</p>
+        <p>Dle úrovně detailů počítá model (od nejdetailnějšího k nejméně detailnímu):
+			<ul>
+				<li><strong>698</strong> trojúhelníků</li>
+				<li><strong>331</strong> trojúhelníků</li>
+				<li><strong>29</strong> trojúhelníků</li>
+				<li><strong>0</strong> trojúhelníků</li>
+			</ul>
+		
+		</p>
         
         <h3>Textury</h3>
         <table cellspacing="0" cellpadding="0">
