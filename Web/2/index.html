@@ -49,6 +49,13 @@
 
 	  
 	  <h3>Výsledky měření FPS</h3>
+	  <p>Měření probíhalo ve dvou prohlížečích, v embed okně na této stránce s prohlížečem Cortona a v samostatně spuštěném BS Contactu.
+	  Poměr v posledním sloupečku udává, kolikrát víc FPS se vykreslilo při použití varianty modelu se zapnutým LOD.
+	  V grafu je pak na ose x uvedena vzdálenost viewpointu, a na ose y je vynesen počet snímků za sekundu.
+	  </p>
+	  <p>Hodnoty jsou odhadovaným průměrem odečteným ze stavových řádků obou prohlížečů. Měření probíhalo na počítači s
+	  Intel Core2Duo 1.66 GHz, 2 GB RAM s integrovaným grafickým čipem ATI Radeon Xpress 1100. V případě embed Cortony byl použit prohlížeč Internet Explorer.
+	  </p>
 	  <table>
 			<thead>
 				<tr>
@@ -57,16 +64,28 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td rowspan="2">20 metrů</td><td>S vypnutým LOD</td><td>FPS</td><td rowspan="2">Poměr FPS</td>
+					<td rowspan="2">15 metrů</td><td>S vypnutým LOD</td><td>35 FPS (embed Cortona), 75 FPS (BS Contact)</td><td rowspan="2">1,14 (Cortona), 1,07 (BS Contact)</td>
 				</tr>
 				<tr>
-					<td>Se zapnutým LOD</td><td>FPS</td>
+					<td>Se zapnutým LOD</td><td>40 FPS (embed Cortona), 80 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">32 metrů</td><td>S vypnutým LOD</td><td>34 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,18 (Cortona), 1,43 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Se zapnutým LOD</td><td>40 FPS (embed Cortona), 100 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">53 metrů</td><td>S vypnutým LOD</td><td>32 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,19 (Cortona), 1,71 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Se zapnutým LOD</td><td>38 FPS (embed Cortona), 120 FPS (BS Contact)</td>
 				</tr>
 			</tbody>
 	  </table>
 	  
 	  <div class="figure">
-		<img src="fps-graf.png" />
+		<img src="fps-graf.png" width="595" height="319" />
 		<p class="caption">Graf s výsledky měření FPS</p>
 	  </div>
 	  
