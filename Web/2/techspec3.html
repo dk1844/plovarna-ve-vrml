@@ -20,20 +20,31 @@
                 <h3>Autor: Jiří Mašek</h3>
 
                 <h3>Geometrie</h3>
-                <p>Model počítá <strong>1899</strong> trojúhelníků.</p>
+                	<p>Model počítá <strong>1899</strong> trojúhelníků.</p>
 
-				<h3>Parametry prototypu</h3>
-				<pre>
-  <span class="keyword">PROTO</span> <span class="id">TableWithParsol</span> [
-	<span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">lod</span> <span class="value">1</span>
-	<span class="comment"># lod: 0 - přepínání LOD zakázáno</span>
-	<span class="comment">#      1 - přepínání LOD povoleno</span>
-	<span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">parsolColor</span> <span class="value">0.286882 0.274000 0.000000</span>
-	<span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">chairTexture</span> <span class="value">"./textures/284-v2.jpg"</span>
-	<span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">billboardTexture</span> <span class="value">"./textures/billboard.png"</span>
-]
-				</pre>
-                <h3>Textury</h3>
+		<h3>Parametry prototypu</h3>
+			<p>Model obsahuje 4 úrovně detailů.</p>
+
+	  		<dl>
+		   		<dt>&lt; 25 m</dt><dd>Při vzdálenosti menší než 25 metrů se model zobrazuje se všemi detaily.</dd>
+
+				<dt>25 - 70 m</dt>
+				<dd>
+					Textury jsou v modelu nahrazeny barvami.<br />
+					Laťky tvořící sedák a opěradlo židle jsou nahrazeny kvádry.<br />
+					Nohy židlí reprezentované uzly Extrusion jsou nahrazeny kvádry.<br />
+					Tyčky, jenž tyto nohy spojovaly, jsou vynechány.<br />
+					Látkový potah slunečníku tvořený uzlem Extrusion je nahrazen kuželem.<br />
+				</dd>
+
+				<dt>70 - 120 m</dt>
+				<dd>Celý model je nahrazen uzlem Billboard.</dd>
+
+				<dt>&gt; 120 m</dt>
+				<dd>Celý model je nahrazen prázdným uzlem Group {}.</dd>
+		   	</dl>
+
+                	<h3>Textury</h3>
                 <table cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
