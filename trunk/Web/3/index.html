@@ -16,7 +16,76 @@
     </div>    
     
     <div id="information">
-      <h2>Bude doplněno</h2>
+      <h2>3. etapa úlohy - Dynamický svět</h2>
+	  <h3>Zadání</h3>
+		<p>Přetvořte statické modely do podoby funkčních, pohyblivých a ozvučených modelů:</p>
+
+		<ol>
+			<li>Od této chvíle zpracovávejte pouze variantu modelu s LOD.</li>
+		    <li>Reakce na přítomnost avatara (ProximitySensor) způsobí rozsvícení světla nad modelem, jehož barva bude nastavitelná ze záhlaví prototypu. Každý model nechť je osvětlen jinou barvou. Při odchodu avatara světlo zhasne. Senzor definujte uvnitř prototypu. Stanoviště ve scéně aktualizujte tak, aby byla umístěna na okraji citlivé oblasti senzoru.</li>
+		    <li>S pomocí nejméně dvou manipulátorů bude možno změnit polohu či tvar některé části modelu či celého modelu.</li>
+		    <li>Kliknutím na další vybranou část modelu (TouchSensor.touchTime) zahajte animaci pohybu této části, animaci barev a spusťte vhodný zvuk.</li>
+		    <li>K úloze vytvořte v adresáři /3 příslušné stránky. Přidejte k nim informace o dynamických vlastnostech (uveďte blokové schéma dynamických akcí, tj. předávání událostí).</li>
+			<li>Porovnejte, zda přidání dynamiky (etapa 3) změnilo fps ve srovnání se stejným, avšak statickým modelem (etapa 2). Uvažujte pouze varianty s LOD. Výsledky měření opět zveřejněte.</li>
+		</ol>		
+	  
+	  <!--<h3>Řešení</h3>-->
+	  
+	  <h3>Technické specifikace</h3>
+	  <ul>
+		<li>Jiří Chadima: <a href="techspec1.html">Toi Toi kadibudka</a></li>
+		<li>Daniel Kavan: <a href="techspec2.html">Tobogán</a></li>
+		<li>Jiří Mašek: <a href="techspec3.html">Stůl se slunečníkem</a></li>
+	  </ul>
+	  
+
+	  
+	  <h3>Výsledky měření FPS</h3>
+	  <p>Měření probíhalo ve dvou prohlížečích, v embed okně na této stránce s prohlížečem Cortona a v samostatně spuštěném BS Contactu.
+	  Poměr v posledním sloupečku udává, kolikrát víc FPS se vykreslilo při použití statické varianty modelu.
+	  V grafu je pak na ose x uvedena vzdálenost viewpointu, a na ose y je vynesen počet snímků za sekundu.
+	  </p>
+	  <p>Hodnoty jsou odhadovaným průměrem odečteným ze stavových řádků obou prohlížečů. Měření probíhalo na počítači s
+	  Intel Core2Duo 1.66 GHz, 2 GB RAM s integrovaným grafickým čipem ATI Radeon Xpress 1100. V případě embed Cortony byl použit prohlížeč Internet Explorer.
+	  </p>
+	  <table>
+			<thead>
+				<tr>
+					<th>Vzdálenost viewpointů</th><th>Typ měření</th><th>Průměrné FPS</th><th>Poměr FPS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2">15 metrů</td><td>Statický model</td><td>XX FPS (embed Cortona), YY FPS (BS Contact)</td><td rowspan="2">1,14 (Cortona), 1,07 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Dynamický model</td><td>40 FPS (embed Cortona), 80 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">32 metrů</td><td>Statický model</td><td>34 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,18 (Cortona), 1,43 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Dynamický model</td><td>40 FPS (embed Cortona), 100 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">53 metrů</td><td>Statický model</td><td>32 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,19 (Cortona), 1,71 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Dynamický model</td><td>38 FPS (embed Cortona), 120 FPS (BS Contact)</td>
+				</tr>
+			</tbody>
+	  </table>
+	  
+	  <div class="figure">
+		<img src="fps-graf.png" width="595" height="319" />
+		<p class="caption">Graf s výsledky měření FPS</p>
+	  </div>
+	  
+	  <h3>Virtuální scéna v okně</h3>
+	  <embed src="scene.wrl" height="600" width="800" />
+	  
+	  <h3><a href="scene.wrl">Scéna na plnou obrazovku</a></h3>
+	 
     </div>                          
   </div>
   </body>
