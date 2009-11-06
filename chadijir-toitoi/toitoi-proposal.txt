@@ -2,12 +2,12 @@ toitoi model
 ============
  1* Je tvoøen geometrií, jejíž celkový rozsah nepøesáhne 10.000 trojúhelníkù.
  1* Textury nesmìjí v dekomprimovaném tvaru celkovì zabrat více než 16 MB pamìti.
- * Zvuky doprovázející interakce a animace nesmìjí celkovì pøesáhnout rozsah 1 MB.
+ 3 * Zvuky doprovázející interakce a animace nesmìjí celkovì pøesáhnout rozsah 1 MB.
  2* Model je definován jako prototyp (PROTO).
  2* Model má nejménì 3 stupnì detailu (LOD), posledním stupnìm mùže být prázný uzel (Group).
- * Souèástí modelu je právì jedno (barevné) svìtlo ovládané vhodným senzorem.
- * Model obsahuje nejménì 2 èásti, s nimiž lze interaktivnì manipulovat (posouvat, otáèet, ...)
- * Model obsahuje nejménì 3 animace rùzných druhù (poloha, rotace, mìøítko, barva, apod.) ovládané vhodnými spínaèi.
+ 3 * Souèástí modelu je právì jedno (barevné) svìtlo ovládané vhodným senzorem.
+ 3 * Model obsahuje nejménì 2 èásti, s nimiž lze interaktivnì manipulovat (posouvat, otáèet, ...)
+ 3 * Model obsahuje nejménì 3 animace rùzných druhù (poloha, rotace, mìøítko, barva, apod.) ovládané vhodnými spínaèi.
  * Inteligentní vlastnosti modelu jsou naprogramovány v uzlu Script. Funkènost modelu by se mìla co nejvíce blížit chování reálného objektu.
 
 - interakce
