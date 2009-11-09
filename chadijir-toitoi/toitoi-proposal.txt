@@ -12,13 +12,24 @@ toitoi model
 
 - interakce
 	- posouvani dveri (tahani jen za madlo, zvuk)
-	- tlacitko se svetlem vevnitr (cvak zvuk, svetlo se rozsviti)
+	- prkynko (primo prkynko je tlacitko, rotace nahoru)
 
 - animace na tlacitko
-	- prkynko (primo prkynko je tlacitko, idealne se zvukem)
 	- zavora
 		defaultne na svislo, na klik se spusti do vodorovna, cudlik zmeni barvu, dvere nepujdou otevrit
 
 
 - textury
 	- dvere - logo
+
+   3. S pomocí nejménì dvou manipulátorù bude mono zmìnit polohu èi tvar nìkteré èásti modelu èi celého modelu.
+   4. Kliknutím na další vybranou èást modelu (TouchSensor.touchTime) zahajte animaci pohybu této èásti, animaci barev a spuste vhodnı zvuk.
+
+   5. K úloze vytvoøte v adresáøi /3 pøíslušné stránky. Pøidejte k nim informace o dynamickıch vlastnostech (uveïte blokové schéma dynamickıch akcí, tj. pøedávání událostí).
+   6. Porovnejte, zda pøidání dynamiky (etapa 3) zmìnilo fps ve srovnání se stejnım, avšak statickım modelem (etapa 2). Uvaujte pouze varianty s LOD. Vısledky mìøení opìt zveøejnìte.
+
+
+otazky:
+	prototyp a manipulatory - manipulator ovlivnuje vsechny instance prototypu
+	bs contact - mizi mi dvere
+	jak presunout stred otaceni u cylinderu

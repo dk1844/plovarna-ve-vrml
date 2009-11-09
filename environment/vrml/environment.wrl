@@ -28,6 +28,7 @@ EXTERNPROTO ToiToi [
 	exposedField SFVec3f allTranslation 
 	exposedField SFRotation allRotation 
 	exposedField SFVec3f allScale 
+	exposedField SFColor barvaSvetla
 ]
 "../../chadijir-toitoi/toitoi.wrl#ToiToi"
 
@@ -395,23 +396,32 @@ Transform {
 Transform {
 	translation -3.25 0 -8.5
 	rotation 0 1 0 1.57
-	children DEF EXT_TOBOGAN1 Tobogan {barvatela .2 .2 .5}
+	children DEF EXT_TOBOGAN2 Tobogan {barvatela .2 .2 .5}
 }
 
 
 # TOI TOI
-
 Transform {
 	translation 10 0 -10
 	rotation 0 1 0 .3										 
-	children DEF EXT_TOITOI ToiToi {}
+	children DEF EXT_TOITOI ToiToi {doorTexture	"../chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla	1 0 0}
 }
 
 Transform {
 	translation 13 0 -9
 	rotation 0 1 0 -1.2
 
-	children USE EXT_TOITOI 
+		children DEF EXT_TOITOI2 ToiToi {
+			barvaSvetla	0 1 1
+	    barevnyMaterial  Material {
+				diffuseColor .21 .21 0
+				emissiveColor .07 .05 0
+				ambientIntensity .00667
+				shininess .06
+				specularColor .93 .58 0
+			}
+			doorTexture	"../chadijir-toitoi/toitoi-textures/nahradni-logo.png"
+	}
 }
 
 # TABLE WITH PARASOL
