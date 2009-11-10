@@ -29,7 +29,6 @@ toitoi model
    6. Porovnejte, zda pøidání dynamiky (etapa 3) zmìnilo fps ve srovnání se stejným, avšak statickým modelem (etapa 2). Uvažujte pouze varianty s LOD. Výsledky mìøení opìt zveøejnìte.
 
 
+TODO - jeste vic rozsekat na komponenty (napr. dvere), a jejich transformace definovat vys, at se daji ovladat parametry zvenci
+
 otazky:
-	prototyp a manipulatory - manipulator ovlivnuje vsechny instance prototypu
-	bs contact - mizi mi dvere
-	jak presunout stred otaceni u cylinderu
