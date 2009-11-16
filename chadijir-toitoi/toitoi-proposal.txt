@@ -22,13 +22,22 @@ toitoi model
 - textury
 	- dvere - logo
 
-   3. S pomocí nejménì dvou manipulátorù bude mono zmìnit polohu èi tvar nìkteré èásti modelu èi celého modelu.
    4. Kliknutím na další vybranou èást modelu (TouchSensor.touchTime) zahajte animaci pohybu této èásti, animaci barev a spuste vhodnı zvuk.
 
    5. K úloze vytvoøte v adresáøi /3 pøíslušné stránky. Pøidejte k nim informace o dynamickıch vlastnostech (uveïte blokové schéma dynamickıch akcí, tj. pøedávání událostí).
    6. Porovnejte, zda pøidání dynamiky (etapa 3) zmìnilo fps ve srovnání se stejnım, avšak statickım modelem (etapa 2). Uvaujte pouze varianty s LOD. Vısledky mìøení opìt zveøejnìte.
 
 
-TODO - jeste vic rozsekat na komponenty (napr. dvere), a jejich transformace definovat vys, at se daji ovladat parametry zvenci
+Zahajeni animace
+	touch sensor.isActive TO timeSensor.enabled (musi se drzet - isActive se posila jen kdyz se drzi mys)
+	lepsi:
+		TimeSensor.startTime = -1 - nehraj, vypnuto
+		Touchsensor.TouchTime. TO timesensor.starttime
+	aby touch spoustel a zastavoval je potreba skript
+		zastaveni timesensor.stoptime
+	timesensor - loop FALSE, neni smyckova animace, probehne pouze jednou
 
-otazky:
+
+TODO
+=======
+dokumentace
