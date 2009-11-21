@@ -1,0 +1,457 @@
+#VRML V2.0 utf8
+
+WorldInfo {
+	title "Semestrální práce z Y36MVR - Plovárna, team #3 " 
+	info  ["Autors: Jiří Chadima (chadijir), Jiří Mašek (masekji4), Daniel Kavan (kavanda1)", 
+		"Datum: 10.10.2009"
+	] 
+}
+
+NavigationInfo {
+	avatarSize [0.25, 1.6, 0.75]
+	type ["WALK", "ANY"]
+	speed 1
+}
+
+
+EXTERNPROTO Tobogan [ 
+	exposedField SFColor barvatela 
+	exposedField SFColor barvasvetla
+	exposedField SFInt32 useLOD
+	exposedField MFString frontTexture
+]
+"models/kavanda1-tobogan/proto_tobogan_LODorNot.wrl#TOBOGAN"
+
+
+
+EXTERNPROTO ToiToi [
+	#lod
+	exposedField SFInt32 lod 
+	#barvy
+	exposedField SFNode barevnyMaterial 
+	#textura
+	exposedField MFString doorTexture 
+    #transformace
+	exposedField SFVec3f allTranslation 
+	exposedField SFRotation allRotation 
+	exposedField SFVec3f allScale 
+	exposedField SFColor barvaSvetla
+]
+"../../chadijir-toitoi/toitoi.wrl#ToiToi"
+
+EXTERNPROTO TableWithParsol [
+	exposedField SFInt32 lod
+	exposedField SFColor parsolColor
+	exposedField MFString chairTexture
+	exposedField MFString billboardTexture
+]
+"../../masekji4-stul-se-slunecnikem/stul-se-slunecnikem.wrl#TableWithParsol"
+
+
+
+# VIEWPOINTs - WT = WalkThrough, FPS - FPS measuring
+
+
+Viewpoint {
+	position -20 5 -20
+    orientation 0 1 0 -2.3                
+	description	"WT: Celkový pohled 1"
+}
+
+Viewpoint {
+	position -16 3 20
+    orientation 0 1 0 -.7	                
+	description	"WT: Celkový pohled 2"
+}
+
+Viewpoint {
+	position -8.9 2 -5.4
+    orientation -0.72 0.68 0.146 0.58
+	description	"WT: Stůl se slunečníkem 1 (zhora)"
+}
+
+
+Viewpoint {
+	position -7.7 .9 -6.8
+    orientation 0 1 0 2.2 #1.57             
+	description	"WT: Stůl se slunečníkem 2 (od poolu)"
+}
+
+Viewpoint {
+	position -15 5.2 -3.5
+    orientation -0.0542 -1 -0.034 1.12
+	description	"WT: Tobogán u stolků"
+}
+
+Viewpoint {
+	position 16 4.4 3.2
+    orientation 0 1 0 2.07                
+	description	"WT: Druhý tobogán"
+}
+
+
+Viewpoint {
+	position 10 2.5 -8
+    orientation .2 1 .2 -1.6              
+	description	"WT: První Toitoi (mírně zhora)"
+}
+
+
+Viewpoint {
+	position 10 1.4 -6.5
+    orientation 0.1 1 0.1 -0.15                
+	description	"WT: Druhá Toitoi (zepředu)"
+}
+
+#-----------
+
+Viewpoint 
+{
+    position     -14.908 6.321 -18.305
+    orientation  -0.080 -0.985 -0.153 2.394
+    fieldOfView  0.785 
+	description	"FPS: High1"
+}
+
+Viewpoint 
+{
+    position     -14.789 6.098 -16.264
+    orientation  -0.078 -0.980 -0.184 2.313
+    fieldOfView  0.785
+	description	"FPS: High2"
+}
+
+Viewpoint 
+{
+    position     -31.917 4.907 28.839
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Medium1"
+}
+
+Viewpoint 
+{
+    position     -32.643 5.516 27.734
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Medium2"
+}
+
+
+Viewpoint 
+{
+    position     -54.071 5.516 52.487
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Low1"
+}
+
+
+Viewpoint 
+{
+    position     -52.909 5.516 53.550
+    orientation  0.000 -1.000 0.000 0.741
+    fieldOfView  0.785
+	description	"FPS: Low2"
+}
+ 
+
+
+
+
+
+
+
+
+
+#try Viewpoint { position 0 1.8 15 }
+
+
+# LIGHTs
+
+DirectionalLight { direction -0.707 -.707 0  intensity 1 }
+
+
+# BACKGROUND
+
+Background {									   
+	# 
+	#backUrl "textures/h_skyboxpack_reef/reef_north.bmp"
+	#bottomUrl "textures/h_skyboxpack_reef/reef_down.bmp"
+	#frontUrl "textures/h_skyboxpack_reef/reef_south.bmp"
+	#leftUrl "textures/h_skyboxpack_reef/reef_east.bmp"
+	#rightUrl "textures/h_skyboxpack_reef/reef_west.bmp"
+	#topUrl "textures/h_skyboxpack_reef/reef_up.bmp"
+	#
+	backUrl "textures/h_skyboxpack2_rays/rays_north.jpg"
+	bottomUrl "textures/h_skyboxpack2_rays/rays_down.jpg"
+	frontUrl "textures/h_skyboxpack2_rays/rays_south.jpg"
+	leftUrl "textures/h_skyboxpack2_rays/rays_east.jpg"
+	rightUrl "textures/h_skyboxpack2_rays/rays_west.jpg"
+	topUrl "textures/h_skyboxpack2_rays/rays_up.jpg"
+}
+
+# FLOOR
+
+DEF floor Group {
+	children [
+		DEF grass01 Shape {
+			appearance DEF grassApp Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "textures/03Water0010.jpg"
+					url "textures/GrassSample.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0
+					# scale it in X 10 times, in Y 10 times
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 50 0 -50, 7.75 0 -14, 7.75 0 14, 50 0 50 ]
+				}
+
+				coordIndex [ 0 1 2 3]
+			}
+		}
+
+		DEF grass02 Shape {
+			appearance USE grassApp
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -50 0 -50, -7.75 0 -14, 7.75 0 -14, 50 0 -50 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		Transform {
+			rotation 0 1 0 3.14
+
+			children  [	   
+				USE grass01
+				USE grass02
+			]
+		}
+	]
+}
+
+
+# TILE
+
+DEF tile Group {
+	children [
+		DEF tile01 Shape {
+			appearance DEF tileApp Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 17.5 17.5						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ -7.75 0 -14, -7.75 0 14, -6.55 0 12.8, -6.55 0 -12.8 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		DEF tile02 Shape {		  
+			appearance Appearance {
+				material Material {}
+
+				texture ImageTexture {
+					url "textures/3334.jpg"
+					repeatS TRUE
+					repeatT TRUE
+				}
+
+				textureTransform TextureTransform {
+					scale 10.0 10.0						   
+				}
+			}
+
+			geometry IndexedFaceSet {
+				coord Coordinate {
+					point [ 6.55 0 12.8, -6.55 0 12.8, -7.75 0 14, 7.75 0 14 ]
+				}
+
+				coordIndex [ 0 1 2 3 ]
+			}
+		}
+
+		Transform {
+			rotation 0 1 0 3.14
+
+			children  [	   
+				USE tile01
+				USE tile02
+			]
+		}
+	]
+}
+
+
+# POOL
+
+DEF pool Group {
+	children [	  
+		Transform {
+			translation	0 0 0
+
+			children Shape {
+				appearance DEF watter Appearance {
+					material Material {}
+
+					texture ImageTexture {
+						url "textures/723.jpg"
+						repeatS TRUE
+						repeatT TRUE
+					}
+
+					textureTransform TextureTransform {
+						scale 40.0 40.0						   
+					}
+				}
+
+				geometry IndexedFaceSet {
+					coord Coordinate {
+						point [ -6.25 0 -12.5, -6.25 0 12.5, 6.25 0 12.5, 6.25 0 -12.5 ]
+					}
+
+					coordIndex [ 0 1 2 3 ]
+				}					   
+			}
+		}
+
+		Transform {
+			translation	6.4 0 0
+			scale 1 1 25
+
+			children DEF border Shape {	    
+				appearance Appearance {
+					material Material {}
+
+					texture ImageTexture {
+						url "textures/RedTile.jpg"
+						repeatS FALSE
+						repeatT TRUE
+					}
+
+					textureTransform TextureTransform {
+						scale 1.0 80
+					}
+				}
+
+				geometry Box {
+					size .3 .01 1
+				}					   
+			}
+		}
+
+		Transform {
+			translation	-6.4 0 0
+			scale 1 1 25
+
+			children USE border
+		}
+
+		Transform {
+			translation	0 0 -12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
+
+		Transform {
+			translation	0 0 12.65
+			scale 1 1 13.1
+			rotation 0 1 0 1.57
+
+			children USE border
+		}
+	]
+}	 
+
+
+# TOBOGAN
+
+Transform {
+	translation 3.25 0 8.5
+
+	rotation 0 1 0 -1.57
+
+	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "models/kavanda1-tobogan/sipka2.png", useLOD 1, barvasvetla 1 0 0}
+}
+
+Transform {
+	translation -3.25 0 -8.5
+	rotation 0 1 0 1.57
+	children DEF EXT_TOBOGAN2 Tobogan {barvatela .2 .2 .5}
+}
+
+
+# TOI TOI
+Transform {
+	translation 10 0 -10
+	rotation 0 1 0 .3										 
+	children DEF EXT_TOITOI ToiToi {doorTexture	"../../chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla 1 0 0}
+}
+
+Transform {
+	translation 13 0 -9
+	rotation 0 1 0 -1.2
+
+		children DEF EXT_TOITOI2 ToiToi {
+			barvaSvetla	0 1 1
+	    barevnyMaterial  Material {
+				diffuseColor .21 .21 0
+				emissiveColor .07 .05 0
+				ambientIntensity .00667
+				shininess .06
+				specularColor .93 .58 0
+			}
+			doorTexture	"../../chadijir-toitoi/toitoi-textures/nahradni-logo.png"
+	}
+}
+
+# TABLE WITH PARASOL
+
+Transform {
+	translation -10 0 -8
+	rotation 0 1 0 -0.785
+
+	children TableWithParsol {
+		chairTexture "../../masekji4-stul-se-slunecnikem/textures/284-v2.jpg"
+		billboardTexture "../../masekji4-stul-se-slunecnikem/textures/billboard.png"
+	}
+}
+
+Transform {
+	translation -10.5 0 -5
+	rotation 0 1 0 0.785   
+
+	children TableWithParsol {
+		lod	0
+		parsolColor	.342 .234 .242
+	}
+}
+

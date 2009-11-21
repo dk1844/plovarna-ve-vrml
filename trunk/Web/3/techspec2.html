@@ -15,7 +15,7 @@
     <div id="information">
         <h2>Technická specifikace - Tobogán</h2>
         <h3>Autor: Daniel Kavan</h3>
-		<h3>Popis řešení</h3>
+		<h3>Popis LOD</h3>
 	  <p> Model obsahuje 4 úrovně detailů. 	
 	  
 	  <dl>
@@ -43,6 +43,8 @@
 			
 		
 	  </p>
+	  
+	  
            
 		<h3>Parametry prototypu</h3>
 		
@@ -50,6 +52,7 @@
 <span class="keyword">PROTO</span> <span class="id">TOBOGAN</span> 
 [ 
   <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvatela</span> <span class="value">.5 .5 .5</span>                                <span class="comment"># barva tela skluzavky (RGB)</span>
+  <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvasvetla</span> <span class="value">.5 .5 .5</span>                              <span class="comment"># barva tela svetla pri priblizeni (RGB)</span>
   <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">useLOD</span> <span class="value">1</span>                                          <span class="comment"># 1 = zapnout LOD, 0 = bez LODu</span>
   <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">frontTexture</span> <span class="value">"models/kavanda1-tobogan/sipka.png"</span> <span class="comment"># textura na predni stranu</span>
 ]
@@ -83,22 +86,29 @@
                     <td>Střecha</td>
                     <td><img src="models/kavanda1-tobogan/roof2.png" border="0" width="52" height="48" alt="textura střechy"></td>
                     <td>4 kB</td>
-                    <td>24 x 26 (624 px)</td>
+                    <td>24&nbsp;x&nbsp;26 <br /> (624 px)</td>
                     <td>Textura na střechu pro vytvoření dojmu tašek.</td>
 				</tr>
 				<tr>	
                     <td>Šipka</td>
                     <td><img src="models/kavanda1-tobogan/sipka.png" border="0" width="300" height="100" alt="textura - šipka"></td>
                     <td>15 kB</td>
-					<td>600 x 200 (120 kpx)</td>
+					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
                     <td>Dekorace vnější stěny se symbolem šipky.</td>
                 </tr> 
 				<tr>	
                     <td>Šipka2</td>
                     <td><img src="models/kavanda1-tobogan/sipka2.png" border="0" width="300" height="100" alt="textura - šipka"></td>
                     <td>14 kB</td>
-					<td>600 x 200 (120 kpx)</td>
+					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
                     <td>Alternativní dekorace vnější stěny se symbolem šipky.</td>
+                </tr>
+				<tr>	
+                    <td>Vlajka</td>
+                    <td><img src="models/kavanda1-tobogan/flag.png" border="0" width="300" height="200" alt="textura vlaky"></td>
+                    <td>17 kB</td>
+					<td>300&nbsp;x&nbsp;200 <br /> (60 kpx)</td>
+                    <td>Dekorace vlajky.</td>
                 </tr>
             </tbody>
         </table>
@@ -106,11 +116,67 @@
         
         <h3>Zvuky</h3>
         
-        <!-- <p>Seznam zvuků společně s velikostí souborů</p>-->
-        <ul>	
-            <li>2. fáze projektu zvuky neobsahuje</li>
-            <!-- <li>Zvuk 1 - XY kb</li> -->
-        </ul>
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                	<th>Jméno zvuku</th>
+                    <th>Link</th>
+                    <th>Velikost</th>
+					<th>Délka</th>
+                    <th>Poznámka</th>
+                </tr>
+            </thead>
+            <tbody>
+				<tr>	
+                    <td>Hvizd</td>
+                    <td><a href="models/kavanda1-tobogan/whistle.wav"> whistle.wav</a></td>
+                    <td>14 kB</td>
+					<td>1s</td>
+                    <td>Zvuk doprovázející začátek pohybu výtahu.</td>
+                </tr>
+            </tbody>
+        </table>
+ 
+ 	   <h3>Popis dynamických akcí</h3>
+	   
+	      <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                	<th>Název akce</th>
+                    <th>Realizace</th>
+                    <th>Popis</th>
+					
+                </tr>
+            </thead>
+            <tbody>
+            
+				        <tr>
+                    <td>Rotace vlajky</td>
+                    <td>CylinderSensor</td>
+                    <td>Chytnutím a tažením vlajky ji rotujeme kolem osy stožáru bez omezení.</td>
+					     </tr>
+				        <tr>
+                    <td>Zmena výšky střechy</td>
+                    <td>PlaneSensor</td>
+                    <td>Chytnutím a tažením střechy měníme její výšku v rozmezí 0 až 1,5m (tj.dovolujeme zcela plochou střechu).</td>
+					     </tr>
+				        <tr>
+                    <td>Osvětlení modelu</td>
+                    <td>ProximitySensor, DirectionalLight</td>
+                    <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
+					     </tr>
+				        <tr>
+                    <td>Animace výtahu, ozvučení</td>
+                    <td>TouchSensor, TimeSensor, PositionInterpolator, ColorInterpolator, Sound</td>
+                    <td>Kliknutím na tlačítko výtahu spustíme animaci. Výtah se začne pohybovat směrem vzhůru, kde chvíli počká a pak sjede dolů. Tlačítka i výtah během své cesty
+                    mění barvu. Zahájení pohybu je doprovázeno zvukem.</td>
+					     </tr>
+					     
+            </tbody>
+        </table>
+	   
+	   
+
         
         <h3><a href=".">Zpět na stránku etapy</a></h3>
     </div>
