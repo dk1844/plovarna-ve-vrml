@@ -2,6 +2,7 @@
 
 .invisible {display: none;}
 .smaller {font-size: smaller;}
+.center {text-align: center;} 
 
 html, body {font-family: sans-serif; font-size: small; padding: 0; margin: auto;}
 table {font-size: small; border-collapse: collapse; width: 80%; margin: auto;}
@@ -31,6 +32,14 @@ h1 {color: white; padding-right: 1em;}
 #header a {color: white;}		
 dt {font-style: oblique;}
 dd {padding-left: 4em;}
+
+/* DK */
+
+table.pixSpacing img {padding-top: 20px; padding-bottom:20px;} 
+a.hl img {background:white;}	
+a.hl:hover img {background:silver;}	
+a.hl img {border:0px;}
+
 
 
 
