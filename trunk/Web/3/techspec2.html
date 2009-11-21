@@ -84,28 +84,28 @@
             <tbody>
                 <tr>
                     <td>Střecha</td>
-                    <td><img src="models/kavanda1-tobogan/roof2.png" border="0" width="52" height="48" alt="textura střechy"></td>
+                    <td class="center"><img src="models/kavanda1-tobogan/roof2.png" border="0" width="52" height="48" alt="textura střechy"></td>
                     <td>4 kB</td>
                     <td>24&nbsp;x&nbsp;26 <br /> (624 px)</td>
                     <td>Textura na střechu pro vytvoření dojmu tašek.</td>
 				</tr>
 				<tr>	
                     <td>Šipka</td>
-                    <td><img src="models/kavanda1-tobogan/sipka.png" border="0" width="300" height="100" alt="textura - šipka"></td>
+                    <td class="center"><img src="models/kavanda1-tobogan/sipka.png" border="0" width="300" height="100" alt="textura - šipka"></td>
                     <td>15 kB</td>
 					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
                     <td>Dekorace vnější stěny se symbolem šipky.</td>
                 </tr> 
 				<tr>	
                     <td>Šipka2</td>
-                    <td><img src="models/kavanda1-tobogan/sipka2.png" border="0" width="300" height="100" alt="textura - šipka"></td>
+                    <td class="center"><img src="models/kavanda1-tobogan/sipka2.png" border="0" width="300" height="100" alt="textura - šipka"></td>
                     <td>14 kB</td>
 					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
                     <td>Alternativní dekorace vnější stěny se symbolem šipky.</td>
                 </tr>
 				<tr>	
                     <td>Vlajka</td>
-                    <td><img src="models/kavanda1-tobogan/flag.png" border="0" width="300" height="200" alt="textura vlaky"></td>
+                    <td class="center"><img src="models/kavanda1-tobogan/flag.png" border="0" width="300" height="200" alt="textura vlaky"></td>
                     <td>17 kB</td>
 					<td>300&nbsp;x&nbsp;200 <br /> (60 kpx)</td>
                     <td>Dekorace vlajky.</td>
@@ -139,7 +139,7 @@
  
  	   <h3>Popis dynamických akcí</h3>
 	   
-	      <table cellspacing="0" cellpadding="0">
+	      <table cellspacing="0" cellpadding="0" class="pixSpacing">
             <thead>
                 <tr>
                 	<th>Název akce</th>
@@ -152,22 +152,22 @@
             
 				        <tr>
                     <td>Rotace vlajky</td>
-                    <td>CylinderSensor</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/cs.png" width="500" height="156" /></td>
                     <td>Chytnutím a tažením vlajky ji rotujeme kolem osy stožáru bez omezení.</td>
 					     </tr>
 				        <tr>
                     <td>Zmena výšky střechy</td>
-                    <td>PlaneSensor</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/plane.png" width="498" height="156" /></td>
                     <td>Chytnutím a tažením střechy měníme její výšku v rozmezí 0 až 1,5m (tj.dovolujeme zcela plochou střechu).</td>
 					     </tr>
 				        <tr>
                     <td>Osvětlení modelu</td>
-                    <td>ProximitySensor, DirectionalLight</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/proximity.png" width="563" height="156" /></td>
                     <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
 					     </tr>
 				        <tr>
                     <td>Animace výtahu, ozvučení</td>
-                    <td>TouchSensor, TimeSensor, PositionInterpolator, ColorInterpolator, Sound</td>
+                    <td class="center"><a href="models/kavanda1-tobogan/complex.png" title="Klikněte pro zvětšení" class="hl"><img src="models/kavanda1-tobogan/complex_m.png" width="518" height="282" /></a></td>
                     <td>Kliknutím na tlačítko výtahu spustíme animaci. Výtah se začne pohybovat směrem vzhůru, kde chvíli počká a pak sjede dolů. Tlačítka i výtah během své cesty
                     mění barvu. Zahájení pohybu je doprovázeno zvukem.</td>
 					     </tr>
