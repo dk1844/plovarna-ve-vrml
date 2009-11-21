@@ -7,9 +7,16 @@ WorldInfo {
 	] 
 }
 
+NavigationInfo {
+	avatarSize [0.25, 1.6, 0.75]
+	type ["WALK", "ANY"]
+	speed 1
+}
+
 
 EXTERNPROTO Tobogan [ 
 	exposedField SFColor barvatela 
+	exposedField SFColor barvasvetla
 	exposedField SFInt32 useLOD
 	exposedField MFString frontTexture
 ]
@@ -43,15 +50,17 @@ EXTERNPROTO TableWithParsol [
 
 
 # VIEWPOINTs - WT = WalkThrough, FPS - FPS measuring
-Viewpoint {
-	position -16 3 20
-    orientation 0 1 0 -.7	                
-	description	"WT: Celkový pohled 1"
-}
+
 
 Viewpoint {
 	position -20 5 -20
     orientation 0 1 0 -2.3                
+	description	"WT: Celkový pohled 1"
+}
+
+Viewpoint {
+	position -16 3 20
+    orientation 0 1 0 -.7	                
 	description	"WT: Celkový pohled 2"
 }
 
@@ -390,7 +399,7 @@ Transform {
 
 	rotation 0 1 0 -1.57
 
-	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 1}
+	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 1, barvasvetla 1 0 0}
 }
 
 Transform {
@@ -404,7 +413,7 @@ Transform {
 Transform {
 	translation 10 0 -10
 	rotation 0 1 0 .3										 
-	children DEF EXT_TOITOI ToiToi {doorTexture	"../chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla	1 0 0}
+	children DEF EXT_TOITOI ToiToi {doorTexture	"../chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla 1 0 0}
 }
 
 Transform {
