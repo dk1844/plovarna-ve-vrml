@@ -37,7 +37,7 @@ EXTERNPROTO ToiToi [
 	exposedField SFVec3f allScale 
 	exposedField SFColor barvaSvetla
 ]
-"../../chadijir-toitoi/toitoi.wrl#ToiToi"
+"models/chadijir-toitoi/toitoi.wrl#ToiToi"
 
 EXTERNPROTO TableWithParsol [
 	exposedField SFInt32 lod
@@ -413,7 +413,7 @@ Transform {
 Transform {
 	translation 10 0 -10
 	rotation 0 1 0 .3										 
-	children DEF EXT_TOITOI ToiToi {doorTexture	"../../chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla 1 0 0}
+	children DEF EXT_TOITOI ToiToi {doorTexture	"models/chadijir-toitoi/toitoi-textures/logo.png" barvaSvetla 1 0 0}
 }
 
 Transform {
@@ -429,7 +429,7 @@ Transform {
 				shininess .06
 				specularColor .93 .58 0
 			}
-			doorTexture	"../../chadijir-toitoi/toitoi-textures/nahradni-logo.png"
+			doorTexture	"models/chadijir-toitoi/toitoi-textures/nahradni-logo.png"
 	}
 }
 

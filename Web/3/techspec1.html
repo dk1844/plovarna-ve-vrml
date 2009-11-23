@@ -24,8 +24,6 @@
 	  na třetí úrovni jsou vynechány detaily dveří,
 	  na čtvrté úrovni je model nahrazen kvádrem a posledním stupněm je prázdný uzel typu Group.</p>
 	  
-	  <h3>Schéma dynamických akcí</h3>
-	  
 	  <h3>Parametry prototypu</h3>
 	  <!--
     regularni vyrazy na obarvovani kodu: (+ jsem neco dodelal rucne, treba node Material)
@@ -55,6 +53,9 @@
   <span class="keyword">exposedField</span> <span class="type">SFVec3f</span> <span class="id">allTranslation</span> <span class="value">0 1.25 0</span>
   <span class="keyword">exposedField</span> <span class="type">SFRotation</span> <span class="id">allRotation</span> <span class="value">0 0 0 0</span>
   <span class="keyword">exposedField</span> <span class="type">SFVec3f</span> <span class="id">allScale</span> <span class="value">1 1 1</span>
+  
+  <span class="comment"># barva svetla pro proximitySensor</span>
+  <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvaSvetla</span> <span class="value">1 1 1</span>
 ]
 	  </pre>
 	  
@@ -87,14 +88,70 @@
 			<td>4 kB</td>
 			<td>Logo by mělo být převrácené, ale u symetrického obrázku to nevadí.</td>
 		</tr>
+		<tr>
+			<td>Obrázek otvoru</td>
+			<td><img src="models/chadijir-toitoi/toitoi-textures/webthumbs/dira.gif" width="100" height="100" /></td>
+			<td>2 kB</td>
+			<td>&ndash;</td>
+		</tr>
 
 		</tbody>
 	  </table>
 	  
 	  <h3>Zvuky</h3>
-	  <ul>
-		<li>Zvuky zatím nejsou.</li>
-	  </ul>
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                	<th>Jméno zvuku</th>
+                    <th>Link</th>
+                    <th>Velikost</th>
+					<th>Délka</th>
+                    <th>Poznámka</th>
+                </tr>
+            </thead>
+            <tbody>
+				<tr>	
+                    <td>Vrzání dveří</td>
+                    <td><a href="models/chadijir-toitoi/toitoi-sounds/vrzani.wav">vrzani.wav</a></td>
+                    <td>350 kB</td>
+					<td>1,5s</td>
+                    <td>Zvuk vrzajících dveří vystřižený a upravený z počátku skladby Thriller od Michaela Jacksona.</td>
+                </tr>
+            </tbody>
+        </table>
+	  
+	  <h3>Schéma dynamických akcí</h3>
+	  <table cellspacing="0" cellpadding="0" class="pixSpacing">
+            <thead>
+                <tr>
+                	<th>Název akce</th>
+                    <th>Realizace</th>
+                    <th>Popis</th>
+                </tr>
+            </thead>
+            <tbody>
+				<tr>
+                    <td>Otevírání dveří</td>
+                    <td class="center"><img src="models/chadijir-toitoi/diagrams/dvere.png" width="500" height="156" /></td>
+                    <td>Chytnutím a tažením kliky dveří je otevíráme a zavíráme v omezném úhli.</td>
+				</tr>
+				<tr>
+                    <td>Zvedání prkénka</td>
+                    <td class="center"><img src="models/chadijir-toitoi/diagrams/prkenko.png" width="498" height="156" /></td>
+                    <td>Chytnutím a tažením plochy prkénka jej můžeme otevírat a zavírat v omezeném úhlu.</td>
+				</tr>
+				<tr>
+                    <td>Osvětlení modelu</td>
+                    <td class="center"><img src="models/chadijir-toitoi/diagrams/proximity.png" width="563" height="156" /></td>
+                    <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
+				</tr>
+				<tr>
+                    <td>Animace a ozvučení závory</td>
+                    <td class="center"><a href="models/chadijir-toitoi/diagrams/animace.png" title="Klikněte pro zvětšení" class="hl"><img src="models/chadijir-toitoi/diagrams/animace_m.png" width="518" height="282" /></a></td>
+                    <td>Po stisknutí zeleného tlačítka na dveřích se spustí animace závory, tlačítko začne měnit barvu. V budoucnu bude po zavření závory znemožněno otevírání dveří.</td>
+				</tr>
+            </tbody>
+        </table>
 	  
 	  <h3><a href=".">Zpět na stránku etapy</a></h3>
     </div>                          
