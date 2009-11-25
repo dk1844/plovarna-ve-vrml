@@ -450,7 +450,8 @@ Transform {
 	rotation 0 1 0 0.785   
 
 	children TableWithParsol {
-		lod	0
+		chairTexture "../../masekji4-stul-se-slunecnikem/textures/284-v2.jpg"
+		billboardTexture "../../masekji4-stul-se-slunecnikem/textures/billboard.png"
 		parsolColor	.342 .234 .242
 	}
 }
