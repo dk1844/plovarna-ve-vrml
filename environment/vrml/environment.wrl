@@ -42,6 +42,7 @@ EXTERNPROTO ToiToi [
 EXTERNPROTO TableWithParsol [
 	exposedField SFInt32 lod
 	exposedField SFColor parsolColor
+	exposedField SFColor lightColor
 	exposedField MFString chairTexture
 	exposedField MFString billboardTexture
 ]
@@ -450,8 +451,8 @@ Transform {
 	rotation 0 1 0 0.785   
 
 	children TableWithParsol {
-		lod	0
 		parsolColor	.342 .234 .242
+		lightColor 1 0 0
 	}
 }
 
