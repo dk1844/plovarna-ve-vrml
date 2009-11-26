@@ -45,7 +45,7 @@ EXTERNPROTO TableWithParsol [
 	exposedField MFString chairTexture
 	exposedField MFString billboardTexture
 ]
-"../../masekji4-stul-se-slunecnikem/stul-se-slunecnikem.wrl#TableWithParsol"
+"models/masekji4-stul-se-slunecnikem/stul-se-slunecnikem.wrl#TableWithParsol"
 
 
 
@@ -405,6 +405,7 @@ Transform {
 Transform {
 	translation -3.25 0 -8.5
 	rotation 0 1 0 1.57
+	#children DEF EXT_TOBOGAN2 Tobogan {frontTexture "models/kavanda1-tobogan/sipka.png", barvatela .2 .2 .5}
 	children DEF EXT_TOBOGAN2 Tobogan {barvatela .2 .2 .5}
 }
 
