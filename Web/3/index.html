@@ -42,11 +42,14 @@
 	  
 	  <h3>Výsledky měření FPS</h3>
 	  <p>Měření probíhalo ve dvou prohlížečích, v embed okně na této stránce s prohlížečem Cortona a v samostatně spuštěném BS Contactu.
-	  Poměr v posledním sloupečku udává, kolikrát víc FPS se vykreslilo při použití statické varianty modelu.
+	  Poměr v posledním sloupečku udává, kolikrát víc FPS se vykreslilo při zobrazení modelu z 2. fáze projektu.
 	  V grafu je pak na ose x uvedena vzdálenost viewpointu, a na ose y je vynesen počet snímků za sekundu.
 	  </p>
 	  <p>Hodnoty jsou odhadovaným průměrem odečteným ze stavových řádků obou prohlížečů. Měření probíhalo na počítači s
 	  Intel Core2Duo 1.66 GHz, 2 GB RAM s integrovaným grafickým čipem ATI Radeon Xpress 1100. V případě embed Cortony byl použit prohlížeč Internet Explorer.
+	  </p>
+	  <p>Výsledky z této tabulky vypočtené pro scénu z 2. fáze se od starších dat liší proto, že pro korektnost měření nebyla na dané stránce zobrazena varianta
+	  bez LOD, počítač tedy musel zároveň obsluhovat jen jedno embed okno stejně jako na této stránce.
 	  </p>
 	  <table>
 			<thead>
@@ -56,28 +59,28 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td rowspan="2">15 metrů</td><td>Statický model</td><td>XX FPS (embed Cortona), YY FPS (BS Contact)</td><td rowspan="2">1,14 (Cortona), 1,07 (BS Contact)</td>
+					<td rowspan="2">15 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>43 FPS (embed Cortona), 65 FPS (BS Contact)</td><td rowspan="2">1,16 (Cortona), 1,08 (BS Contact)</td>
 				</tr>
 				<tr>
-					<td>Dynamický model</td><td>40 FPS (embed Cortona), 80 FPS (BS Contact)</td>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>37 FPS (embed Cortona), 60 FPS (BS Contact)</td>
 				</tr>
 				<tr>
-					<td rowspan="2">32 metrů</td><td>Statický model</td><td>34 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,18 (Cortona), 1,43 (BS Contact)</td>
+					<td rowspan="2">32 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>54 FPS (embed Cortona), 80 FPS (BS Contact)</td><td rowspan="2">1,04 (Cortona), 1,07 (BS Contact)</td>
 				</tr>
 				<tr>
-					<td>Dynamický model</td><td>40 FPS (embed Cortona), 100 FPS (BS Contact)</td>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>52 FPS (embed Cortona), 75 FPS (BS Contact)</td>
 				</tr>
 				<tr>
-					<td rowspan="2">53 metrů</td><td>Statický model</td><td>32 FPS (embed Cortona), 70 FPS (BS Contact)</td><td rowspan="2">1,19 (Cortona), 1,71 (BS Contact)</td>
+					<td rowspan="2">53 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>63 FPS (embed Cortona), 110 FPS (BS Contact)</td><td rowspan="2">1,03 (Cortona), 1 (BS Contact)</td>
 				</tr>
 				<tr>
-					<td>Dynamický model</td><td>38 FPS (embed Cortona), 120 FPS (BS Contact)</td>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>61 FPS (embed Cortona), 110 FPS (BS Contact)</td>
 				</tr>
 			</tbody>
 	  </table>
 	  
 	  <div class="figure">
-		<img src="fps-graf.png" width="595" height="319" />
+		<img src="fps-graf.png" width="567" height="338" />
 		<p class="caption">Graf s výsledky měření FPS</p>
 	  </div>
 	  
