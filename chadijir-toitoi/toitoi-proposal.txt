@@ -22,10 +22,18 @@ toitoi model
 - textury
 	- dvere - logo
 
-   4. Kliknutím na další vybranou èást modelu (TouchSensor.touchTime) zahajte animaci pohybu této èásti, animaci barev a spuste vhodnı zvuk.
+   _1. Ke kadému modelu pøidejte ve smyèce bìící animaci reprezentující "stroj v chodu".
+   _2. Pøidejte ke kadému modelu "hlavní vypínaè" (ovládanı skriptem), kterı po stisknutí:
+   _       *  zmìní svoji polohu a barvu
+   _       * vypne/zapne všechny animace a senzory (s vıjimkou svého vlastního spouštìcího senzoru), tedy jak animace z pøedchozí etapy, tak animaci typu "stroj v chodu".
+   3. Na existenci tohoto dùleitého vypínaèe upozornìte uivatele vhodnou animací (barvy, velikosti) bìící v nepøetritém cyklu. Hlavní vypínaè definujte v tìle prototypu.
+   _4. Skript dále vylepšete tak, aby po zastavení a následném spuštìní modelu došlo k pokraèování všech animací z naposledy dosaeného stavu (polohy, barvy, pøehrávání zvukù apod.), tedy nikoliv opìt od zaèátku.
+   5. Pomocí dalších funkcí skriptu naprogramujte inteligentní chování modelu blíící se vlastnostem z reálného svìta.
+   
+   
+   6. Ve spoleèné hlavní scénì vytvoøte panel HUD (Head-Up Display) s jedním tlaèítkem a umístìte jej do scény. Propojte tlaèítko s hlavními vypínaèi všech modelù a umonìte tak spouštìní/zastavení celé scény tímto pøepínaèem.
+   7. Definujte druhé tlaèítko v panelu HUD jako pøepínaè noc/den, po jeho stisknutí se rozsvítí, resp. zhasnou svìtla nad všemi modely. Spolu s tìmito svìtly mìòte barvu pozadí scény a stav avatarovy svítilny.
 
-   5. K úloze vytvoøte v adresáøi /3 pøíslušné stránky. Pøidejte k nim informace o dynamickıch vlastnostech (uveïte blokové schéma dynamickıch akcí, tj. pøedávání událostí).
-   6. Porovnejte, zda pøidání dynamiky (etapa 3) zmìnilo fps ve srovnání se stejnım, avšak statickım modelem (etapa 2). Uvaujte pouze varianty s LOD. Vısledky mìøení opìt zveøejnìte.
 
 
 Zahajeni animace
@@ -40,4 +48,21 @@ Zahajeni animace
 
 TODO
 =======
-dokumentace
+* - stroj v chodu - zasouvani/vysouvani stropu
+* - znemozneni otevreni dveri po zasunuti zavory (TODO - plynule zavirani dveri z nenulove rotace)
+*- hlavni vypinac - touchsensor out of the box-posuvne kolecko s menici barvou na zelenou
+	*- posuvnik, meneni barvy, posunuti zpatky pri vypnuti
+#- animacka tlacitka - meneni barvy a velikosti, aby na sebe upoutalo
+*- pamatovani si posledniho stavu u vsech motion parametru (*barva tlacitka, *rotace zavory, *poloha strechy, *rotace prkynka, *rotace dveri)
+*- pri vypnuti stopnout pohyb zavory a zmenu barvy tlacitka
+
+*- upravit/vytvorit zvuk pro otevirani zavory
+
+*- umoznit vypinani/zapinani svetla z venku
+
+
+
+
+
+
+
