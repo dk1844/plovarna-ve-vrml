@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="generator" content="PSPad editor, www.pspad.com">
+<title>Plovárna</title>
+<link href="../style.css" type="text/css" title="default" rel="stylesheet" media="screen, projection" />
+</head>
+<body>
+<div id="content">
+    <div id="header">
+        <h1><a href="../">Plovárna</a></h1>
+        <p class="smaller">Semestrální práce do předmětu Y36MVR, zimní semestr 2009, cvičení pátek 9:15, tým 3</p>
+</div>
+    <div id="information">
+        <h2>Technická specifikace - Tobogán</h2>
+        <h3>Autor: Daniel Kavan</h3>
+		<h3>Popis LOD</h3>
+	  <p> Model obsahuje 4 úrovně detailů. 	
+	  
+	  <dl>
+   		<dt>&lt; 40 m </dt><dd>Při vzdálenosti do 40m se zobrazuje model nejvyšší kvality s texturami.</dd>
+		<dt>40 - 70 m </dt><dd>Model zjednodušen:
+								<ul>
+									<li>Textury jsou nahrazeny barvami.</li>
+									<li>Uzel Extrusion, ktery tvori skluzavku je vymodelovan jen 4 bodovou základnou provedenou po původní trajektorii a bez zahlazení.</li>
+									<li>Věž místo IndexFaceSetu tvoří jen kvádr</li>
+								</ul>
+								
+						   </dd>
+		<dt>70 - 120 m </dt><dd>Nejniží kvalita modelu, kde je ještě model viditelný
+								  <ul>
+									<li>Extrusion ze skluzavky je nahrazen 2 rozměrným tvarem na Billboardu.</li>
+									<li>Věž jen kvádr</li>
+								</ul>
+		
+							</dd>						     
+		<dt>&gt; 120 m </dt><dd>Model je nahrazen prázdným uzlem Group {}.</dd>
+   	  </dl>
+	  	
+			  
+			
+			
+		
+	  </p>
+	  
+	  
+           
+		<h3>Parametry prototypu</h3>
+		
+		<pre> 
+<span class="keyword">PROTO</span> <span class="id">TOBOGAN</span> 
+[ 
+  <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvatela</span> <span class="value">.5 .5 .5</span>                                <span class="comment"># barva tela skluzavky (RGB)</span>
+  <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvasvetla</span> <span class="value">.5 .5 .5</span>                              <span class="comment"># barva svetla pri priblizeni (RGB)</span>
+  <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">useLOD</span> <span class="value">1</span>                                          <span class="comment"># 1 = zapnout LOD, 0 = bez LODu</span>
+  <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">frontTexture</span> <span class="value">"models/kavanda1-tobogan/sipka.png"</span> <span class="comment"># textura na predni stranu</span>
+]
+		
+		</pre>
+		
+        <h3>Geometrie</h3>
+        <p>Dle úrovně detailů počítá model (od nejdetailnějšího k nejméně detailnímu):
+			<ul>
+				<li><strong>698</strong> trojúhelníků</li>
+				<li><strong>331</strong> trojúhelníků</li>
+				<li><strong>29</strong> trojúhelníků</li>
+				<li><strong>0</strong> trojúhelníků</li>
+			</ul>
+		
+		</p>
+        
+        <h3>Textury</h3>
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                	<th>Jméno textury</th>
+                    <th>Náhled</th>
+                    <th>Velikost</th>
+					<th>Rozměry</th>
+                    <th>Poznámka</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Střecha</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/roof2.png" border="0" width="52" height="48" alt="textura střechy"></td>
+                    <td>4 kB</td>
+                    <td>24&nbsp;x&nbsp;26 <br /> (624 px)</td>
+                    <td>Textura na střechu pro vytvoření dojmu tašek.</td>
+				</tr>
+				<tr>	
+                    <td>Šipka</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/sipka.png" border="0" width="300" height="100" alt="textura - šipka"></td>
+                    <td>15 kB</td>
+					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
+                    <td>Dekorace vnější stěny se symbolem šipky.</td>
+                </tr> 
+				<tr>	
+                    <td>Šipka2</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/sipka2.png" border="0" width="300" height="100" alt="textura - šipka"></td>
+                    <td>14 kB</td>
+					<td>600&nbsp;x&nbsp;200 <br /> (120 kpx)</td>
+                    <td>Alternativní dekorace vnější stěny se symbolem šipky.</td>
+                </tr>
+				<tr>	
+                    <td>Vlajka</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/flag.png" border="0" width="300" height="200" alt="textura vlaky"></td>
+                    <td>17 kB</td>
+					<td>300&nbsp;x&nbsp;200 <br /> (60 kpx)</td>
+                    <td>Dekorace vlajky.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        <h3>Zvuky</h3>
+        
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                	<th>Jméno zvuku</th>
+                    <th>Link</th>
+                    <th>Velikost</th>
+					<th>Délka</th>
+                    <th>Poznámka</th>
+                </tr>
+            </thead>
+            <tbody>
+				<tr>	
+                    <td>Hvizd</td>
+                    <td><a href="models/kavanda1-tobogan/whistle.wav"> whistle.wav</a></td>
+                    <td>14 kB</td>
+					<td>1s</td>
+                    <td>Zvuk doprovázející začátek pohybu výtahu.</td>
+                </tr>
+            </tbody>
+        </table>
+ 
+ 	   <h3>Popis dynamických akcí</h3>
+	   
+	      <table cellspacing="0" cellpadding="0" class="pixSpacing">
+            <thead>
+                <tr>
+                	<th>Název akce</th>
+                    <th>Realizace</th>
+                    <th>Popis</th>
+					
+                </tr>
+            </thead>
+            <tbody>
+            
+				        <tr>
+                    <td>Rotace vlajky</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/cs.png" width="500" height="156" /></td>
+                    <td>Chytnutím a tažením vlajky ji rotujeme kolem osy stožáru bez omezení.</td>
+					     </tr>
+				        <tr>
+                    <td>Změna výšky střechy</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/plane.png" width="498" height="156" /></td>
+                    <td>Chytnutím a tažením střechy měníme její výšku v rozmezí 0,1m až 1,5m (tj. nedovolujeme zcela plochou střechu).</td>
+					     </tr>
+				        <tr>
+                    <td>Osvětlení modelu</td>
+                    <td class="center"><img src="models/kavanda1-tobogan/proximity.png" width="563" height="156" /></td>
+                    <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
+					     </tr>
+				        <tr>
+                    <td>Animace výtahu, ozvučení</td>
+                    <td class="center"><a href="models/kavanda1-tobogan/complex.png" title="Klikněte pro zvětšení" class="hl"><img src="models/kavanda1-tobogan/complex_m.png" width="518" height="282" /></a></td>
+                    <td>Kliknutím na tlačítko výtahu spustíme animaci. Výtah se začne pohybovat směrem vzhůru, kde chvíli počká a pak sjede dolů. Tlačítka i výtah během své cesty
+                    mění barvu. Zahájení pohybu je doprovázeno zvukem.</td>
+					     </tr>
+					     
+            </tbody>
+        </table>
+	   
+	   
+
+        
+        <h3><a href=".">Zpět na stránku etapy</a></h3>
+    </div>
+</div>
+</body>
+</html>
