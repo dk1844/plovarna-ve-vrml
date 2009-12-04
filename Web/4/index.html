@@ -16,7 +16,82 @@
     </div>    
     
     <div id="information">
-      <h2>Bude doplněno</h2>
+      <h2>3. etapa úlohy - Dynamický svět</h2>
+   	  <h3>Zadání</h3>
+		<ol>
+			<li>Ke každému modelu přidejte ve smyčce běžící animaci reprezentující "stroj v chodu".</li>
+			<li>Přidejte ke každému modelu "hlavní vypínač" (ovládaný skriptem), který po stisknutí:
+				<ul>
+					<li>změní svoji polohu a barvu</li>
+					<li>vypne/zapne všechny animace a senzory (s výjimkou svého vlastního spouštěcího senzoru), tedy jak animace z předchozí etapy, tak animaci typu "stroj v chodu".</li>
+				</ul>
+			</li>
+			<li>Na existenci tohoto důležitého vypínače upozorněte uživatele vhodnou animací (barvy, velikosti) běžící v nepřetržitém cyklu. Hlavní vypínač definujte v těle prototypu.</li>
+			<li>Skript dále vylepšete tak, aby po zastavení a následném spuštění modelu došlo k pokračování všech animací z naposledy dosaženého stavu (polohy, barvy, přehrávání zvuků apod.), tedy nikoliv opět od začátku.</li>
+			<li>Pomocí dalších funkcí skriptu naprogramujte inteligentní chování modelu blížící se vlastnostem z reálného světa.</li>
+			<li>Ve společné hlavní scéně vytvořte panel HUD (Head-Up Display) s jedním tlačítkem a umístěte jej do scény. Propojte tlačítko s hlavními vypínači všech modelů a umožněte tak spouštění/zastavení celé scény tímto přepínačem.</li>
+			<li>Definujte druhé tlačítko v panelu HUD jako přepínač noc/den, po jehož stisknutí se rozsvítí, resp. zhasnou světla nad všemi modely. Spolu s těmito světly měňte barvu pozadí scény a stav avatarovy svítilny.</li>
+		</ol>
+	  <!--<h3>Řešení</h3>-->
+	  
+	  <h3>Technické specifikace</h3>
+	  <ul>
+		<li>Jiří Chadima: <a href="techspec1.html">Toi Toi kadibudka</a></li>
+		<li>Daniel Kavan: <a href="techspec2.html">Tobogán</a></li>
+		<li>Jiří Mašek: <a href="techspec3.html">Stůl se slunečníkem</a></li>
+	  </ul>
+	  
+
+	  
+	  <h3>Výsledky měření FPS</h3>
+	  <p>Měření probíhalo ve dvou prohlížečích, v embed okně na této stránce s prohlížečem Cortona a v samostatně spuštěném BS Contactu.
+	  Poměr v posledním sloupečku udává, kolikrát víc FPS se vykreslilo při zobrazení modelu z 2. fáze projektu.
+	  V grafu je pak na ose x uvedena vzdálenost viewpointu, a na ose y je vynesen počet snímků za sekundu.
+	  </p>
+	  <p>Hodnoty jsou odhadovaným průměrem odečteným ze stavových řádků obou prohlížečů. Měření probíhalo na počítači s
+	  Intel Core2Duo 1.66 GHz, 2 GB RAM s integrovaným grafickým čipem ATI Radeon Xpress 1100. V případě embed Cortony byl použit prohlížeč Internet Explorer.
+	  </p>
+	  <p>Výsledky z této tabulky vypočtené pro scénu z 2. fáze se od starších dat liší proto, že pro korektnost měření nebyla na dané stránce zobrazena varianta
+	  bez LOD, počítač tedy musel zároveň obsluhovat jen jedno embed okno stejně jako na této stránce.
+	  </p>
+	  <table>
+			<thead>
+				<tr>
+					<th>Vzdálenost viewpointů</th><th>Typ měření</th><th>Průměrné FPS</th><th>Poměr FPS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2">15 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>43 FPS (embed Cortona), 65 FPS (BS Contact)</td><td rowspan="2">1,16 (Cortona), 1,08 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>37 FPS (embed Cortona), 60 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">32 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>54 FPS (embed Cortona), 80 FPS (BS Contact)</td><td rowspan="2">1,04 (Cortona), 1,07 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>52 FPS (embed Cortona), 75 FPS (BS Contact)</td>
+				</tr>
+				<tr>
+					<td rowspan="2">53 metrů</td><td>Model z&nbsp;2.&nbsp;fáze</td><td>63 FPS (embed Cortona), 110 FPS (BS Contact)</td><td rowspan="2">1,03 (Cortona), 1 (BS Contact)</td>
+				</tr>
+				<tr>
+					<td>Model z&nbsp;3.&nbsp;fáze</td><td>61 FPS (embed Cortona), 110 FPS (BS Contact)</td>
+				</tr>
+			</tbody>
+	  </table>
+	  
+	  <div class="figure">
+		<img src="fps-graf.png" width="567" height="338" />
+		<p class="caption">Graf s výsledky měření FPS</p>
+	  </div>
+	  
+	  <h3>Virtuální scéna v okně</h3>
+	  <embed src="scene.wrl" height="600" width="800" />
+	  
+	  <h3><a href="scene.wrl">Scéna na plnou obrazovku</a></h3>
+	 
     </div>                          
   </div>
   </body>

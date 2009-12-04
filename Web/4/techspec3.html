@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="generator" content="PSPad editor, www.pspad.com">
+        <title>Plovárna</title>
+
+        <link href="../style.css" type="text/css" title="default" rel="stylesheet" media="screen, projection" />
+
+    </head>
+    <body>
+        <div id="content">
+            <div id="header">
+                <h1><a href="../">Plovárna</a></h1>
+                <p class="smaller">Semestrální práce do předmětu Y36MVR, zimní semestr 2009, cvičení pátek 9:15, tým 3</p>
+            </div>
+
+            <div id="information">
+                <h2>Technická specifikace - Stůl se slunečníkem</h2>
+                <h3>Autor: Jiří Mašek</h3>
+
+                <h3>Popis řešení</h3>
+                <p>Model obsahuje 4 úrovně detailů.</p>
+
+                <dl>
+                    <dt>&lt; 25 m</dt><dd>Při vzdálenosti menší než 25 metrů se model zobrazuje se všemi detaily.</dd>
+
+                    <dt>25 - 70 m</dt>
+                    <dd>
+					Textury jsou v modelu nahrazeny barvami.<br />
+					Laťky tvořící sedák a opěradlo židle jsou nahrazeny kvádry.<br />
+					Nohy židlí reprezentované uzly Extrusion jsou nahrazeny kvádry.<br />
+					Tyčky, jenž tyto nohy spojovaly, jsou vynechány.<br />
+					Látkový potah slunečníku tvořený uzlem Extrusion je zjednodušen.<br />
+                    </dd>
+
+                    <dt>70 - 120 m</dt>
+                    <dd>Celý model je nahrazen uzlem Billboard.</dd>
+
+                    <dt>&gt; 120 m</dt>
+                    <dd>Celý model je nahrazen prázdným uzlem Group {}.</dd>
+                </dl>
+
+                <h3>Parametry prototypu</h3>
+                <!--
+                    regularni vyrazy na obarvovani kodu: (+ jsem neco dodelal rucne, treba node Material)
+                    komentar: #^  \#(.*)# -> "  <span class="comment">#$1</span>"
+                    atribut prototypu: #^  ([^ ]*) ([^ ]*) ([^ ]*) (.*)# -> "  <span class="keyword">$1</span> <span class="type">$2</span> <span class="identifikator">$3</span> <span class="value">$4</span>"
+                    vnitrek uzlu: #^    (\w*) (.*)# -> "    <span class="id">$1</span> <span class="value">$2</span>"
+                -->
+                <pre>
+<span class="keyword">PROTO</span> <span class="id">TableWithParsol</span> [
+    <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">lod</span> <span class="value">1</span>
+    <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">parsolColor</span> <span class="value">0.286882 0.274000 0.000000</span>
+    <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">lightColor</span> <span class="value">0.286882 0.274000 0.000000</span>
+    <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">chairTexture</span> <span class="value">"./textures/284-v2.jpg"</span>
+    <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">billboardTexture</span> <span class="value">"./textures/billboard.png"</span>
+]</pre>
+
+                <h3>Geometrie</h3>
+                <ul>
+                    <li>První úroveň - <strong>36 521</strong> trojúhelníků</li>
+                    <li>Druhá úroveň - <strong>24 723</strong> trojúhelníků</li>
+                    <li>Třetí úroveň - <strong>1 742</strong> trojúhelníků</li>
+                    <li>Čtvrtá úroveň - <strong>0</strong> trojúhelníků</li>
+                </ul>
+
+                <h3>Textury</h3>
+                <table cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>Jméno textury</th>
+                            <th>Náhled</th>
+                            <th>Velikost</th>
+                            <th>Poznámka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dřevo</td>
+                            <td><img src="models/masekji4-stul-se-slunecnikem/textures/284-v2.jpg" width="150" height="150" alt="Textura dřeva" /></td>
+                            <td>76.4 kB</td>
+                            <td>Textura je použita pro opěrátko a sedák skládací židle.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Zvuky</h3>
+                <table cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>Jméno zvuku</th>
+                            <th>Link</th>
+                            <th>Velikost</th>
+                            <th>Délka</th>
+                            <th>Poznámka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vrzání dveří</td>
+                            <td><a href="models/masekji4-stul-se-slunecnikem/sounds/umbrella_2.wav">umbrella_2.wav</a></td>
+                            <td>195.5 kB</td>
+                            <td>1,1s</td>
+                            <td>Zvuk doprovázející zavírání slunečníku.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Schéma dynamických akcí</h3>
+                <table cellspacing="0" cellpadding="0" class="pixSpacing">
+                    <thead>
+                        <tr>
+                            <th>Název akce</th>
+                            <th>Realizace</th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Složení židle</td>
+                            <td class="center"><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_1.png" width="500" height="156" /><br /><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_2.png" width="500" height="156" /><br /><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_3.png" width="500" height="156" /></td>
+                            <td>Kliknutím a tažením na sedátko židle je možné jej zvednout až do vodorovné polohy vůči nohám, ke kterým je připevněno. I je pak lze kliknutím a tažením přiklopit k opěradlu, přičemž následným kliknutím a tažením na opěradlo je možné poklopit celou židli dopředu.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Osvětlení modelu</td>
+                            <td class="center"><img src="models/masekji4-stul-se-slunecnikem/diagrams/proximity.png" width="563" height="156" /></td>
+                            <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Animace a ozvučení slunečníku</td>
+                            <td class="center"><a href="models/masekji4-stul-se-slunecnikem/diagrams/animace.png" title="Klikněte pro zvětšení" class="hl"><img src="models/masekji4-stul-se-slunecnikem/diagrams/animace_m.png" width="518" height="282" /></a></td>
+                            <td>Kliknutím na potah slunečníku dojde k jeho zavření a změně barvy.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><a href=".">Zpět na stránku etapy</a></h3>
+            </div>
+        </div>
+    </body>
+</html>
