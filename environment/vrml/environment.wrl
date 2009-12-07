@@ -548,3 +548,6 @@ ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TOITOI2.lightsOn
 
 ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOBOGAN1.externalTouch
 ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOBOGAN2.externalTouch
+
+ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TOBOGAN1.lightsOn
+ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TOBOGAN2.lightsOn
