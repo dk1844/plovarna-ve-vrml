@@ -60,8 +60,8 @@ TODO
 
 *- umoznit vypinani/zapinani svetla z venku
 
-
-
+- vysilat ven informace o vyplem/zaplem modelu
+- updatovat techspec o nove skripty a inovovane zahlavi prototypu
 
 
 
