@@ -36,7 +36,7 @@ EXTERNPROTO ToiToi [
 	exposedField SFRotation allRotation 
 	exposedField SFVec3f allScale 
 	exposedField SFColor barvaSvetla
-	exposedField SFBool	lightsOn
+	eventIn SFBool	lightsOn
 	eventIn	SFTime externalTouch
 ]
 "../../chadijir-toitoi/toitoi.wrl#ToiToi"
