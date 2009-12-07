@@ -19,6 +19,9 @@ EXTERNPROTO Tobogan [
 	exposedField SFColor barvasvetla
 	exposedField SFInt32 useLOD
 	exposedField MFString frontTexture
+	eventIn SFBool lightsOn
+	eventIn	SFTime externalTouch
+	
 ]
 "../../kavanda1-tobogan/proto_tobogan_LODorNot.wrl#TOBOGAN"
 
@@ -48,8 +51,8 @@ EXTERNPROTO TableWithParsol [
 	exposedField MFString chairTexture
 	exposedField MFString billboardTexture
 
-	eventIn SFBool lightsOn
-	eventIn	SFTime externalTouch
+	#eventIn SFBool lightsOn
+	#eventIn	SFTime externalTouch
 ]
 "../../masekji4-stul-se-slunecnikem/stul-se-slunecnikem.wrl#TableWithParsol"
 
@@ -405,7 +408,7 @@ Transform {
 
 	rotation 0 1 0 -1.57
 
-	children DEF EXT_TOBOGAN1 Tobogan {frontTexture "../../kavanda1-tobogan/sipka2.png", useLOD 1, barvasvetla 1 0 0}
+	children DEF EXT_TOBOGAN1 Tobogan {frontTexture ["../../kavanda1-tobogan/sipka2.png" "models/kavanda1-tobogan/sipka2.png"], useLOD 1, barvasvetla 1 0 0}
 }
 
 Transform {
@@ -532,13 +535,16 @@ ROUTE HUDProxy.position_changed TO	HUDProxy.center
 ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI.externalTouch
 ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI2.externalTouch
 
-ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE1.externalTouch
-ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE2.externalTouch
+# ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE1.externalTouch
+# ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE2.externalTouch
 
 ROUTE DenNocPrepinacToucher.touchTime TO Rizeni.set_boolFromTouchTime
 
 ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TOITOI.lightsOn
 ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TOITOI2.lightsOn
 
-ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TABLE1.lightsOn
-ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TABLE2.lightsOn
+# ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TABLE1.lightsOn
+# ROUTE Rizeni.boolFromTouchTime_changed TO EXT_TABLE2.lightsOn
+
+ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOBOGAN1.externalTouch
+ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOBOGAN2.externalTouch
