@@ -1,0 +1,36 @@
+Reklama
+=======
+
+Odborný popis
+=============
+
+Toi Toi budka
+-------------
+Toi Toi budka je realizována jako série prototypovaných komponent. Všechny komponenty jsem modeloval ručně. Kromě ploch pro textury, střechy a kliky mají všechny uzly standardní geometrii, jmenované uzly jsou implementovány pomocí uzlu IndexedFaceSet.
+
+Hlavní dynamickou komponentou jsou dveře, které se starají mimojiné o animaci závory. Pro interakci s uživatelem je připraveno několik manipulátorů: Pomocí uzlu RotationInterpolator je možné otevírat a zavírat dveře a podobně se chová záchodové prkénko. Dveří se týká také animace závory. Ta se dokáže otevírat a zavírat po stisknutí tlačítka. Animace je opět řešena pomocí uzlu RotationInterpolator, barvu tlačítka mění ColorInterpolator. Animace závory je doprovázena různými zvuky pro otevírání a zavírání. Zvuky jsou kódovány jako wav soubory o vzorkovací frekvenci 44 kHz a hloubce 16 bit.
+
+Protože v požadavcích úlohy je také animace typu stroj v chodu, rozhodl jsem se realizovat animaci střechy, která jezdí nahoru a dolů, a to pomocí uzlu PositionInterpolator. Model obsahuje také hlavní vypínač, který dokáže všechny animace včetně animace "stroj v chodu" pozastavit a poté opět spustit.
+
+Model obsahuje dvě textury: Texturu dveří, která je měnitelná pomocí parametru prototypu, a texturu otvoru pod prkénkem. Textura otvoru je ve formátu gif, textura dveří ve formátu png.
+
+Tobogán
+-------
+
+Stůl se slunečníkem
+-------------------
+
+
+Rady pro budoucí generace
+=========================
+V průběhu práce se student setká se čtyřmi úlohami. Postupně bude modelovat, prototypovat, vymýšlet dynamické akce a nakonec skriptovat. Asi nejtěžší částí z těchto čtyř je ta nultá, totiž vymyšlení modelu. Pokud si student chce ušetřit práci, vymyslí si model takový, který nebude příliš obtížný na modelování (pokud samozřejmě není profesionální 3D grafik), a hned na začátku je vhodné přemýšlet nad tím, jestli zvolený model dokáže uspokojit požadavky na úlohu, zejména jestli je tam dost součástí, které se dají animovat, nebo se s nimi dá manipulovat.
+
+Už v první fázi, modelování, je dobré přemýšlet dopředu a připravit model tak, aby se jeho jednotlivé části daly prototypovat. Jakmile budeme mít prototypy jednotlivých částí, druhá úloha bude jednoduše hračka. V tuhle chvíli se může vyskytnout první problém, a totiž adresy např. textur. Základ adres se totiž bere podle toho, jestli je voláme v normálním modelu, nebo v prototypu.
+
+S prototypy souvisí i třetí úloha. Pokud je máte pojmenované pomocí DEF, bude směrování akcí velice jednoduché a váš vývoj bude probíhat velice rychle. U akcí se vyskytne další zádrhel. Například u rotace je potřeba správně posunout střed otáčení.
+
+V poslední fázi se programují skripty v javascriptu, kde se opravdu hodí dávat pozor na středníky. Stačí jeden vynechat a skript nepracuje tak, jak má.
+
+Závěr
+=====
+V průběhu úlohy jsme se naučili pracovat s VRML. Ukázalo se, že zas tak mrtvá technologie to není a pro rychlý vývoj dynamických scén je více než vhodným nástrojem.

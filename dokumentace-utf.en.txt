@@ -1,0 +1,37 @@
+Advertisement
+=============
+
+Technical description
+=====================
+
+Toi Toi toilet box
+-------------
+Toi Toi toilet box is realized as a set of prototypes. All components were modelled directly in VRMLPad. All nodes have standard geometry, except the roof, the knob and spaces for textures, thesehave geometry of IndexedFaceSet.
+
+Main dynamic component is the door, which carries logic of the crossbar animation. Two manipulators exist for user interaction: With RotationInterpolator node, whole door can be opened and closed and similar functionality has the toilet seat. The crossbar animation was mentioned before. The opening and closing of the crossbar can be invoked by pressing the button below the crossbar. Again, the RotationInterpolator node is used, the color of the button is changed using the ColorInterpolator. The animation is enhanced with different sounds for both opening and closing. These sounds are wav files with 16 bit-depth and 44 kHz sampling frequency.
+
+Because the specification of the task contains the "Machine is working" animation, I decided to create the roof animation. It slides up and down, using the PositionInterpolator. Model contains main switch as well. Main switch can pause and resume all animations including the "Machine is working" animation.
+
+Model contains two textures: The door texture, which can be changed with prototype parameter, and texture for the hole. The hole texture is a gif file, the door texture is a png file.
+
+
+Tobogan
+-------
+
+Table with parasol
+------------------
+
+
+A little help for future students
+=================================
+During the work, student has to deal with for subtasks: Modelling, prototyping, creating dynamic actions and scripting. Probably the hardest part of these four is the one not mentioned, the idea. If a student wants to ease his work a bit, he will think up a model, that will not be very hard for modelling (unless he is an experienced 3D modeller), and that can satisfy requirements of other parts of the task, mainly if there is enough parts suitable for animation or manipulation.
+
+In the first phase, modelling, it is very useful to prepare model for easy prototyping of all parts. As soon as we have individual prototypes, the second subtask is an easy one. In this moment we might challenge the first problem, and that is different behaviour of urls, for example textures. The initial directory is selected differently when using a model or using a model as a prototype. All paths can therefore differ quite a lot.
+
+The third subtask is connected to prototypes as well. If you had defined them using DEF before, routing of actions will be very easy and the development will be very fast. Some other challenges can occur when creating animations. For example, the pivot of rotation sometimes has to be moved a bit, so the pivot is placed properly.
+
+Last subtask is programming scripts in javascript programming language. In this part, it is very important to keep look at semi-colons. One is missing and whole script is not working.
+
+Conclusion
+=====
+During the task we learned how to work with VRML. It showed up, that it is definitely not dead technology and for rapid dynamic scenes development is very comfortable tool.
