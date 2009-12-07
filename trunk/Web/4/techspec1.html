@@ -56,6 +56,12 @@
   
   <span class="comment"># barva svetla pro proximitySensor</span>
   <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvaSvetla</span> <span class="value">1 1 1</span>
+  
+  <span class="comment"># slouzi pro zapinani/vypinani animaci a manipulatoru "zvenci"</span>
+  <span class="keyword">eventIn</span> <span class="type">SFTime</span> <span class="id">externalTouch</span>
+  
+  <span class="comment"># dokaze zapinat/vypinat svetlo nezavisle na proximitySensoru</span>
+  <span class="keyword">exposedField</span> <span class="type">SFBool</span> <span class="id">lightsOn</span> <span class="value">FALSE</span>
 ]
 	  </pre>
 	  
@@ -111,17 +117,25 @@
             </thead>
             <tbody>
 				<tr>	
-                    <td>Vrzání dveří</td>
-                    <td><a href="models/chadijir-toitoi/toitoi-sounds/vrzani.wav">vrzani.wav</a></td>
+                    <td>Vrzání dveří (zavírání)</td>
+                    <td><a href="models/chadijir-toitoi/toitoi-sounds/zavirani.wav">zavirani.wav</a></td>
                     <td>350 kB</td>
 					<td>1,5s</td>
                     <td>Zvuk vrzajících dveří vystřižený a upravený z počátku skladby Thriller od Michaela Jacksona.</td>
+                </tr>
+				<tr>	
+                    <td>Vrzání dveří (otevírání)</td>
+                    <td><a href="models/chadijir-toitoi/toitoi-sounds/otevirani.wav">otevirani.wav</a></td>
+                    <td>415 kB</td>
+					<td>1,5s</td>
+                    <td>Revertovaný zvuk zavírání.</td>
                 </tr>
             </tbody>
         </table>
 	  
 	  <h3>Schéma dynamických akcí</h3>
-	  <table cellspacing="0" cellpadding="0" class="pixSpacing">
+	  <p>V této fázi úlohy schéma neuvádím, protože kdybych tu měl popsat každou cestu, tak bych se asi zbláznil.</p>
+	  <!--<table cellspacing="0" cellpadding="0" class="pixSpacing">
             <thead>
                 <tr>
                 	<th>Název akce</th>
@@ -152,6 +166,171 @@
 				</tr>
             </tbody>
         </table>
+		-->
+		<h3>Skripty</h3>
+		<p>"Inteligentní" chování modelu zajišťují celkem dva uzly obsahující skripty v jazyce Javascript.
+		První skript je definován přímo v prototypu a ovládá části modelu závislé na hlavním vypínači.
+		Druhý skript se nachází v části obsluhující dveře a jejich části. Následuje jejich výpis a popis.</p>
+		
+		<h4>Skript obsluhující vypínač</h4>
+		<p>Do skriptu vstupují dvě proměnné: interní a externí sepnutí. Interní pochází od vypínače v prototypu,
+		externí je od vnějšího spínače. Skript si pamatuje stav střechy při vypnutí a stav hlavního vypínače.
+		</p>
+		<p>Podle toho, jestli je spínač zapnut, nebo vypnut, se vyšle událost o o zastavení pohybu střechy a případné
+		animace dveřní závory. Taky vypne všechna čidla uvnitř dveří.
+		</p>
+		<p>Poznámka: propojení uzlů není uvedeno všechno, pro podrobnosti viz zdrojový soubor modelu.</p>
+		<pre>
+DEF Ovladani Script {
+	field SFBool allEnabled TRUE
+	field SFTime roofStopped 0
+	field SFTime started 0
+
+	eventOut SFTime roofStopped_changed
+	eventOut SFTime roofStarted_changed
+	
+	eventOut SFTime doorAnimationPaused_changed
+	eventOut SFTime doorAnimationResumed_changed
+
+	eventIn	SFTime touchTime
+	eventIn	SFTime externalTouch IS	externalTouch
+	eventOut SFTime	vypnout
+	eventOut SFBool	hratOstatni
+	eventOut SFTime	zapnout
+	url	"javascript:
+	function initialize() {
+		roofStarted_changed = started;
+		roofStopped_changed = -1;
+	}
+
+	function externalTouch(time) {
+		touchTime(time);
+	}
+
+	function touchTime(time) {
+		if(allEnabled) {
+			vypnout = time;
+			roofStopped = time;
+			roofStarted_changed = -1;
+			roofStopped_changed = time;
+			doorAnimationPaused_changed = time;
+			hratOstatni = false;
+		} else {
+			zapnout = time;
+			started = started + (time - roofStopped);
+			roofStarted_changed = started;
+			roofStopped_changed = -1;
+			doorAnimationResumed_changed = time;
+			hratOstatni = true;
+
+		}
+		allEnabled = !allEnabled;
+	}
+	"
+}
+ROUTE Ovladani.hratOstatni TO DDvere.enableAll
+ROUTE Ovladani.vypnout TO casovacVypinani.startTime
+ROUTE Ovladani.zapnout TO casovacZapinani.startTime
+		</pre>
+		<h4>Skript ovládající dveře</h4>
+		<p>Hlavní funkce tohoto skriptu jsou dvě: Umožňuje pauzu animací závory a stará se o vypínání 
+		senzorů a animací na požádání zvenčí.</p>
+		<p>Původně jsem chtěl implementovat i funkcionalitu, kdy by se při otevřených dveřích a kliknutí na tlačítko pro zavření
+		dveře samy zavřely a teprve potom by proběhla animace závory. To se mi bohužel nepodařilo, takže dveře se jen skokově zabouchnou.</p>
+		<p>Cesty událostí opět pro zkrácení zápisu neuvádím.</p>
+		<pre>
+DEF DvereOvladaniScript Script {
+	field SFBool closedDoor FALSE
+	field SFBool enabled TRUE
+	field SFTime startCloseTime 0
+	field SFTime startOpenTime 0
+	field SFTime stopTime 0
+
+	eventOut SFBool	enabledDoorOpening
+	eventOut SFBool	enabledTouching
+	eventOut SFTime zavirani
+	eventOut SFTime otevirani
+
+	eventOut SFTime	pauseCloseTime
+	eventOut SFTime	resumeCloseTime
+	eventOut SFTime	pauseCloseSoundTime
+	eventOut SFTime	resumeCloseSoundTime
+
+	eventOut SFTime	resumeOpenTime
+	eventOut SFTime	pauseOpenTime
+	eventOut SFTime	pauseOpenSoundTime
+	eventOut SFTime	resumeOpenSoundTime
+
+	eventIn	SFBool enableAll IS	enableAll
+	eventIn	SFTime pause IS	animationPaused
+	eventIn	SFTime resume IS animationResumed
+	eventIn SFTime spoustecClicked
+	
+	url	"javascript:
+	function initialize() {
+		enabledDoorOpening = true;
+		resumeCloseTime = startCloseTime;
+		resumeOpenTime = startOpenTime;
+		pauseCloseTime = -1;
+		pauseOpenTime = -1;
+	}
+
+	function enableAll(val) {
+		enabled = val;
+		enabledDoorOpening = (val && !closedDoor);
+		enabledTouching = val;
+	}
+
+	function pause(time) {
+		if(closedDoor) {
+			stopTime = time;
+			resumeCloseTime = -1;
+			resumeCloseSoundTime = -1;
+			pauseCloseTime = time;
+			pauseCloseSoundTime = time;
+		} else {
+			stopTime = time;
+			resumeOpenTime = -1;
+			resumeOpenSoundTime = -1;
+			pauseOpenTime = time;
+			pauseOpenSoundTime = time;
+		}
+	}
+
+	function resume(time) {
+		if(closedDoor) {
+			startCloseTime = startCloseTime + (time - stopTime);
+			resumeCloseTime = startCloseTime;
+			resumeCloseSoundTime = startCloseTime;
+			pauseCloseTime = -1;
+			pauseCloseSoundTime = -1;
+		} else {
+			startOpenTime = startOpenTime + (time - stopTime);
+			resumeOpenTime = startOpenTime;
+			resumeOpenSoundTime = startOpenTime;
+			pauseOpenTime = -1;
+			pauseOpenSoundTime = -1;
+		}
+	}
+
+	function spoustecClicked(clickTime) {
+		if(enabled) {
+			if(closedDoor) {
+				startOpenTime = clickTime;
+				otevirani = clickTime;
+				enabledDoorOpening = true;
+			} else {
+				startCloseTime = clickTime;
+				zavirani = clickTime;
+				enabledDoorOpening = false;
+			}
+			closedDoor = !closedDoor;
+		}
+	}
+	"
+}
+	</pre>
+		
 	  
 	  <h3><a href=".">Zpět na stránku etapy</a></h3>
     </div>                          
