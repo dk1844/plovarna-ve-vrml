@@ -36,6 +36,8 @@ EXTERNPROTO ToiToi [
 	exposedField SFRotation allRotation 
 	exposedField SFVec3f allScale 
 	exposedField SFColor barvaSvetla
+	exposedField SFBool	lightsOn
+	eventIn	SFTime externalTouch
 ]
 "../../chadijir-toitoi/toitoi.wrl#ToiToi"
 
@@ -455,4 +457,59 @@ Transform {
 		lightColor 1 0 0
 	}
 }
+
+## HUD
+DEF	HUDProxy ProximitySensor {size 10000 10000 10000}
+
+Collision {
+	collide	FALSE
+	children
+	DEF	HUD Transform	{
+		children [
+			DEF CentralniVypinac Transform { 
+    			translation -.2 -.3 -1
+    			children [
+    				DEF CentralniVypinacToucher TouchSensor {}
+    				Shape {
+      					geometry Box {size 0.1 0.1 0.01}
+      					appearance Appearance { material Material {
+								emissiveColor .7 .7 0
+								transparency .2
+							}
+
+							texture	ImageTexture {
+								url	"../img/textures/hlavniVypinac.png"
+							}
+						}
+    				}
+  				]
+			}
+			DEF DenNocPrepinac Transform { 
+    			translation .2 -.3 -1
+    			children [
+    				DEF DenNocPrepinacToucher TouchSensor {}
+    				Shape {
+      					geometry Box {size 0.1 0.1 0.01}
+      					appearance Appearance { material Material {
+								emissiveColor .7 .7 0
+								transparency .2
+							}
+
+							texture	ImageTexture {
+								url	"../img/textures/daynight.png"
+							}
+						}
+    				}
+  				]
+			}
+		]
+	}
+}
+
+ROUTE HUDProxy.orientation_changed TO HUD.rotation
+ROUTE HUDProxy.position_changed TO HUD.translation
+ROUTE HUDProxy.position_changed TO	HUDProxy.center
+
+ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI.externalTouch
+ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI2.externalTouch
 
