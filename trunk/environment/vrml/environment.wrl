@@ -41,6 +41,7 @@ EXTERNPROTO ToiToi [
 	exposedField SFColor barvaSvetla
 	eventIn SFBool	lightsOn
 	eventIn	SFTime externalTouch
+	eventOut SFBool	isActive
 ]
 "../../chadijir-toitoi/toitoi.wrl#ToiToi"
 
@@ -516,6 +517,16 @@ DEF Rizeni Script {
 	eventIn	SFTime set_boolFromTouchTime
 	field SFBool boolFromTouchTime FALSE
 	eventOut SFBool	boolFromTouchTime_changed
+
+	field SFNode toitoi1 USE EXT_TOITOI
+	field SFNode toitoi2 USE EXT_TOITOI2
+	field SFBool vseZapnuto TRUE
+
+	eventIn	SFTime touched
+	eventOut SFTime	changeStateTT1
+	eventOut SFTime	changeStateTT2
+
+
 	url	"javascript:
 	function set_boolFromTouchTime(time) {
 		if(boolFromTouchTime) {
@@ -525,15 +536,40 @@ DEF Rizeni Script {
 		}
 		boolFromTouchTime = !boolFromTouchTime;
 	}
+
+	function touched(time) {
+		//Browser.setDescription(tt1.isActive + ' ' + tt2.isActive + ' ' + vseZapnuto);
+		if(vseZapnuto) {
+			if(toitoi1.isActive) {
+				toitoi1.externalTouch = time;
+			} 
+		
+			if(toitoi2.isActive) {
+				toitoi2.externalTouch = time;
+			} 
+		} else {
+			if(!toitoi1.isActive) {
+				toitoi1.externalTouch = time;
+			} 
+		
+			if(!toitoi2.isActive) {
+				toitoi2.externalTouch = time;
+			} 
+		}
+		vseZapnuto = !vseZapnuto;
+	}
 	"
 }
+
+
+ROUTE CentralniVypinacToucher.touchTime	TO Rizeni.touched
 
 ROUTE HUDProxy.orientation_changed TO HUD.rotation
 ROUTE HUDProxy.position_changed TO HUD.translation
 ROUTE HUDProxy.position_changed TO	HUDProxy.center					 
 
-ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI.externalTouch
-ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI2.externalTouch
+#ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI.externalTouch
+#ROUTE CentralniVypinacToucher.touchTime	TO EXT_TOITOI2.externalTouch
 
 # ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE1.externalTouch
 # ROUTE CentralniVypinacToucher.touchTime	TO EXT_TABLE2.externalTouch
