@@ -98,7 +98,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Vrzání dveří</td>
+                            <td>Zavírání slunečníku</td>
                             <td><a href="models/masekji4-stul-se-slunecnikem/sounds/umbrella_2.wav">umbrella_2.wav</a></td>
                             <td>195.5 kB</td>
                             <td>1,1s</td>
@@ -108,34 +108,130 @@
                 </table>
 
                 <h3>Schéma dynamických akcí</h3>
-                <table cellspacing="0" cellpadding="0" class="pixSpacing">
-                    <thead>
-                        <tr>
-                            <th>Název akce</th>
-                            <th>Realizace</th>
-                            <th>Popis</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Složení židle</td>
-                            <td class="center"><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_1.png" width="500" height="156" /><br /><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_2.png" width="500" height="156" /><br /><img src="models/masekji4-stul-se-slunecnikem/diagrams/zidle_3.png" width="500" height="156" /></td>
-                            <td>Kliknutím a tažením na sedátko židle je možné jej zvednout až do vodorovné polohy vůči nohám, ke kterým je připevněno. I je pak lze kliknutím a tažením přiklopit k opěradlu, přičemž následným kliknutím a tažením na opěradlo je možné poklopit celou židli dopředu.</td>
-                        </tr>
 
-                        <tr>
-                            <td>Osvětlení modelu</td>
-                            <td class="center"><img src="models/masekji4-stul-se-slunecnikem/diagrams/proximity.png" width="563" height="156" /></td>
-                            <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
-                        </tr>
+                <p>Schéma zde není uvedeno, neboť by bylo oproti předešlé fázi nesrovnatelně složitější a tudíš velmi nepřehledné, špatně čitelné a prakticky nicneříkající.</p>
+                
+                <h3>Skripty</h3>
+                
+		<p>"Inteligentní" chování modelu zajišťují celkem čtyři uzly obsahující skripty v jazyce Javascript. První skript je definován přímo v prototypu a ovládá části modelu závislé na hlavním vypínači. Zbylé tři regulují možnosti manipulace s jednotlivými částmi židle, a tak se nacházejí vždy v té které příslušné části.</p>
 
-                        <tr>
-                            <td>Animace a ozvučení slunečníku</td>
-                            <td class="center"><a href="models/masekji4-stul-se-slunecnikem/diagrams/animace.png" title="Klikněte pro zvětšení" class="hl"><img src="models/masekji4-stul-se-slunecnikem/diagrams/animace_m.png" width="518" height="282" /></a></td>
-                            <td>Kliknutím na potah slunečníku dojde k jeho zavření a změně barvy.</td>
-                        </tr>
-                    </tbody>
-                </table>
+		<h4>Skript obsluhující hlavní vypínač</h4>
+
+                <p>Tento skript registruje tři vstupní události. První z nich, <code>touchTime</code>, je vyvolána interně, a to stisknutím hlavního vypínače. Další dvě, <code>externalTouch</code> a <code>lights</code>, reagují na stiskutí tlačítek HUD panelu, přičemž první z nich zastaví, popř. spustí, "chod stroje" a druhá rozsvítí nebo zasne světlo, jenž je součástí modelu.</p>
+                <p>Skript si uchovává v paměti stav, ve kterém se slunečník nacházel při pozastavení "chodu stroje", a tudíž při jeho opětovném spuštění pokračuje animace plynule dál.</p>
+
+		<p>Ve chvíli, kdy je stisknut hlavní vypínač, dojde k zastavení animace slunečníku a omezena možnost manilupace s dílčími částmi židlí, případně naopak.</p>
+
+		<pre>
+DEF Controller Script	{
+	field SFBool enabled TRUE
+	field SFTime stopTime 0
+	field SFTime startTime 0
+
+	eventOut SFTime parsolStopTime
+	eventOut SFTime parsolStartTime
+
+	eventIn	SFTime touchTime
+	eventIn	SFTime externalTouch IS	externalTouch
+	eventIn SFBool lights IS lightsOn
+
+	eventOut SFBool	proximityLight
+	eventOut SFBool	lightSensorEnabled
+
+	eventOut SFTime	stop
+	eventOut SFTime	start
+
+	eventOut SFBool	otherMovement
+
+	url	"javascript:
+	function initialize() {
+		parsolStartTime = startTime;
+		parsolStopTime = -1;
+		proximityLight = false;
+		lightSensorEnabled = true;
+	}
+
+	function lights (val) {
+		proximityLight = val;
+		lightSensorEnabled = !val;
+	}
+
+	function externalTouch (time) {
+		touchTime (time);
+	}
+
+	function touchTime (time) {
+		if (enabled) {
+			stop = time;
+			stopTime = time;
+
+			parsolStartTime = -1;
+			parsolStopTime = time;
+
+			otherMovement = false;
+		} else {
+			start = time;
+			startTime = startTime + (time - stopTime);
+
+			parsolStartTime = startTime;
+			parsolStopTime = -1;
+
+			otherMovement = true;
+		}
+
+		enabled = !enabled;
+	}
+	"
+}
+
+ROUTE Controller.lightSensorEnabled TO proximity.enabled
+ROUTE Controller.proximityLight TO proximityLight.on
+
+ROUTE Controller.otherMovement TO Chair1.enableFolding
+ROUTE Controller.otherMovement TO Chair2.enableFolding
+ROUTE Controller.otherMovement TO Chair3.enableFolding
+ROUTE Controller.otherMovement TO Chair4.enableFolding
+
+ROUTE Controller.otherMovement TO buttonAttentionTimer.enabled
+ROUTE Controller.otherMovement TO machineInProgressTimer.enabled
+
+ROUTE Controller.parsolStopTime TO machineInProgressTimer.stopTime
+ROUTE Controller.parsolStopTime TO buttonAttentionTimer.stopTime
+ROUTE Controller.parsolStartTime TO machineInProgressTimer.startTime
+ROUTE Controller.parsolStartTime TO buttonAttentionTimer.startTime
+
+ROUTE Controller.stop TO buttonStopTimer.startTime
+ROUTE Controller.start TO buttonStartTimer.startTime
+
+ROUTE Controller.start	TO parsolSound.startTime
+ROUTE Controller.stop TO parsolSound.startTime
+		</pre>
+                
+		<h4>Skript regulující možnosti sklápění židle</h4>
+
+		<p>Jediným posláním toho skriptu je zamezit manipulaci se židlí ve chvíli, kdy je "stroj" vypnut.</p>
+
+		<p>Vyskytuje se v kódu celkem třikrát, a to u každé sklopitelné části židle, neboť všechny jsou řešeny jako samostatné prototypy.</p>
+
+		<pre>
+DEF Controller Script {
+	eventOut SFBool	enableFolding
+
+	eventIn	SFBool enable IS enableFolding
+
+	url "javascript:
+		function initialize () {
+			enableFolding = true;
+		}
+
+		function enable (val) {
+			enableFolding = val;
+		}
+	"
+}
+
+ROUTE Controller.enableFolding TO Handler.enabled
+                </pre>
 
                 <h3><a href=".">Zpět na stránku etapy</a></h3>
             </div>
