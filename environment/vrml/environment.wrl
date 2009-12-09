@@ -185,7 +185,7 @@ DEF MainLight DirectionalLight { direction -0.707 -.707 0  intensity 1 on TRUE}
 
 # BACKGROUND
 
-Background {									   
+DEF bg Background {									   
 	# 
 	#backUrl "../img/textures/h_skyboxpack_reef/reef_north.bmp"
 	#bottomUrl "../img/textures/h_skyboxpack_reef/reef_down.bmp"
@@ -516,6 +516,7 @@ Collision {
 
 DEF Rizeni Script {
 	eventIn	SFTime set_boolFromTouchTime
+	field SFNode BG USE	bg
 	field SFBool boolFromTouchTime FALSE
 	eventOut SFBool	boolFromTouchTime_changed
 	eventOut SFBool	negativeBoolFromTouchTime_changed
@@ -537,10 +538,25 @@ DEF Rizeni Script {
 			boolFromTouchTime_changed = FALSE;
 			negativeBoolFromTouchTime_changed = TRUE;
 			rozsvitit = time;
+			BG.backUrl = '../img/textures/h_skyboxpack2_rays/rays_north.jpg';
+			BG.bottomUrl = '../img/textures/h_skyboxpack2_rays/rays_down.jpg';
+			BG.frontUrl = '../img/textures/h_skyboxpack2_rays/rays_south.jpg';
+			BG.leftUrl  = '../img/textures/h_skyboxpack2_rays/rays_east.jpg';
+			BG.rightUrl = '../img/textures/h_skyboxpack2_rays/rays_west.jpg';
+			BG.topUrl = '../img/textures/h_skyboxpack2_rays/rays_up.jpg';
+
+
 		} else {
 			boolFromTouchTime_changed = TRUE;
 			negativeBoolFromTouchTime_changed = FALSE;
 			zhasnout = time;
+
+			BG.backUrl = '../img/textures/night2/NightSkyBK.jpg';
+			BG.bottomUrl = '../img/textures/night2/NightSkyDN.jpg';
+			BG.frontUrl = '../img/textures/night2/NightSkyFT.jpg';
+			BG.leftUrl  = '../img/textures/night2/NightSkyLF.jpg';
+			BG.rightUrl = '../img/textures/night2/NightSkyRT.jpg';
+			BG.topUrl = '../img/textures/night2/NightSkyUP.jpg';
 		}
 		boolFromTouchTime = !boolFromTouchTime;
 	}
@@ -581,7 +597,7 @@ DEF	rozsvececCasovac TimeSensor {
 
 DEF	scalar ScalarInterpolator {
 	key	[0 .5 1]
-	keyValue [1 .5 0]
+	keyValue [1 .5 .12]
 }
 
 DEF	invertor ScalarInterpolator	{
