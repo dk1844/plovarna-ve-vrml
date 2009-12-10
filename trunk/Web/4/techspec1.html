@@ -61,7 +61,10 @@
   <span class="keyword">eventIn</span> <span class="type">SFTime</span> <span class="id">externalTouch</span>
   
   <span class="comment"># dokaze zapinat/vypinat svetlo nezavisle na proximitySensoru</span>
-  <span class="keyword">exposedField</span> <span class="type">SFBool</span> <span class="id">lightsOn</span> <span class="value">FALSE</span>
+  <span class="keyword">eventIn</span> <span class="type">SFBool</span> <span class="id">lightsOn</span>
+  
+  <span class="comment"># signalizuje, jestli je hlavni vypinac zapnuty, nebo vypnuty</span>
+  <span class="keyword">eventOut</span> <span class="type">SFBool</span> <span class="id">isActive</span>
 ]
 	  </pre>
 	  
@@ -134,54 +137,27 @@
         </table>
 	  
 	  <h3>Schéma dynamických akcí</h3>
-	  <p>V této fázi úlohy schéma neuvádím, protože kdybych tu měl popsat každou cestu, tak bych se asi zbláznil.</p>
-	  <!--<table cellspacing="0" cellpadding="0" class="pixSpacing">
-            <thead>
-                <tr>
-                	<th>Název akce</th>
-                    <th>Realizace</th>
-                    <th>Popis</th>
-                </tr>
-            </thead>
-            <tbody>
-				<tr>
-                    <td>Otevírání dveří</td>
-                    <td class="center"><img src="models/chadijir-toitoi/diagrams/dvere.png" width="500" height="156" /></td>
-                    <td>Chytnutím a tažením kliky dveří je otevíráme a zavíráme v omezném úhli.</td>
-				</tr>
-				<tr>
-                    <td>Zvedání prkénka</td>
-                    <td class="center"><img src="models/chadijir-toitoi/diagrams/prkenko.png" width="498" height="156" /></td>
-                    <td>Chytnutím a tažením plochy prkénka jej můžeme otevírat a zavírat v omezeném úhlu.</td>
-				</tr>
-				<tr>
-                    <td>Osvětlení modelu</td>
-                    <td class="center"><img src="models/chadijir-toitoi/diagrams/proximity.png" width="563" height="156" /></td>
-                    <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
-				</tr>
-				<tr>
-                    <td>Animace a ozvučení závory</td>
-                    <td class="center"><a href="models/chadijir-toitoi/diagrams/animace.png" title="Klikněte pro zvětšení" class="hl"><img src="models/chadijir-toitoi/diagrams/animace_m.png" width="518" height="282" /></a></td>
-                    <td>Po stisknutí zeleného tlačítka na dveřích se spustí animace závory, tlačítko začne měnit barvu. V budoucnu bude po zavření závory znemožněno otevírání dveří.</td>
-				</tr>
-            </tbody>
-        </table>
-		-->
-		<h3>Skripty</h3>
+	  <p>V této fázi úlohy schéma neuvádím, protože by bylo příliš rozsáhlé a podle mého názoru je lepší si projít samotný skript.</p>
+	  
+	  <h3>Skripty</h3>
 		<p>"Inteligentní" chování modelu zajišťují celkem dva uzly obsahující skripty v jazyce Javascript.
 		První skript je definován přímo v prototypu a ovládá části modelu závislé na hlavním vypínači.
 		Druhý skript se nachází v části obsluhující dveře a jejich části. Následuje jejich výpis a popis.</p>
 		
 		<h4>Skript obsluhující vypínač</h4>
-		<p>Do skriptu vstupují dvě proměnné: interní a externí sepnutí. Interní pochází od vypínače v prototypu,
-		externí je od vnějšího spínače. Skript si pamatuje stav střechy při vypnutí a stav hlavního vypínače.
+		<p>Do skriptu vstupují tři proměnné: interní a externí sepnutí a informace o chování světla.
+		Interní sepnutí pochází od vypínače v prototypu, externí je od vnějšího spínače.
+		Skript si pamatuje stav střechy při vypnutí a stav hlavního vypínače.
+		Při obsluze světla skript akorát předá správné hodnoty ProximitySensoru a světlu samotnému.
 		</p>
 		<p>Podle toho, jestli je spínač zapnut, nebo vypnut, se vyšle událost o o zastavení pohybu střechy a případné
-		animace dveřní závory. Taky vypne všechna čidla uvnitř dveří.
+		animace dveřní závory. Skript také při vypnutí hlavního spínače vypne všechna čidla uvnitř dveří.
 		</p>
-		<p>Poznámka: propojení uzlů není uvedeno všechno, pro podrobnosti viz zdrojový soubor modelu.</p>
+		<p>Zajímavým parametrem je také událost hratOstatni, která je provázána s parametrem prototypu isActive,
+		jenž dokáže informovat ostatní objekty scény o svém stavu (hodí se při používání centrálního vypínače scény).
+		</p>
 		<pre>
-DEF Ovladani Script {
+DEF	Ovladani Script	{
 	field SFBool allEnabled TRUE
 	field SFTime roofStopped 0
 	field SFTime started 0
@@ -194,13 +170,26 @@ DEF Ovladani Script {
 
 	eventIn	SFTime touchTime
 	eventIn	SFTime externalTouch IS	externalTouch
+	eventIn SFBool lights IS lightsOn
+	eventOut SFBool	lights_changed
+	eventOut SFBool	lightsSensor_changed
+
 	eventOut SFTime	vypnout
-	eventOut SFBool	hratOstatni
+	eventOut SFBool	hratOstatni IS isActive
 	eventOut SFTime	zapnout
+
 	url	"javascript:
 	function initialize() {
 		roofStarted_changed = started;
 		roofStopped_changed = -1;
+		lights_changed = false;
+		lightsSensor_changed = true;
+		hratOstatni = true;
+	}
+
+	function lights(val) {
+		lights_changed = val;
+		lightsSensor_changed = !val;
 	}
 
 	function externalTouch(time) {
@@ -222,13 +211,30 @@ DEF Ovladani Script {
 			roofStopped_changed = -1;
 			doorAnimationResumed_changed = time;
 			hratOstatni = true;
-
 		}
 		allEnabled = !allEnabled;
 	}
 	"
 }
+
+ROUTE Ovladani.lightsSensor_changed TO proximity.enabled
+ROUTE Ovladani.lights_changed TO proximityLight.on
+
 ROUTE Ovladani.hratOstatni TO DDvere.enableAll
+ROUTE Ovladani.hratOstatni TO casovacVypinacMeneniBarvyUpoutavka.enabled
+
+ROUTE Ovladani.doorAnimationPaused_changed TO DDvere.animationPaused
+ROUTE Ovladani.doorAnimationResumed_changed TO DDvere.animationResumed
+
+ROUTE Ovladani.hratOstatni TO DPrkynko.enabledMovement
+ROUTE Ovladani.hratOstatni TO casovacStrojVChodu.enabled
+
+ROUTE Ovladani.roofStopped_changed TO casovacStrojVChodu.stopTime
+ROUTE Ovladani.roofStopped_changed TO casovacVypinacMeneniBarvyUpoutavka.stopTime
+ROUTE Ovladani.roofStarted_changed TO casovacStrojVChodu.startTime
+ROUTE Ovladani.roofStarted_changed TO casovacVypinacMeneniBarvyUpoutavka.startTime
+
+ROUTE HlavniVypinac.touchTime TO Ovladani.touchTime
 ROUTE Ovladani.vypnout TO casovacVypinani.startTime
 ROUTE Ovladani.zapnout TO casovacZapinani.startTime
 		</pre>
@@ -237,9 +243,8 @@ ROUTE Ovladani.zapnout TO casovacZapinani.startTime
 		senzorů a animací na požádání zvenčí.</p>
 		<p>Původně jsem chtěl implementovat i funkcionalitu, kdy by se při otevřených dveřích a kliknutí na tlačítko pro zavření
 		dveře samy zavřely a teprve potom by proběhla animace závory. To se mi bohužel nepodařilo, takže dveře se jen skokově zabouchnou.</p>
-		<p>Cesty událostí opět pro zkrácení zápisu neuvádím.</p>
 		<pre>
-DEF DvereOvladaniScript Script {
+DEF	DvereOvladaniScript Script {
 	field SFBool closedDoor FALSE
 	field SFBool enabled TRUE
 	field SFTime startCloseTime 0
@@ -322,6 +327,7 @@ DEF DvereOvladaniScript Script {
 			} else {
 				startCloseTime = clickTime;
 				zavirani = clickTime;
+				//currentDoorPosition = new SFRotation(0, 0, 1, 0);
 				enabledDoorOpening = false;
 			}
 			closedDoor = !closedDoor;
@@ -329,7 +335,32 @@ DEF DvereOvladaniScript Script {
 	}
 	"
 }
-	</pre>
+ROUTE SpoustecSensor.touchTime TO DvereOvladaniScript.spoustecClicked
+
+ROUTE DvereOvladaniScript.otevirani	TO otevirani2s.startTime
+ROUTE DvereOvladaniScript.otevirani	TO OteviraniZavoryZvuk.startTime
+ROUTE DvereOvladaniScript.zavirani TO zavirani2s.startTime	
+ROUTE DvereOvladaniScript.zavirani TO ZaviraniZavoryZvuk.startTime
+
+ROUTE DvereOvladaniScript.enabledTouching TO SpoustecSensor.enabled
+
+## povoleni a zakazani manipulatoru
+ROUTE DvereOvladaniScript.enabledDoorOpening TO	Tocitko.enabled
+
+## pause a resume otevirani
+ROUTE DvereOvladaniScript.pauseOpenTime TO otevirani2s.stopTime
+ROUTE DvereOvladaniScript.resumeOpenTime TO otevirani2s.startTime
+
+ROUTE DvereOvladaniScript.pauseOpenSoundTime TO OteviraniZavoryZvuk.stopTime
+ROUTE DvereOvladaniScript.resumeOpenSoundTime TO OteviraniZavoryZvuk.startTime
+
+## pause a resume zavirani
+ROUTE DvereOvladaniScript.pauseCloseTime TO zavirani2s.stopTime
+ROUTE DvereOvladaniScript.resumeCloseTime TO zavirani2s.startTime
+
+ROUTE DvereOvladaniScript.pauseCloseSoundTime TO ZaviraniZavoryZvuk.stopTime
+ROUTE DvereOvladaniScript.resumeCloseSoundTime TO ZaviraniZavoryZvuk.startTime
+		</pre>
 		
 	  
 	  <h3><a href=".">Zpět na stránku etapy</a></h3>
