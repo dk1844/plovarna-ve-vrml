@@ -538,12 +538,12 @@ DEF Rizeni Script {
 			boolFromTouchTime_changed = FALSE;
 			negativeBoolFromTouchTime_changed = TRUE;
 			rozsvitit = time;
-			BG.backUrl = '../img/textures/h_skyboxpack2_rays/rays_north.jpg';
-			BG.bottomUrl = '../img/textures/h_skyboxpack2_rays/rays_down.jpg';
-			BG.frontUrl = '../img/textures/h_skyboxpack2_rays/rays_south.jpg';
-			BG.leftUrl  = '../img/textures/h_skyboxpack2_rays/rays_east.jpg';
-			BG.rightUrl = '../img/textures/h_skyboxpack2_rays/rays_west.jpg';
-			BG.topUrl = '../img/textures/h_skyboxpack2_rays/rays_up.jpg';
+			BG.backUrl = 'textures/h_skyboxpack2_rays/rays_north.jpg';
+			BG.bottomUrl = 'textures/h_skyboxpack2_rays/rays_down.jpg';
+			BG.frontUrl = 'textures/h_skyboxpack2_rays/rays_south.jpg';
+			BG.leftUrl  = 'textures/h_skyboxpack2_rays/rays_east.jpg';
+			BG.rightUrl = 'textures/h_skyboxpack2_rays/rays_west.jpg';
+			BG.topUrl = 'textures/h_skyboxpack2_rays/rays_up.jpg';
 
 
 		} else {
@@ -551,12 +551,12 @@ DEF Rizeni Script {
 			negativeBoolFromTouchTime_changed = FALSE;
 			zhasnout = time;
 
-			BG.backUrl = '../img/textures/night2/NightSkyBK.jpg';
-			BG.bottomUrl = '../img/textures/night2/NightSkyDN.jpg';
-			BG.frontUrl = '../img/textures/night2/NightSkyFT.jpg';
-			BG.leftUrl  = '../img/textures/night2/NightSkyLF.jpg';
-			BG.rightUrl = '../img/textures/night2/NightSkyRT.jpg';
-			BG.topUrl = '../img/textures/night2/NightSkyUP.jpg';
+			BG.backUrl = 'textures/night2/NightSkyBK.jpg';
+			BG.bottomUrl = 'textures/night2/NightSkyDN.jpg';
+			BG.frontUrl = 'textures/night2/NightSkyFT.jpg';
+			BG.leftUrl  = 'textures/night2/NightSkyLF.jpg';
+			BG.rightUrl = 'textures/night2/NightSkyRT.jpg';
+			BG.topUrl = 'textures/night2/NightSkyUP.jpg';
 		}
 		boolFromTouchTime = !boolFromTouchTime;
 	}
