@@ -83,12 +83,12 @@ Background {
 	#rightUrl "../img/textures/h_skyboxpack_reef/reef_west.bmp"
 	#topUrl "../img/textures/h_skyboxpack_reef/reef_up.bmp"
 	#
-	backUrl "scene-textures/h_skyboxpack2_rays/rays_north.bmp"
-	bottomUrl "scene-textures/h_skyboxpack2_rays/rays_down.bmp"
-	frontUrl "scene-textures/h_skyboxpack2_rays/rays_south.bmp"
-	leftUrl "scene-textures/h_skyboxpack2_rays/rays_east.bmp"
-	rightUrl "scene-textures/h_skyboxpack2_rays/rays_west.bmp"
-	topUrl "scene-textures/h_skyboxpack2_rays/rays_up.bmp"
+	backUrl "scene-textures/h_skyboxpack2_rays/rays_north.jpg"
+	bottomUrl "scene-textures/h_skyboxpack2_rays/rays_down.jpg"
+	frontUrl "scene-textures/h_skyboxpack2_rays/rays_south.jpg"
+	leftUrl "scene-textures/h_skyboxpack2_rays/rays_east.jpg"
+	rightUrl "scene-textures/h_skyboxpack2_rays/rays_west.jpg"
+	topUrl "scene-textures/h_skyboxpack2_rays/rays_up.jpg"
 }
 
 
