@@ -55,6 +55,10 @@
   <span class="keyword">exposedField</span> <span class="type">SFColor</span> <span class="id">barvasvetla</span> <span class="value">.5 .5 .5</span>                              <span class="comment"># barva svetla pri priblizeni (RGB)</span>
   <span class="keyword">exposedField</span> <span class="type">SFInt32</span> <span class="id">useLOD</span> <span class="value">1</span>                                          <span class="comment"># 1 = zapnout LOD, 0 = bez LODu</span>
   <span class="keyword">exposedField</span> <span class="type">MFString</span> <span class="id">frontTexture</span> <span class="value">"models/kavanda1-tobogan/sipka.png"</span> <span class="comment"># textura na predni stranu</span>
+  <span class="keyword">eventIn</span> <span class="type">SFBool</span> <span class="id">lightsOn</span>                                                <span class="comment"># svetla z venku</span>
+  <span class="keyword">eventOut</span> <span class="type">SFBool</span> <span class="id">isActive</span>                                               <span class="comment"># zapnuty vypinac</span>
+  <span class="keyword">eventIn</span> <span class="type">SFTime</span> <span class="id">externalTouch</span>                                           <span class="comment"># ovladani z venku</span>
+
 ]
 		
 		</pre>
@@ -137,43 +141,162 @@
             </tbody>
         </table>
  
- 	   <h3>Popis dynamických akcí</h3>
-	   
-	      <table cellspacing="0" cellpadding="0" class="pixSpacing">
-            <thead>
-                <tr>
-                	<th>Název akce</th>
-                    <th>Realizace</th>
-                    <th>Popis</th>
+ 	   <h3>Skripty</h3>
+ 	   Popis:
+ 	      <ul>
+ 	          <li>Skript Ovladani je reaguje na vnější podněty, přijímá externí eventIny externalTouch a lightsOn pro vypnutí animací z venku (popř. zhasnutí z venku).</li>
+ 	          <li>Každá instance vytvořená z prototypu má vlastní hlavní vypínač ("detonation box"), který funguje jako externalTouch s omezením na jedinou instanci.</li>
+ 	          <li>Detonation box (tj. lokální switch) na sebe upozorňuje pomocí pulzující změny velikosti. Při vypnutí modelu se také zastaví na určité pozici a po zapnutí se pokračuje v animaci ze zastavené pozice.</li>
+ 	          <li>Inteligentní chování:
+                <ul>
+                   <li>Po vypnutí přestnou být aktivní manipulátory, po zapnutí jsou opět povoleny. Stejně tak je vypnuto ovládání výtahu.</li>
+ 	                 <li>Při vypnutí (ať už přes globální nebo lokální) se zaství všechny animace a zvuky, pro zapnutí pokračují odtud, kde naposledy skončily.</li>
+ 	              </ul>
+            </li>
+ 	         
+ 	      </ul>
+ 	   <p>
+ 	   
+ 	   </p>
+ 	   
+ 	   
+ 	   <pre>
+ 	   DEF	Ovladani Script	{
+		field SFBool allEnabled TRUE		# datova pole
+		field SFTime chodStartTime 0		
+		field SFTime chodStopTime 0	
+		field SFTime vytahStartTime 0		
+		field SFTime vytahStopTime 0
+											
+		field SFBool turnOffSensorEnabled TRUE
+		field SFBool turnOnSensorEnabled FALSE
+		field SFBool vytahEnabled TRUE
+		field SFBool vlajkaEnabled TRUE
+		field SFBool strechaEnabled TRUE
+
+		eventOut SFBool set_vlajkaEnabled	#vystupy
+		eventOut SFBool set_strechaEnabled
+		eventOut SFBool set_vytahEnabled
+		eventOut SFBool set_turnOffSensorEnabled 
+		eventOut SFBool set_turnOnSensorEnabled 
+		eventOut SFTime chodStopped_changed
+		eventOut SFTime chodStarted_changed
+		eventOut SFTime vytahStopped_changed
+		eventOut SFTime vytahStarted_changed
+		eventOut SFTime vytahStartTime_resumed
+
+		eventOut SFBool	lightsOn_changed
+		eventOut SFBool	proximitySensorEnabled_changed
+
+		eventIn	SFTime touchTime			  #vstupy
+		eventIn	SFTime externalTouch IS	externalTouch
+		eventIn SFTime ulozZacatek
+		eventIn SFBool lightsOn IS lightsOn
+	
+
+		
+		eventOut SFTime	vypnout #predpokladam je na ovladani pres externalTouch
+		eventOut SFTime	zapnout
+		url	"javascript:
+		function initialize() {
+			chodStarted_changed = chodStartTime;
+			chodStopped_changed = -1;
+			
+		}
+
+		function externalTouch(time) {
+			touchTime(time);
+		}
+
+		function lightsOn(on){
+			if (on) { 
+				//svetla rozsvitit
+				lightsOn_changed = true;
+				proximitySensorEnabled_changed = false;  //kdyz svitime, tak uz prox nic nedela
+			} else {
+				lightsOn_changed = false;
+				proximitySensorEnabled_changed = true;  //kdyz nesvitime, tak se rozsvecuje tak, jak ma..
+			}
+				
+		}
+
+		function touchTime(time) {
+
+
+			//omezeni vytahu
+			vytahEnabled = !vytahEnabled;
+			set_vytahEnabled = vytahEnabled;
+
+
+			if(allEnabled) {  //vypiname
+				vypnout = time;					//vrati time, kdy vypnout
+				turnOnSensorEnabled = true;	   //je zapnuto, tak vypiname a senzor pro zapnuti je ok, pro vypnuti dame neaktivni
+				turnOffSensorEnabled = false;
+				allEnabled = false;
+				vlajkaEnabled = false;
+				strechaEnabled = false;
+
+				chodStopTime = time;
+				chodStarted_changed = -1;
+				chodStopped_changed = time;
+
+				vytahStopTime = time;
+				vytahStarted_changed = -1;
+				vytahStopped_changed = time;
+				
+				
+
+			} else {
+				zapnout = time;	  //zapiname
+				turnOnSensorEnabled = false;
+				turnOffSensorEnabled = true;
+				allEnabled = true;
+				vlajkaEnabled = true;
+				strechaEnabled = true;
+
+
+				chodStartTime = chodStartTime + (time - chodStopTime);
+				chodStarted_changed = chodStartTime;
+				chodStopped_changed = -1;
+
+				vytahStartTime = vytahStartTime + (time - vytahStopTime);
+				vytahStarted_changed = vytahStartTime;
+				vytahStopped_changed = -1;
+				
+				
+
+			}
+
+ 			set_turnOffSensorEnabled = turnOffSensorEnabled; //prepneme touchsensory na mainswitchi.
+			set_turnOnSensorEnabled = turnOnSensorEnabled;
+			set_vlajkaEnabled = vlajkaEnabled;
+			set_strechaEnabled = strechaEnabled;
+			
+			
+
+		}
+
+		function ulozZacatek(time) {
+		
+				if(allEnabled) {  //jen pri resumovani
+					vytahStartTime = time;
+					vytahStartTime_resumed = time;
+
 					
-                </tr>
-            </thead>
-            <tbody>
-            
-				        <tr>
-                    <td>Rotace vlajky</td>
-                    <td class="center"><img src="models/kavanda1-tobogan/cs.png" width="500" height="156" /></td>
-                    <td>Chytnutím a tažením vlajky ji rotujeme kolem osy stožáru bez omezení.</td>
-					     </tr>
-				        <tr>
-                    <td>Změna výšky střechy</td>
-                    <td class="center"><img src="models/kavanda1-tobogan/plane.png" width="498" height="156" /></td>
-                    <td>Chytnutím a tažením střechy měníme její výšku v rozmezí 0,1m až 1,5m (tj. nedovolujeme zcela plochou střechu).</td>
-					     </tr>
-				        <tr>
-                    <td>Osvětlení modelu</td>
-                    <td class="center"><img src="models/kavanda1-tobogan/proximity.png" width="563" height="156" /></td>
-                    <td>Při přiblížení se modelu se je model osvícen světlem, jehož barvu lze definovat parametrem prototypu.</td>
-					     </tr>
-				        <tr>
-                    <td>Animace výtahu, ozvučení</td>
-                    <td class="center"><a href="models/kavanda1-tobogan/complex.png" title="Klikněte pro zvětšení" class="hl"><img src="models/kavanda1-tobogan/complex_m.png" width="518" height="282" /></a></td>
-                    <td>Kliknutím na tlačítko výtahu spustíme animaci. Výtah se začne pohybovat směrem vzhůru, kde chvíli počká a pak sjede dolů. Tlačítka i výtah během své cesty
-                    mění barvu. Zahájení pohybu je doprovázeno zvukem.</td>
-					     </tr>
-					     
-            </tbody>
-        </table>
+					
+				} 
+				
+				
+			
+		}
+		"
+
+	
+	}
+ 	   </pre>
+ 	   
+	   
+	      
 	   
 	   
 
