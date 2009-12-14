@@ -26,7 +26,13 @@ Toboggan
 Table with parasol
 ------------------
 
-...
+Table with parasol is realized as a set of prototypes which are created entirely of standard geometry except a parasol cover and chair foots. These are made as Extrusion node but any of them weren't modelled in external modeller.
+
+There are two dynamic components – parasol and chair. Manipulators are placed in the model of chair. They make the chair able to be fold because each of them matches each integrated part of the chair.
+
+But “working-machine” animation is represented by opening and closing of the parasol. It is realized by PositionInterpolator and it is possible to suspend or resume it through a main switch lying on the table desk. Behaviour of this button is same as behaviour of real button and when it is pressed, its colour will be changed in dependence on the “machine” state. Whole animation is accompanied by sound.
+
+The model uses two textures. The first of them is a texture of wood and it is variable through the parameter called chairTexture. The texture called billboardTexture is used to cover billboard which are replacing the model when the avatar is in distance between 70 and 120 meters by it.
 
 
 A little help for future students
@@ -44,4 +50,5 @@ Last subtask is programming scripts in javascript programming language. In this 
 Conclusion
 =====
 
-During the task we learned how to work with VRML. It showed up, that it is definitely not dead technology and for rapid dynamic scenes development is very comfortable tool.
+During the task we learned how to work with VRML. It showed up, that it is definitely not dead technology and for rapid dynamic scenes development is very comfortable tool. Also it is great preparation for graphics programming in OpenGL.
+
