@@ -30,6 +30,7 @@ The main controller – found just in front of the entrance – is of course the
 While found in the distance between 132 and 230 feet, the model details get highly decimated: The slide turn angular, the tower is replaced by a block, and none of the previous functionality is preserved. Thereafter until the threshold of 393 feet is reached, all the visitor is given is a block as a tower and a 2D shape on a Billboard resembling the slide. After that there’s nothing more than an empty Group node for the avatar to see.
 
 
+No part of this model is an export from any external tool – everything has been written in VRMLPad (except for images).
 
 
 Table with parasol

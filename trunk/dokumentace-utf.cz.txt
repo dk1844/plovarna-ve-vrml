@@ -31,6 +31,7 @@ Hlavním ovládacím prvkem je, před vchodem umístěná, detonační skříňk
 
 Pokud se avatar vyskytuje 40 – 70 m od modelu, dojde ke zjednodušení skluzavky, celou věž nahradí barevný kvádr bez textur a žádné animace už nebudou k dispozici. Od 70 do 120m celý model reprezentuje jen kvádr věže a 2D tvar simulující skluzavku na rotujícím Billboardu. Od 120m reprezentuje model prázdný uzel Group.
 
+Žádná část tohoto modelu nebyla vytvořena externím programem, vše jsem vymodeloval v VRMLPadu (až na obrázky).
 
 
 Stůl se slunečníkem
