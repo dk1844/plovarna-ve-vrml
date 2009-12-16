@@ -1,6 +1,32 @@
 ﻿Reklama
 =======
 
+(následuje reklamní text, plná grafická podoba je vypracována zvlášť v souboru „plovarna-poster.cz.pdf“)
+Znáte to… Potřebujete sehnat profesionálně vypadající modely částí aquaparku ve VRML, které by nejen dobře reprezentovali Váš záměr, ale i byly chytře strukturované a s poutavými animacemi. A nikde nic? Netřeba hledat dále! Naše modely Vám vytrhnou trn z paty.
+
+Pohodlí nábytku
+---------------
+
+Jste-li zvyklý na komfort a pohodlí z reálného světa? Není důvod, proč byste si ho nemohli užít i ve virtuální realitě. Naše modely Vám poskytnou dostatek místa k sezení, stůl pro odkládání předmětů a stahovatelný slunečník Vás bude chránit před mnohdy škodlivými slunečními paprsky. 
+
+Samozřejmostí, jako u všech našich modelů, je volitelné osvětlení po přiblížení avatara. A to nejlepší nakonec: úklid je stejně snadný jako používání! Židličky můžete jednoduše složit a opřít o stůl, jde to skoro na jeden klik.
+
+
+Bezpečný úkryt
+--------------
+
+Nebudeme chodit okolo horké kaše, i ve virtuálním světě si občas potřebujete ulevit. Právě pro tyto chvíle klidu jsme pro Vás připravili naše prvotřídní ToiToiky. Díky měnitelným texturám na dveřích lze snadno zajistit, že jak avataři, tak avatarky najdou toitoiku právě pro ně. 
+
+Bezpečnost je zaručena: Po zaklapnutí (mnohdy stylově rustikálně vrzající) závory s dveřmi ani největší silák nehne. A pokud se Vám zdálo, že uvnitř příliš odříznutí od světa, díky pohyblivé střeše se Vám naskytne pohled alespoň na nebe, ve dne blankytně modré s mráčky a noci se zářícími hvězdami
+
+
+Vodní věž
+---------
+
+Jaká by to byla plovárna bez pořádné vodní atrakce? U nás samozřejmě nechybí. Devět metrů dominantní stavbu tyčící se nad bazénem si každý jistě zamiluje. Všemi barvami hrající výtah, dle nálady a přání návštěvníka morfující střecha, vlajka vlající podle větru či zvůle avatara – co víc si přát? 
+
+Aktuální stav chodu tobogánu je dobře zřetelný z rotující dekorace a v případě, že bychom chtěli chod zastavit či naopak rozběhnout, dobře nám poslouží stylová „detonační skříňka“. Pomyslnou třešničkou na dortu pak může být volitelná textura na přední straně věže, kterou si lze zvolit dle vlastního uvážení a návrhu.
+
 
 Odborný popis
 =============
@@ -19,7 +45,6 @@ Model obsahuje dvě textury: Texturu dveří, která je měnitelná pomocí para
 
 Tobogán
 -------
-
 
 Model tobogánu je tvořen třemi úrovněmi detailů (plus prázdný uzel), které jsou aplikovány v závislosti na vzdálenosti avatara od modelu.
 

@@ -1,12 +1,39 @@
 ﻿Advertisement
 =============
 
+(following text is only the advertisement content, the actual full-featured advertisement poster can be can in “plovarna-poster.en.pdf”)
+
+You know how it is.. You need a professional looking VRML aqua park parts that wouldn’t just represent your intention well, but you also want it to be sensually structured. Not to mention pretty animations too. Well, look no further, because we have a solution for you.
+
+The comfort of furniture
+------------------------
+
+Are you used to the comfort of the real world? Then there’s no need to compromise in virtual reality. Our models will provide sufficient number of seats and a table to place objects on. Last but not least there’s a folding parasol which will shield you from harmful sunrays.
+
+As in case of all our models, this set is equipped with custom light source activated by avatar’s proximity. And the best thing is: Tidying up is just as easy as use. Chairs can be folded and leaned against the table. It like one click away!
+
+
+A safe-house
+------------
+
+Let’s not beat around the bush. Even in a virtual reality there has to be place to “rest”. That’s why we offer our first-class state-of-the-art ToiToi Restrooms. Thanks to interchangeable door textures, avatars can the right restroom just for her or him.
+
+Safety is guaranteed: Every Restroom has a latch built-in. Don’t worry that it squeaks and looks kind of rustic, it locks properly. And if you happen to feel alone and isolated from the outside world, there’s no need to panic. Turn your look upwards and you will see either an azure sky with silver clouding or shinning stars of a summer night.
+
+
+A water tower
+-------------
+
+What kind of a water park would it be without a proper attraction? Of course we’ve got one - twenty-eight-feet-tall monumental water slide that everybody loves. A color-changing elevator, a free shaped roof and a flag fluttering in the wind (or along our visitor’s wishes) – it’s simply perfect 
+
+You can easily tell if the toboggan is running – there’s a stylish candy-caned circle decoration for that. No matter whether you’re going to stop or resume it, the detonation box does the job. As a cherry on top comes the possibility of customizing the front texture of the tower.
+
 
 Technical description
 =====================
 
 Toi Toi toilet box
--------------
+------------------
 
 Toi Toi toilet box is realized as a set of prototypes. All components were modelled directly in VRMLPad. All nodes have standard geometry, except the roof, the knob and spaces for textures, thesehave geometry of IndexedFaceSet.
 
@@ -28,7 +55,6 @@ Another part is the tower equipped with an elevator. The walls have been created
 The main controller – found just in front of the entrance – is of course the (in)famous detonation box. It is Script driven and stops or resumes the “machine operation”. When used and all animations are stopped; the best representation of that would have to be the candy-caned rotating circle on the left side of the tower.
 
 While found in the distance between 132 and 230 feet, the model details get highly decimated: The slide turn angular, the tower is replaced by a block, and none of the previous functionality is preserved. Thereafter until the threshold of 393 feet is reached, all the visitor is given is a block as a tower and a 2D shape on a Billboard resembling the slide. After that there’s nothing more than an empty Group node for the avatar to see.
-
 
 No part of this model is an export from any external tool – everything has been written in VRMLPad (except for images).
 
