@@ -1,4 +1,4 @@
-Reklama
+﻿Reklama
 =======
 
 
@@ -20,11 +20,22 @@ Model obsahuje dvě textury: Texturu dveří, která je měnitelná pomocí para
 Tobogán
 -------
 
-...
+
+Model tobogánu je tvořen třemi úrovněmi detailů (plus prázdný uzel), které jsou aplikovány v závislosti na vzdálenosti avatara od modelu.
+
+Ve vzdálenosti do 40 m je použit nejpropracovanější model. Jeho hlavní část, skluzavka, je vyrobena uzlem Extrusion - 2D tvar písmene U je proveden po spirále s poloměrem 3 m. Barva skluzavky je pak dána parametrem barvatela, který lze zvenčí zvolit. Oporou skluzavky je centrální sloup (uzel Box), spojeny jsou potom lany (uzly IndexedLineSet). Na vrcholu sloupu se vyjímá vlajka, jejíž hlavní účel krom dekorace spočívá v možnosti rotovat – užití CylinderSensoru.
+
+Model dále zahrnuje věž s výtahem. Její zdi byly vytvořeny neprimitivem IndexedFaceSet tak, aby každá stěna mohla mít jinou barvu, či texturu (např. právě přední strana). Vrchol věže je kryt střechou. Její výška může být avatarem v mezích měněna, tuto vlastnost jsem realizoval PlaneSensorem. Výtah při pohybu vydává zvuk a mění svoji barvu.
+
+Hlavním ovládacím prvkem je, před vchodem umístěná, detonační skříňka. Scriptem zastavuje nebo spouští chod stroje – všechny animace jsou zastaveny, nejlépe je to potom vidět na rotující animaci „stroj v chodu“ umístěné na levé venkovní straně.
+
+Pokud se avatar vyskytuje 40 – 70 m od modelu, dojde ke zjednodušení skluzavky, celou věž nahradí barevný kvádr bez textur a žádné animace už nebudou k dispozici. Od 70 do 120m celý model reprezentuje jen kvádr věže a 2D tvar simulující skluzavku na rotujícím Billboardu. Od 120m reprezentuje model prázdný uzel Group.
+
 
 
 Stůl se slunečníkem
 -------------------
+
 
 Model je realizován jako sada komponent, které jsou až na látkový potah slunečníku a nohy židlí tvořeny výhradně pomocí standardní geometrie, a navzdory tomu, že zmíněné části jsou reprezentovány uzly Extrusion, nebyl při tvorbě žádné části použit externí modelář.
 
