@@ -1,4 +1,4 @@
-Advertisement
+﻿Advertisement
 =============
 
 
@@ -19,8 +19,17 @@ Model contains two textures: The door texture, which can be changed with prototy
 
 Toboggan
 --------
+The toboggan model comprises of 3 levels of detail (not counting the last empty node). They are used depending on avatar’s distance.
 
-...
+If closer than 131 feet avatar is presented with the most detailed model version. There’s a slide created using the Extrusion node (a U-shaped contour traced onto a 9-feet-long-radius spiral spine). The slide color can be customized from the outside using the barvatela parameter. In the middle of the slide there’s a column (Box node) acting as a support structure linked by ropes (IndexedLineSet nodes). On the top a flag resides that can be freely rotated thanks to its parent CylinderSensor.
+
+Another part is the tower equipped with an elevator. The walls have been created with a non-primitive IndexedFaceSet in order for every wall to be possible to have a different color or a texture (e.g. the front texture). The top of the tower is roof-covered. The roof’s height can be changed by dragging it up and down within a given range – this feature is powered by a PlaneSensor. The elevator changes its color and emits a sound while moving.
+
+The main controller – found just in front of the entrance – is of course the (in)famous detonation box. It is Script driven and stops or resumes the “machine operation”. When used and all animations are stopped; the best representation of that would have to be the candy-caned rotating circle on the left side of the tower.
+
+While found in the distance between 132 and 230 feet, the model details get highly decimated: The slide turn angular, the tower is replaced by a block, and none of the previous functionality is preserved. Thereafter until the threshold of 393 feet is reached, all the visitor is given is a block as a tower and a 2D shape on a Billboard resembling the slide. After that there’s nothing more than an empty Group node for the avatar to see.
+
+
 
 
 Table with parasol
