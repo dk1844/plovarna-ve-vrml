@@ -1,0 +1,1 @@
+Cílem projektu je vytvoření virtuální plovárny ve VRML s několika interaktivními modely.
